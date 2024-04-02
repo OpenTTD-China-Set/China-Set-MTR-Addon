@@ -1,0 +1,104 @@
+##grflangid 0x56
+
+STR_GRF_NAME        :中国包：港铁追加包 {VERSION_STRING}
+STR_GRF_DESC        :为中国包追加了港铁的载具
+STR_GRF_URL         :https://www.tt-forums.net/viewtopic.php?t=91092
+STR_GRF_DESC_README :仍在测试当中，可能存在不稳定情况
+STR_GRF_MTR         :{RED}心系生活每一程
+
+STR_PARAM_LOADING_SPEED         :装载速度
+STR_PARAM_LOADING_SPEED_DESC    :调整车辆装载速度。默认为100%。
+
+STR_PARAM_PURCHASE_COST      :购买费用
+STR_PARAM_PURCHASE_COST_DESC :调整车辆购买费用。默认为25%。
+STR_PARAM_RUNNING_COST       :运营费用
+STR_PARAM_RUNNING_COST_DESC  :调整车辆运营费用。默认为25%。
+
+STR_PARAM_PERCENT_6     :6.25%
+STR_PARAM_PERCENT_13    :12.5%
+STR_PARAM_PERCENT_25    :25%
+STR_PARAM_PERCENT_50    :50%
+STR_PARAM_PERCENT_75    :75%
+STR_PARAM_PERCENT_100   :100%
+STR_PARAM_PERCENT_125   :125%
+STR_PARAM_PERCENT_150   :150%
+STR_PARAM_PERCENT_175   :175%
+STR_PARAM_PERCENT_200   :200%
+STR_PARAM_PERCENT_400   :400%
+STR_PARAM_PERCENT_800   :800%
+STR_PARAM_PERCENT_1600  :1600%
+
+STR_PARAM_CARGO_DECAY       :货物贬值周期
+STR_PARAM_CARGO_DECAY_DESC  :调整车厢的货物贬值周期。“较长”为“标准”的两倍，“很长”是“较长”的两倍。即使在“标准”设置下，货物贬值周期也随车厢种类而变化。
+STR_PARAM_STANDARD          :标准
+STR_PARAM_LONG              :较长
+STR_PARAM_VERY_LONG         :很长
+
+STR_USED_WITH_DYNAMIC_ENGINES       :请切换至控制台模式, 键入 "setting dynamic_engines 1", 否则您无法游玩中国包.
+
+
+
+STR_US_IMPORT                :美国进口车型
+STR_FR_IMPORT                :法国进口车型
+
+
+STR_310_KMH             : - 最高速度 310 km/h
+STR_350_KMH             : - 最高速度 350 km/h，运营费用增加
+STR_380_KMH             : - 最高速度 380 km/h，运营费用大幅增加
+
+STR_350_AVAILABLE       :可改装为最高速度 350 km/h，运营费用增加
+STR_350_380_AVAILABLE   :可改装为最高速度 350 或 380 km/h，运营费用增加
+
+STR_ORIGINAL            : - 原版涂装
+
+STR_BUILD_YEAR          : - 根据建造年份选择设计
+STR_LATER               : - 后期涂装
+STR_EARLIER             : - 早期涂装
+
+STR_PROTOTYPE           : - 原型
+
+STR_COMFORT_144         :{BLACK}舒适度：{GOLD}144
+STR_COMFORT_160         :{BLACK}舒适度：{GOLD}160
+STR_COMFORT_192         :{BLACK}舒适度：{GOLD}192
+STR_COMFORT_256         :{BLACK}舒适度：{GOLD}256
+STR_COMFORT_288         :{BLACK}舒适度：{GOLD}288
+STR_COMFORT_320         :{BLACK}舒适度：{GOLD}320
+STR_COMFORT_384         :{BLACK}舒适度：{GOLD}384
+
+STR_COMFORT_144_CAFE    :{BLACK}舒适度：{GOLD}144{BLACK}，但由于餐车作用，运营时至少为180
+STR_COMFORT_160_CAFE    :{BLACK}舒适度：{GOLD}160{BLACK}，但由于餐车作用，运营时至少为200
+STR_COMFORT_192_CAFE    :{BLACK}舒适度：{GOLD}192{BLACK}，但由于餐车作用，运营时至少为240
+STR_COMFORT_384_AC      :{BLACK}舒适度：{GOLD}384{BLACK}，但由于空调作用，运营时至少为480
+
+STR_COMFORT_240         :{BLACK}舒适度：{GOLD}240
+STR_COMFORT_400         :{BLACK}舒适度：{GOLD}400
+STR_COMFORT_480         :{BLACK}舒适度：{GOLD}480
+STR_COMFORT_640         :{BLACK}舒适度：{GOLD}640
+STR_COMFORT_720         :{BLACK}舒适度：{GOLD}720
+STR_COMFORT_800         :{BLACK}舒适度：{GOLD}800
+
+STR_COMFORT_240_CAFE    :{BLACK}舒适度：{GOLD}240 {BLACK}，但由于餐车作用，运营时至少为300
+
+STR_DECAY_185           :{BLACK}货物贬值周期因子：{GOLD}185
+STR_DECAY_200           :{BLACK}货物贬值周期因子：{GOLD}200
+STR_DECAY_400           :{BLACK}货物贬值周期因子：{GOLD}400
+STR_DECAY_800           :{BLACK}货物贬值周期因子：{GOLD}800
+STR_DECAY_1600          :{BLACK}货物贬值周期因子：{GOLD}1600
+STR_DECAY_BOXCAR        :{BLACK}货物贬值周期因子：{GOLD}185，棚代客80，装载活禽/畜560
+STR_DECAY_BOXCAR_NOPASS :{BLACK}货物贬值周期因子：{GOLD}185，装载活禽/畜560，棚代客不可用
+
+STR_CAFE_EFFECT                     :{BLACK}餐车的作用：{GOLD}加挂餐车使除餐车外的所有非通勤客车运行费用减半，货物贬值周期增加1/4
+STR_AIR_CONDITIONER_EFFECT          :{BLACK}空调发电车的作用：{GOLD}加挂空调发电车可增加大部分非机供机车牵引客车的货物贬值周期
+
+STR_NO_AIR_CONDITIONER              :{BLACK}空调：{RED}不可用
+STR_SELF_AIR_CONDITIONER            :{BLACK}自带空调发电机{RED}但仅用于本车厢
+
+STR_ELECTRICITY_SUPPLY_YES          :{BLACK}机供：{GOLD}是
+STR_ELECTRICITY_SUPPLY_NO           :{BLACK}机供：{RED}否
+
+STR_TOO_SHORT                       :列车太短了
+STR_ONLY_TWO_SECTIONS               :该机车节数必须为2，否则无法运行
+STR_MUST_BE_4_8_12_16_CARS          :该动车组节数必须为4，8，12或16，否则无法运行
+STR_MUST_BE_5_TO_17_CARS            :该动车组节数必须在5至17之间，否则无法运行
+STR_MUST_BE_4_TO_24_CARS            :该动车组节数必须在4至24之间，否则无法运行
+STR_MUST_BE_8_TO_24_CARS            :该动车组节数必须在8至24之间，否则无法运行

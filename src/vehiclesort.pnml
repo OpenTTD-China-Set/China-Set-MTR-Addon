@@ -1,0 +1,6 @@
+sort (FEAT_TRAINS, [
+    yellowhead_exurb,
+    yellowhead_suburb,
+    1856,
+    1857,
+]);

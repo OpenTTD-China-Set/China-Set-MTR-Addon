@@ -1,0 +1,143 @@
+
+// Vehicle
+spriteset (spriteset_yellowhead_c) {
+    template_empty ()
+}
+spriteset (spriteset_yellowhead_m) {
+    template_empty ()
+}
+spriteset (spriteset_yellowhead_c_reversed) {
+    template_empty ()
+}
+spriteset (spriteset_yellowhead_1c_c) {
+    template_empty ()
+}
+spriteset (spriteset_yellowhead_1c_m) {
+    template_empty ()
+}
+spriteset (spriteset_yellowhead_1c_c_reversed) {
+    template_empty ()
+}
+
+
+alternative_sprites (spriteset_yellowhead_c, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP) {
+    template_standard ("25kvemu", "3049stock-c")
+}
+alternative_sprites (spriteset_yellowhead_m, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP) {
+    template_standard ("25kvemu", "3049stock-tp") 
+}
+alternative_sprites (spriteset_yellowhead_c_reversed, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP) {
+    template_standard ("25kvemu", "3049stock-c-r")
+}
+alternative_sprites (spriteset_yellowhead_1c_c, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP) {
+    template_standard ("25kvemu", "3049stock-1c-c")
+}
+alternative_sprites (spriteset_yellowhead_1c_m, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP) {
+    template_standard ("25kvemu", "3049stock-1c-tp")
+}
+alternative_sprites (spriteset_yellowhead_1c_c_reversed, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP) {
+    template_standard ("25kvemu", "3049stock-1c-c-r")
+}
+
+
+//Graphics
+switch (FEAT_TRAINS, SELF, switch_yellowhead_first_wagon, position_in_consist % 9) {
+    1: spriteset_yellowhead_1c_c;
+    4: spriteset_yellowhead_1c_m;
+    7: spriteset_yellowhead_1c_c_reversed;
+    empty_sprites;
+} 
+
+switch (FEAT_TRAINS, SELF, switch_yellowhead_normal_wagon, position_in_consist % 9) {
+    1: spriteset_yellowhead_c;
+    4: spriteset_yellowhead_m;
+    7: spriteset_yellowhead_c_reversed;
+    empty_sprites;
+} 
+
+switch (FEAT_TRAINS, SELF, switch_yellowhead_wagon_type, vehicle_type_id) {
+    1856: switch_yellowhead_normal_wagon;
+    1857: switch_yellowhead_first_wagon;
+    empty_sprites;
+} 
+
+switch (FEAT_TRAINS, SELF, switch_yellowhead_graphics, (position_in_consist_from_end % 3) == 1) {
+    1: switch_yellowhead_wagon_type;
+    empty_sprites;
+} 
+
+//Weight
+
+switch (FEAT_TRAINS, SELF, switch_yellowhead_weight, num_vehs_in_consist % 9) {
+    0..2: return 32;
+    6..8: return 32;
+    3..5: return 52;
+    return 0;
+}
+
+//Capacity
+
+
+
+
+switch (FEAT_TRAINS, SELF, switch_yellowhead_capacity_1, param_cargo_capacity) {
+    0: return 109;
+    1: return 164;
+    3: return 273;
+    4: return 327;
+    5: return 436;
+    return 218;
+}
+switch (FEAT_TRAINS, SELF, switch_yellowhead_capacity, position_in_consist % 3) {
+    1: switch_yellowhead_capacity_1;
+    return 0;
+}
+
+//Cost
+
+switch (FEAT_TRAINS, SELF, switch_yellowhead_cost_power, vehicle_type_id) {
+    1856: return 36;
+    1857: return 40;
+    return 0;
+}
+
+switch (FEAT_TRAINS, SELF, switch_yellowhead_running_power, vehicle_type_id) {
+    1856: return 32;
+    1857: return 36;
+    return 0;
+}
+
+switch (FEAT_TRAINS, SELF, switch_yellowhead_cost_unpower, vehicle_type_id) {
+    1856: return 20;
+    1857: return 24;
+    return 0;
+}
+
+switch (FEAT_TRAINS, SELF, switch_yellowhead_running_unpower, vehicle_type_id) {
+    1856: return 10;
+    1857: return 12;
+    return 0;
+}
+
+switch (FEAT_TRAINS, SELF, switch_yellowhead_cost, vehicle_is_potentially_powered) {
+    1: switch_yellowhead_cost_power;
+    switch_yellowhead_cost_unpower;
+}
+
+switch (FEAT_TRAINS, SELF, switch_yellowhead_running, vehicle_is_potentially_powered) {
+    1: switch_yellowhead_running_power;
+    switch_yellowhead_running_unpower;
+}
+
+//Power
+
+switch (FEAT_TRAINS, SELF, switch_yellowhead_power, position_in_consist % 9) {
+    3..5: return 1218;
+    6..8: return 0;
+    return 0;
+}
+
+switch (FEAT_TRAINS, SELF, switch_yellowhead_traction, vehicle_is_potentially_powered) {
+    1: return int(0.171*255);
+    return 0;
+}

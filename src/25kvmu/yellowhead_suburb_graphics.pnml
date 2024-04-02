@@ -1,0 +1,30 @@
+// Begin YELLOWHEAD_SUBURB
+// Purchase Menu
+spriteset (spriteset_yellowhead_suburb_purchase_original) {
+    template_purchase_empty ()
+}
+alternative_sprites(spriteset_yellowhead_suburb_purchase_original, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP) {
+    template_purchase ("25kvemu", "3049stock-c")
+}
+
+
+switch (FEAT_TRAINS, SELF, switch_yellowhead_suburb_purchase_original, position_in_consist % 3) {
+    1: spriteset_yellowhead_suburb_purchase_original;
+    empty_sprites;
+} 
+
+// Graphics
+
+
+switch (FEAT_TRAINS, SELF, switch_yellowhead_suburb_articulated_part, extra_callback_info1) {
+    1..2: return yellowhead_suburb;
+    return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
+}
+
+
+
+//Text
+
+switch (FEAT_TRAINS, SELF, switch_yellowhead_suburb_additional_text, param_cargo_decay) {
+    return string(STR_DESC_6, string(STR_ELECTRIC_25KVAC), string(STR_MTR_FIRST_CAN_ATTACH_WAGON), string(STR_NICKNAME_YELLOWHEAD),string(STR_RELIABILITY_10), string(STR_YELLOWHEAD_SUBURB_HEAD_SEAT));
+}
