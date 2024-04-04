@@ -135,7 +135,7 @@ STR_MUST_BE_8_TO_24_CARS            :This MU must be in a consist of 8 to 24 car
 STR_MUST_BE_3MULTI_CARS             :This MU must be in a consist of 3, 6, 9 ,12 ,15 or 18 cars to run.
 
 STR_NAME_YELLOWHEAD_EXURB           :KCR Metro Commell Train(Exurban Type)
-STR_NICKNAME_YELLOWHEAD             :{YELLOW}Yellowheads, Electric Train
+STR_NICKNAME_YELLOWHEAD             :{BLACK}Nickname: {YELLOW}Yellowheads, Electric Train
 STR_YELLOWHEAD_EXURB_HEAD_SEAT      :{BLACK}Front Car Seat: First-Class
 
 STR_NAME_YELLOWHEAD_SUBURB          :KCR Metro Commell Train(Suburban Type)
