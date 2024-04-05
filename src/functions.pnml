@@ -137,7 +137,7 @@ BITMASK SHEET
 bitmask(0): to return error consists
 bitmask(1): restaurant car
 bitmask(2): air condition generator car
-bitmask(3): conductor car
+bitmask(3): car with mailroom
 bitmask(4): brake van
 
 For example, 

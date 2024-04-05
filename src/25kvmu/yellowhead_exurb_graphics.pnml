@@ -17,7 +17,8 @@ switch (FEAT_TRAINS, SELF, switch_yellowhead_exurb_purchase_original, position_i
 
 
 switch (FEAT_TRAINS, SELF, switch_yellowhead_exurb_articulated_part, extra_callback_info1) {
-    1..2: return yellowhead_exurb;
+    1: return yellowhead_exurb;
+    2: return yellowhead_mailroom;
     return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
 }
 

@@ -4,19 +4,18 @@
 // Templates
 #include "src/template.pnml"
 
+
 // Helpers
 #include "src/railtypetable.pnml"
 #include "src/cargotable.pnml"
-#include "src/functions.pnml"
-#include "src/function2.pnml"
-
-// IDs
 #include "src/vehicleid.pnml"
 #include "src/roadvehicleid.pnml"
 #include "src/vehicleid.pnml"
 
-// Sort Vehicles
-#include "src/vehiclesort.pnml"
+#include "src/functions.pnml"
+#include "src/misc/mailroom.pnml"
+#include "src/function2.pnml"
+
 
 //Coeches
 #include "src/emucoach/first-emucoach_graphics.pnml"
@@ -30,3 +29,6 @@
 #include "src/25kvmu/yellowhead_exurb_item.pnml"
 #include "src/25kvmu/yellowhead_suburb_graphics.pnml"
 #include "src/25kvmu/yellowhead_suburb_item.pnml"
+
+// Sort Vehicles
+#include "src/vehiclesort.pnml"
