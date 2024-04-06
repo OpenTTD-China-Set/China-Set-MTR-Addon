@@ -28,6 +28,7 @@
 #define id_range_mutipile_unit_wagons 0x0740..0x07BF
 item (FEAT_TRAINS, normal_emucoach, 1856) {}
 item (FEAT_TRAINS, first_emucoach, 1857) {}
+item (FEAT_TRAINS, first_emucoach_with_mailroom, 1858) {}
 
 //25kV AC Electric Mutipile-Unit, available ID range: 1984-2239 (hex 0x07C0..0x08BF)
 #define id_range_25kv_emu 0x07C0..0x08BF

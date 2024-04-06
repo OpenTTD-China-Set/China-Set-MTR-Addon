@@ -57,7 +57,7 @@ switch (FEAT_TRAINS, SELF, switch_yellowhead_normal_wagon, position_in_consist %
 
 switch (FEAT_TRAINS, SELF, switch_yellowhead_wagon_type, vehicle_type_id) {
     1856: switch_yellowhead_normal_wagon;
-    1857: switch_yellowhead_first_wagon;
+    1857..1858: switch_yellowhead_first_wagon;
     empty_sprites;
 } 
 

@@ -26,9 +26,14 @@ switch (FEAT_TRAINS, SELF, switch_yellowhead_exurb_articulated_part, extra_callb
 //Capacity
 switch (FEAT_TRAINS, SELF, switch_yellowhead_1c_capacity, position_in_consist % 3) {
     1: return 56;
+    2: return 24;
     return 0;
 }
 
+switch (FEAT_TRAINS, SELF, switch_yellowhead_1c_without_mailroom_capacity, position_in_consist % 3) {
+    1: return 64;
+    return 0;
+}
 
 //Text
 

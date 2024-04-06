@@ -137,7 +137,7 @@ BITMASK SHEET
 bitmask(0): to return error consists
 bitmask(1): restaurant car
 bitmask(2): air condition generator car
-bitmask(3): car with mailroom
+bitmask(3): ////
 bitmask(4): brake van
 
 For example, 
@@ -218,7 +218,7 @@ switch (FEAT_TRAINS, SELF, muhead_mtr, vehicle_type_id) {
 } */
 
 switch (FEAT_TRAINS, SELF, mu_with_first_class, vehicle_type_id) {
-    1856..1983: return CB_RESULT_ATTACH_ALLOW_IF_RAILTYPES;
+    1856..1859: return CB_RESULT_ATTACH_ALLOW_IF_RAILTYPES;
     1984: return CB_RESULT_ATTACH_ALLOW_IF_RAILTYPES;
     return CB_RESULT_ATTACH_DISALLOW;
 }
@@ -230,6 +230,17 @@ switch (FEAT_TRAINS, SELF, mu_of_mtr, vehicle_type_id) {
 
 switch (FEAT_TRAINS, SELF, muhead_with_first_class, vehicle_type_id) {
     1856..1857: return CB_RESULT_ATTACH_ALLOW_IF_RAILTYPES;
+    return CB_RESULT_ATTACH_DISALLOW;
+}
+
+switch (FEAT_TRAINS, SELF, muhead_yellowhead_exurb, vehicle_type_id) {
+    1856..1858: return CB_RESULT_ATTACH_ALLOW_IF_RAILTYPES;
+    return CB_RESULT_ATTACH_DISALLOW;
+}
+
+switch (FEAT_TRAINS, SELF, muhead_airport_express, vehicle_type_id) {
+    1857: return CB_RESULT_ATTACH_ALLOW_IF_RAILTYPES;
+    1859: return CB_RESULT_ATTACH_ALLOW_IF_RAILTYPES;
     return CB_RESULT_ATTACH_DISALLOW;
 }
 

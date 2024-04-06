@@ -16,3 +16,7 @@ switch (FEAT_TRAINS, SELF, switch_first_emucoach_capacity, position_in_articulat
 switch (FEAT_TRAINS, SELF, switch_first_emucoach_additional_text, param_cargo_decay) {
     return string(STR_DESC_2, string(STR_ATTACH_MTR_FIRST_EMU), string(STR_COMFORT_240));
 }
+
+switch (FEAT_TRAINS, SELF, switch_first_emucoach_with_mail_additional_text, param_cargo_decay) {
+    return string(STR_DESC_2, string(STR_ATTACH_MTR_FIRST_EMU_WUTH_MAILROOM), string(STR_WITH_MAILROOM), string(STR_COMFORT_240));
+}

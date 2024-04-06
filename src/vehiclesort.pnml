@@ -3,4 +3,5 @@ sort (FEAT_TRAINS, [
     yellowhead_suburb,
     1856,
     1857,
+    1858,
 ]);

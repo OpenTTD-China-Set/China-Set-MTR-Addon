@@ -35,12 +35,12 @@ item (FEAT_TRAINS, yellowhead_exurb) {
         running_cost_base:              RUNNING_COST_ELECTRIC;
         running_cost_factor:            10;
         reliability_decay:              10;
-        bitmask_vehicle_info:           bitmask(2, 3);
+        bitmask_vehicle_info:           bitmask(2);
     }
     graphics {
         // Menu
         additional_text:                switch_yellowhead_exurb_additional_text;
-        can_attach_wagon:               muhead_with_first_class;
+        can_attach_wagon:               muhead_yellowhead_exurb;
         start_stop:                     mu3multicar;
 
         // Graphics
@@ -61,7 +61,7 @@ item (FEAT_TRAINS, yellowhead_exurb) {
         running_cost_factor:            10  * runningcostfactor() + 20;
         purchase_running_cost_factor:   60;
         purchase_cargo_capacity:        56/2;
-        bitmask_vehicle_info:           bitmask(2, 3);
+        bitmask_vehicle_info:           bitmask(2);
     }
 
     // Multiple Unit Wagons
@@ -81,6 +81,20 @@ item (FEAT_TRAINS, yellowhead_exurb) {
     }
     livery_override(first_emucoach) {
         default:                        switch_yellowhead_graphics;
+        cargo_capacity:                 switch_yellowhead_1c_without_mailroom_capacity;
+        power:                          switch_yellowhead_power;
+        tractive_effort_coefficient:    switch_yellowhead_traction;
+        length:                         switch_length_2_7_2;
+        weight:                         switch_yellowhead_weight;
+        can_attach_wagon:               mu_with_first_class;
+        cargo_age_period:               240 << param_cargo_decay;
+        bitmask_vehicle_info:           0;
+        articulated_part:               switch_mtr_wagon_articulated_part;
+        cost_factor:                    switch_yellowhead_cost;
+        running_cost_factor:            switch_yellowhead_running() * runningcostfactor() + accostfactor();
+    }
+    livery_override(first_emucoach_with_mailroom) {
+        default:                        switch_yellowhead_graphics;
         cargo_capacity:                 switch_yellowhead_1c_capacity;
         power:                          switch_yellowhead_power;
         tractive_effort_coefficient:    switch_yellowhead_traction;
@@ -89,7 +103,7 @@ item (FEAT_TRAINS, yellowhead_exurb) {
         can_attach_wagon:               mu_with_first_class;
         cargo_age_period:               240 << param_cargo_decay;
         bitmask_vehicle_info:           0;
-        articulated_part:               switch_first_emucoach_articulated_part;
+        articulated_part:               switch_mtr_wagon_articulated_part;
         cost_factor:                    switch_yellowhead_cost;
         running_cost_factor:            switch_yellowhead_running() * runningcostfactor() + accostfactor();
     }
