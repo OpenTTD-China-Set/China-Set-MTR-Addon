@@ -3,7 +3,7 @@
 STR_GRF_NAME        :China Set: MTR Addon {VERSION_STRING}
 STR_GRF_DESC        :This NewGRF add the vehicles of MTR to China Set.
 STR_GRF_URL         :https://www.tt-forums.net/viewtopic.php?t=91092
-STR_GRF_DESC_README :Enjoy Playing!
+STR_GRF_DESC_README :This NewGRF is in Early Access.Update in the future may broke the compatable.
 STR_GRF_DESC_MTR    :{RED}Caring for every journey
 
 STR_PARAM_LOADING_SPEED         :Loading Speed
@@ -106,12 +106,9 @@ STR_DECAY_1600          :{BLACK}Cargo Age Period Factor: {GOLD}1600
 STR_DECAY_BOXCAR        :{BLACK}Cargo Age Period Factor: {GOLD}185, Passengers 80, Livestock 560
 STR_DECAY_BOXCAR_NOPASS :{BLACK}Cargo Age Period Factor: {GOLD}185, Livestock 560, Unrefittable to Passengers
 
-STR_NAME_NORMAL_EMUCOACH                :The Normal-Class MU Wagon of MTR 
-STR_NAME_FIRST_EMUCOACH                 :The First-Class MU Wagon of MTR 
-STR_NAME_FIRST_EMUCOACH_WITH_MAILROOM   :The First-Class MU Wagon (With Luggage Room)of MTR 
 
 STR_ELECTRIC_25KVAC     :Power Supply Mode: {RED}25kV AC {LTBLUE}(Overhead Lines)
-STR_ELECTRIC_1500VDC    :Power Supply Mode: {RED}1500V DC {LTBLUE}(Overhead Lines)
+STR_ELECTRIC_1500VDC    :Power Supply Mode: {BLUE}1500V DC {LTBLUE}(Overhead Lines)
 
 STR_CAFE_EFFECT                     :{BLACK}Cafe Effect: {GOLD}Attaching Restaurant Car Halves Running Costs of Non-Commuter Passenger Cars except Restaurant Cars, and Increases Cargo Age Period by 1/4
 STR_AIR_CONDITIONER_EFFECT          :{BLACK}Air Conditioner Effect: {GOLD}Attaching Air Conditioner Generator Car Increases Cargo Age Period of Most Passenger Cars Hauled by Locomotives without Electricity Supply
@@ -123,8 +120,8 @@ STR_SELF_AIR_CONDITIONER            :{BLACK}With Air Conditioner Compartment {RE
 STR_ELECTRICITY_SUPPLY_YES          :{BLACK}Electricity Supply for cars: {GOLD}YES
 STR_ELECTRICITY_SUPPLY_NO           :{BLACK}Electricity Supply for cars: {RED}NO
 
-STR_ATTACH_MTR_FIRST_EMU                :{BLACK}Can be attached by EMUs used in {LTBLUE}Kowloon-Canton Railway British Section/East Rail Line{BLACK} and{DKGREEN} Airport Express
-STR_ATTACH_MTR_EMU                      :{BLACK}Can be attached by EMUs used in MTR or KCR
+STR_ATTACH_MTR_FIRST_EMU                :{BLACK}Can be attached by EMUs used in {LTBLUE}Kowloon-Canton Railway British Section/East Rail Line{BLACK} ,{DKGREEN}CAF-Train (Airport Express Type){BLACK} and MTR{ORANGE} VIBRANT EXPRESS
+STR_ATTACH_MTR_EMU                      :{BLACK}Can be attached by EMUs used in {RED}MTR {BLACK}or {RED}KCR{BLACK} (Expect {DKGREEN}CAF-Train (Airport Express Type){BLACK})
 STR_ATTACH_MTR_FIRST_EMU_WUTH_MAILROOM  :{BLACK}Can be only attached by EMUs used in {YELLOW}KCR Metro Commell Train (Exyrban Type)
 STR_MTR_FIRST_CAN_ATTACH_WAGON          :{BLACK}Can attach First-Class and Normal-Class EMU Coaches
 STR_MTR_NORMAL_CAN_ATTACH_WAGON         :{BLACK}Can attach Normal-Class EMU Coaches
@@ -136,6 +133,11 @@ STR_MUST_BE_5_TO_17_CARS            :This MU must be in a consist of 5 to 17 car
 STR_MUST_BE_4_TO_24_CARS            :This MU must be in a consist of 4 to 24 cars to run.
 STR_MUST_BE_8_TO_24_CARS            :This MU must be in a consist of 8 to 24 cars to run.
 STR_MUST_BE_3MULTI_CARS             :This MU must be in a consist of 3, 6, 9 ,12 ,15 or 18 cars to run.
+
+STR_NAME_NORMAL_EMUCOACH                :The Normal-Class MU Wagon of MTR 
+STR_NAME_FIRST_EMUCOACH                 :The First-Class MU Wagon of MTR 
+STR_NAME_FIRST_EMUCOACH_WITH_MAILROOM   :The First-Class MU Wagon (With Luggage Room)of MTR 
+STR_NAME_LUGGAGE_EMUCOACH               :The Luggage MU Wagon of MTR 
 
 STR_NAME_YELLOWHEAD_EXURB           :KCR Metro Commell Train(Exurban Type)
 STR_NICKNAME_YELLOWHEAD             :{BLACK}Nickname: {YELLOW}Yellowheads, Electric Train
