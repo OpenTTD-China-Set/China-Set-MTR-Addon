@@ -4,7 +4,7 @@ spriteset (spriteset_yellowhead_exurb_purchase_original) {
     template_purchase_empty ()
 }
 alternative_sprites(spriteset_yellowhead_exurb_purchase_original, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP) {
-    template_purchase ("25kvemu", "3049stock-1c-c")
+    template_purchase ("25kvemu/yellowhead", "3049stock-1c-c")
 }
 
 
@@ -38,5 +38,5 @@ switch (FEAT_TRAINS, SELF, switch_yellowhead_1c_without_mailroom_capacity, posit
 //Text
 
 switch (FEAT_TRAINS, SELF, switch_yellowhead_exurb_additional_text, param_cargo_decay) {
-    return string(STR_DESC_6, string(STR_ELECTRIC_25KVAC), string(STR_MTR_FIRST_CAN_ATTACH_WAGON), string(STR_NICKNAME_YELLOWHEAD),string(STR_RELIABILITY_10), string(STR_YELLOWHEAD_EXURB_HEAD_SEAT));
+    return string(STR_DESC_6, string(STR_ELECTRIC_25KVAC), string(STR_MTR_FIRST_CAN_ATTACH_WAGON), string(STR_NICKNAME_YELLOWHEAD),string(STR_RELIABILITY_10), string(STR_FIRST_HEAD_SEAT));
 }

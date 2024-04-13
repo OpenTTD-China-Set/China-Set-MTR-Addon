@@ -99,7 +99,7 @@ STR_SELF_AIR_CONDITIONER            :{BLACK}自带空调发电机{RED}但仅用�
 STR_ELECTRICITY_SUPPLY_YES          :{BLACK}机供：{GOLD}是
 STR_ELECTRICITY_SUPPLY_NO           :{BLACK}机供：{RED}否
 
-STR_ATTACH_MTR_FIRST_EMU                :{BLACK}配属于以下的动车：{LTBLUE}九广铁路英段/东铁线{BLACK}所有动车，{DKGREEN}CAF-Train(机场快线型){BLACK}，{RED}港铁{ORANGE}“动感号”{BLACK}高速动车组
+STR_ATTACH_MTR_FIRST_EMU                :{BLACK}配属于以下动车：{LTBLUE}九广铁路英段/东铁线{BLACK}所有动车，{DKGREEN}CAF-Train(机场快线型){BLACK}，{RED}港铁{ORANGE}“动感号”{BLACK}高速动车组
 STR_ATTACH_MTR_EMU                      :{BLACK}配属于所有{RED}港铁/九广公司{BLACK}动车({DKGREEN}CAF-Train(机场快线型){BLACK}除外)
 STR_ATTACH_MTR_FIRST_EMU_WUTH_MAILROOM  :{BLACK}仅配属于{YELLOW}九广铁路都城嘉慕列车(远郊型)
 STR_MTR_FIRST_CAN_ATTACH_WAGON          :{BLACK}可以挂载头等车厢和普通车厢
@@ -120,7 +120,10 @@ STR_NAME_LUGGAGE_EMUCOACH               :港铁动车行李车厢
 
 STR_NAME_YELLOWHEAD_EXURB           :九广铁路都城嘉慕列车(远郊型)
 STR_NICKNAME_YELLOWHEAD             :{BLACK}昵称：{YELLOW}黄头， 电气化火车
-STR_YELLOWHEAD_EXURB_HEAD_SEAT      :{BLACK}车头席别: 头等
+STR_FIRST_HEAD_SEAT                 :{BLACK}车头席别: 头等
 
 STR_NAME_YELLOWHEAD_SUBURB          :九广铁路都城嘉慕列车(近郊型)
-STR_YELLOWHEAD_SUBURB_HEAD_SEAT     :{BLACK}车头坐席: 普通
+STR_NORMAL_HEAD_SEAT                :{BLACK}车头坐席: 普通
+
+STR_FULLNAME_MLR                    :{BLACK}全名: 中期翻新列车
+STR_NICKNAME_MLR                    :{BLACK}昵称：乌蝇头

@@ -29,6 +29,9 @@
 #include "src/25kvmu/yellowhead_exurb_item.pnml"
 #include "src/25kvmu/yellowhead_suburb_graphics.pnml"
 #include "src/25kvmu/yellowhead_suburb_item.pnml"
+#include "src/25kvmu/mlr_gfx.pnml"
+#include "src/25kvmu/mlr_item.pnml"
+
 
 // Sort Vehicles
 #include "src/vehiclesort.pnml"

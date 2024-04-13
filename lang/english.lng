@@ -141,7 +141,11 @@ STR_NAME_LUGGAGE_EMUCOACH               :The Luggage MU Wagon of MTR
 
 STR_NAME_YELLOWHEAD_EXURB           :KCR Metro Commell Train(Exurban Type)
 STR_NICKNAME_YELLOWHEAD             :{BLACK}Nickname: {YELLOW}Yellowheads, Electric Train
-STR_YELLOWHEAD_EXURB_HEAD_SEAT      :{BLACK}Front Car Seat: First-Class
+STR_FIRST_HEAD_SEAT                 :{BLACK}Front Car Seat: First-Class
 
 STR_NAME_YELLOWHEAD_SUBURB          :KCR Metro Commell Train(Suburban Type)
-STR_YELLOWHEAD_SUBURB_HEAD_SEAT     :{BLACK}Front Car Seat: Normal-Class
+STR_NORMAL_HEAD_SEAT                 :{BLACK}Front Car Seat: Normal-Class
+
+STR_NAME_MLR                        :MLR Train
+STR_FULLNAME_MLR                    :{BLACK}Full Name: Mid-Life Refurbishment Train
+STR_NICKNAME_MLR                    :{BLACK}Nickname: Flie's Head

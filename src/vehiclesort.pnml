@@ -1,6 +1,7 @@
 sort (FEAT_TRAINS, [
     yellowhead_exurb,
     yellowhead_suburb,
+    mlr,
     1856,
     1857,
     1858,

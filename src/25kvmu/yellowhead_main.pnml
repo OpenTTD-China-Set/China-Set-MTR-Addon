@@ -1,4 +1,4 @@
-
+//Main of YellowHead Train
 // Vehicle
 spriteset (spriteset_yellowhead_c) {
     template_empty ()
@@ -21,22 +21,22 @@ spriteset (spriteset_yellowhead_1c_c_reversed) {
 
 
 alternative_sprites (spriteset_yellowhead_c, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP) {
-    template_standard ("25kvemu", "3049stock-c")
+    template_standard ("25kvemu/yellowhead", "3049stock-c")
 }
 alternative_sprites (spriteset_yellowhead_m, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP) {
-    template_standard ("25kvemu", "3049stock-tp") 
+    template_standard ("25kvemu/yellowhead", "3049stock-tp") 
 }
 alternative_sprites (spriteset_yellowhead_c_reversed, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP) {
-    template_standard ("25kvemu", "3049stock-c-r")
+    template_standard ("25kvemu/yellowhead", "3049stock-c-r")
 }
 alternative_sprites (spriteset_yellowhead_1c_c, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP) {
-    template_standard ("25kvemu", "3049stock-1c-c")
+    template_standard ("25kvemu/yellowhead", "3049stock-1c-c")
 }
 alternative_sprites (spriteset_yellowhead_1c_m, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP) {
-    template_standard ("25kvemu", "3049stock-1c-tp")
+    template_standard ("25kvemu/yellowhead", "3049stock-1c-tp")
 }
 alternative_sprites (spriteset_yellowhead_1c_c_reversed, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP) {
-    template_standard ("25kvemu", "3049stock-1c-c-r")
+    template_standard ("25kvemu/yellowhead", "3049stock-1c-c-r")
 }
 
 
@@ -95,11 +95,6 @@ switch (FEAT_TRAINS, SELF, switch_yellowhead_capacity, position_in_consist % 3) 
 
 //Cost
 
-switch (FEAT_TRAINS, SELF, switch_yellowhead_cost_power, vehicle_type_id) {
-    1856: return 36;
-    1857: return 40;
-    return 0;
-}
 
 switch (FEAT_TRAINS, SELF, switch_yellowhead_running_power, vehicle_type_id) {
     1856: return 32;
@@ -107,11 +102,6 @@ switch (FEAT_TRAINS, SELF, switch_yellowhead_running_power, vehicle_type_id) {
     return 0;
 }
 
-switch (FEAT_TRAINS, SELF, switch_yellowhead_cost_unpower, vehicle_type_id) {
-    1856: return 20;
-    1857: return 24;
-    return 0;
-}
 
 switch (FEAT_TRAINS, SELF, switch_yellowhead_running_unpower, vehicle_type_id) {
     1856: return 10;
@@ -119,10 +109,6 @@ switch (FEAT_TRAINS, SELF, switch_yellowhead_running_unpower, vehicle_type_id) {
     return 0;
 }
 
-switch (FEAT_TRAINS, SELF, switch_yellowhead_cost, vehicle_is_potentially_powered) {
-    1: switch_yellowhead_cost_power;
-    switch_yellowhead_cost_unpower;
-}
 
 switch (FEAT_TRAINS, SELF, switch_yellowhead_running, vehicle_is_potentially_powered) {
     1: switch_yellowhead_running_power;
