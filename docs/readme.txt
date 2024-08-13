@@ -8,3 +8,5 @@ Will add in Future:
 Made by Babel
 Sprites are made by Gorender and Magicavoxel
 All of thsee files, images and GRFs are under GPL-2.0 License
+
+Start mtr-make.py to compile the NewGRF.

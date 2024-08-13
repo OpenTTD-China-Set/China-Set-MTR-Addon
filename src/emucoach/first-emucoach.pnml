@@ -27,7 +27,7 @@ item (FEAT_TRAINS, first_emucoach) {
         name:                           string(STR_NAME_FIRST_EMUCOACH);
         sprite_id:                      SPRITE_ID_NEW_TRAIN;
         misc_flags:                     bitmask(TRAIN_FLAG_AUTOREFIT);
-        variant_group:                  normal_emucoach;
+        variant_group:                  1856;
 
         // Availability
         climates_available:             ALL_CLIMATES;
@@ -82,7 +82,7 @@ item (FEAT_TRAINS, first_emucoach_with_mailroom) {
         name:                           string(STR_NAME_FIRST_EMUCOACH_WITH_MAILROOM);
         sprite_id:                      SPRITE_ID_NEW_TRAIN;
         misc_flags:                     bitmask(TRAIN_FLAG_AUTOREFIT);
-        variant_group:                  normal_emucoach;
+        variant_group:                  1856;
 
         // Availability
         climates_available:             ALL_CLIMATES;

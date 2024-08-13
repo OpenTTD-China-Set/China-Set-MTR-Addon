@@ -383,14 +383,50 @@ cargotable {
     COCO, FOCA, PPAR, NHNO, C2H4, H2__, N7__       // This line is copied from xUSSR, I am not sure what they acctually are.
 }
 
-sort (FEAT_TRAINS, [
-    yellowhead_exurb,
-    yellowhead_suburb,
-    mlr,
-    first_emucoach_with_mailroom,
-    first_emucoach,
-    first_emucoach_with_mailroom,
-]);
+//This file sets all vehicle IDs. Each type has a range of 32/64/128/256/512/768/1024 possible IDs.
+
+//Steam Locomotive, available ID range: 512-767 (hex 0x0200..0x02FF)
+//define id_range_steam_locomotive 0x0200..0x02FF
+
+//Narrow Guage Steam Locomotive, available ID range: 768-895 (hex 0x0300..0x037F)
+//define id_range_narrow_guage_steam_locomotive 0x0300..0x037F
+
+//Diesel Locomotive, available ID range: 896-959 (hex 0x0380..0x03BF)
+//define id_range_diese_locomotive 0x0380..0x03BF
+
+//Electric Locomotive, available ID range: 960-1023 (hex 0x03C0..0x03FF)
+//define id_range_electric_locomotive 0x03C0..0x03FF
+
+//Coaches, available ID range: 1024-1535 (hex 0x0400..0x05FF)
+//define id_range_coaches 0x0400..0x05FF
+
+//Narrow Guage Coaches, available ID range: 1536-1663 (hex 0x0600..0x067F)
+//define id_range_narrow_guage_coaches 0x0600..0x067F
+
+//Wagons, available ID range: 1664-1791 (hex 0x0680..0x06FF)
+//define id_range_wagons 0x0680..0x06FF
+
+//Narrow Guage Wagons, available ID range: 1792-1855 (hex 0x0700..0x073F)
+//define id_range_narrow_guage_wagons 0x0700..0x073F
+
+//Mutipile-Unit Wagons, available ID range: 1856-1983 (hex 0x0740..0x07BF)
+//define id_range_mutipile_unit_wagons 0x0740..0x07BF
+item (FEAT_TRAINS, normal_emucoach, 1856) {}
+item (FEAT_TRAINS, first_emucoach, 1857) {}
+item (FEAT_TRAINS, first_emucoach_with_mailroom, 1858) {}
+
+//25kV AC Electric Mutipile-Unit, available ID range: 1984-2239 (hex 0x07C0..0x08BF)
+//define id_range_25kv_emu 0x07C0..0x08BF
+item (FEAT_TRAINS, yellowhead_exurb, 1984) {}
+item (FEAT_TRAINS, yellowhead_suburb, 1985) {}
+item (FEAT_TRAINS, mlr, 1986) {}
+
+//1500V DC Electric Mutipile-Unit, available ID range: 2240-2751 (hex 0x08C0..0x0ABF)
+//define id_range_1500v_emu 0x08C0..0x0ABF
+
+//Misc, available ID range: 2240-2751 (hex 0x0AC0..0x0CBF)
+//define id_range_misc 0x0AC0..0x0CBF
+item (FEAT_TRAINS, yellowhead_mailroom, 2240) {}
 
 /* Begin Functions */
 // shamelessly stolen from jp+ shinkansen
@@ -972,7 +1008,7 @@ item (FEAT_TRAINS, first_emucoach) {
         name:                           string(STR_NAME_FIRST_EMUCOACH);
         sprite_id:                      SPRITE_ID_NEW_TRAIN;
         misc_flags:                     bitmask(TRAIN_FLAG_AUTOREFIT);
-        variant_group:                  normal_emucoach;
+        variant_group:                  1856;
 
         // Availability
         climates_available:             ALL_CLIMATES;
@@ -1027,7 +1063,7 @@ item (FEAT_TRAINS, first_emucoach_with_mailroom) {
         name:                           string(STR_NAME_FIRST_EMUCOACH_WITH_MAILROOM);
         sprite_id:                      SPRITE_ID_NEW_TRAIN;
         misc_flags:                     bitmask(TRAIN_FLAG_AUTOREFIT);
-        variant_group:                  normal_emucoach;
+        variant_group:                  1856;
 
         // Availability
         climates_available:             ALL_CLIMATES;
@@ -1478,7 +1514,7 @@ item (FEAT_TRAINS, yellowhead_suburb) {
         sprite_id:                      SPRITE_ID_NEW_TRAIN;
         misc_flags:                     bitmask(TRAIN_FLAG_AUTOREFIT, TRAIN_FLAG_MU);
         engine_class:                   ENGINE_CLASS_ELECTRIC;
-        variant_group:                  yellowhead_exurb;
+        variant_group:                  1984;
 
         // Availability
         climates_available:             ALL_CLIMATES;
@@ -1765,7 +1801,7 @@ item (FEAT_TRAINS, mlr) {
         sprite_id:                      SPRITE_ID_NEW_TRAIN;
         misc_flags:                     bitmask(TRAIN_FLAG_AUTOREFIT, TRAIN_FLAG_MU);
         engine_class:                   ENGINE_CLASS_ELECTRIC;
-        variant_group:                  yellowhead_exurb;
+        variant_group:                  1984;
         
         // Availability
         climates_available:             ALL_CLIMATES;

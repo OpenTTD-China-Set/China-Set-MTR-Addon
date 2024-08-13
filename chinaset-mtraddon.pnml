@@ -8,7 +8,7 @@
 // Helpers
 #include "src/railtypetable.pnml"
 #include "src/cargotable.pnml"
-#include "src/vehiclesort.pnml"
+#include "src/vehicleid.pnml"
 #include "src/roadvehicleid.pnml"
 #include "src/functions.pnml"
 #include "src/misc/mailroom.pnml"
