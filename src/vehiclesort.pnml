@@ -2,7 +2,7 @@ sort (FEAT_TRAINS, [
     yellowhead_exurb,
     yellowhead_suburb,
     mlr,
-    1856,
-    1857,
-    1858,
+    first_emucoach_with_mailroom,
+    first_emucoach,
+    first_emucoach_with_mailroom,
 ]);

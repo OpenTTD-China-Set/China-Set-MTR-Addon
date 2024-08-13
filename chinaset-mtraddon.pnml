@@ -8,29 +8,22 @@
 // Helpers
 #include "src/railtypetable.pnml"
 #include "src/cargotable.pnml"
-#include "src/vehicleid.pnml"
+#include "src/vehiclesort.pnml"
 #include "src/roadvehicleid.pnml"
-#include "src/vehicleid.pnml"
-
 #include "src/functions.pnml"
 #include "src/misc/mailroom.pnml"
 #include "src/function2.pnml"
 
 
 //Coeches
-#include "src/emucoach/first-emucoach_graphics.pnml"
-#include "src/emucoach/first-emucoach_item.pnml"
-#include "src/emucoach/normal-emucoach_graphics.pnml"
-#include "src/emucoach/normal-emucoach_item.pnml" 
+#include "src/emucoach/first-emucoach.pnml"
+#include "src/emucoach/normal-emucoach.pnml" 
 
 //25kV EMUS
 #include "src/25kvmu/yellowhead_main.pnml"
-#include "src/25kvmu/yellowhead_exurb_graphics.pnml"
-#include "src/25kvmu/yellowhead_exurb_item.pnml"
-#include "src/25kvmu/yellowhead_suburb_graphics.pnml"
-#include "src/25kvmu/yellowhead_suburb_item.pnml"
-#include "src/25kvmu/mlr_gfx.pnml"
-#include "src/25kvmu/mlr_item.pnml"
+#include "src/25kvmu/yellowhead_exurb.pnml"
+#include "src/25kvmu/yellowhead_suburb.pnml"
+#include "src/25kvmu/mlr.pnml"
 
 
 // Sort Vehicles

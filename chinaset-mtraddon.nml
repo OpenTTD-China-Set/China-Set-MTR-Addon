@@ -1,15 +1,9 @@
-# 0 "chinaset-mtraddon.pnml"
-# 0 "<built-in>"
-# 0 "<command-line>"
-# 1 "chinaset-mtraddon.pnml"
-// Define the GRF
-# 1 "src/header.pnml" 1
 grf {
-    grfid: "\5F\5F\03\02";
-    name: string(STR_GRF_NAME);
-    desc: string(STR_DESC_4, string(STR_GRF_DESC), string(STR_GRF_DESC_README),string(STR_GRF_DESC_MTR));
-    url: string(STR_GRF_URL);
-    version: 3;
+    grfid:   "\5F\5F\03\02";
+    name:    string(STR_GRF_NAME);
+    desc:    string(STR_DESC_4, string(STR_GRF_DESC), string(STR_GRF_DESC_README),string(STR_GRF_DESC_MTR));
+    url:     string(STR_GRF_URL);
+    version: 4;
     min_compatible_version: 0;
 
     param 0 {
@@ -108,9 +102,9 @@ grf {
 basecost {
     PR_BUILD_VEHICLE_TRAIN: param_purchase_cost - 3;
     PR_BUILD_VEHICLE_WAGON: param_purchase_cost + 1;
-    PR_RUNNING_TRAIN_STEAM: param_running_cost - 4;
-    PR_RUNNING_TRAIN_DIESEL: param_running_cost - 4;
-    PR_RUNNING_TRAIN_ELECTRIC: param_running_cost - 4;
+    PR_RUNNING_TRAIN_STEAM: param_running_cost  - 4;
+    PR_RUNNING_TRAIN_DIESEL: param_running_cost  - 4;
+    PR_RUNNING_TRAIN_ELECTRIC: param_running_cost  - 4;
  }
 
 /* disable original trains */
@@ -137,10 +131,7 @@ if (dynamic_engines == 0) {
 /* fix depot view */
 train_width_32_px = 1;
 traininfo_y_offset = 2;
-# 3 "chinaset-mtraddon.pnml" 2
 
-// Templates
-# 1 "src/template.pnml" 1
 // Begin template
 
 // Learned from JP+ Shinkansen
@@ -179,30 +170,30 @@ template template_purchase (a, b) {
     []
     []
     []
-    [672, 0, 192, 80, -96, -60, "gfx/"+a+"/"+b+"_32bpp.png"]
+    [672,   0, 192,  80, -96, -60, "gfx/"+a+"/"+b+"_32bpp.png"]
     []
 }
 
 template template_standard (a, b) {
-    [ 0, 0, 36, 160, -12, -80, "gfx/"+a+"/"+b+"_32bpp.png"]
-    [ 44, 0, 120, 116, -72, -76, "gfx/"+a+"/"+b+"_32bpp.png"]
-    [172, 0, 192, 80, -96, -60, "gfx/"+a+"/"+b+"_32bpp.png"]
-    [372, 0, 120, 116, -40, -76, "gfx/"+a+"/"+b+"_32bpp.png"]
-    [500, 0, 36, 160, -12, -80, "gfx/"+a+"/"+b+"_32bpp.png"]
-    [544, 0, 120, 116, -72, -76, "gfx/"+a+"/"+b+"_32bpp.png"]
-    [672, 0, 192, 80, -96, -60, "gfx/"+a+"/"+b+"_32bpp.png"]
-    [872, 0, 120, 116, -40, -76, "gfx/"+a+"/"+b+"_32bpp.png"]
+    [  0,   0,  36, 160, -12, -80, "gfx/"+a+"/"+b+"_32bpp.png"]
+    [ 44,   0, 120, 116, -72, -76, "gfx/"+a+"/"+b+"_32bpp.png"]
+    [172,   0, 192,  80, -96, -60, "gfx/"+a+"/"+b+"_32bpp.png"]
+    [372,   0, 120, 116, -40, -76, "gfx/"+a+"/"+b+"_32bpp.png"]
+    [500,   0,  36, 160, -12, -80, "gfx/"+a+"/"+b+"_32bpp.png"]
+    [544,   0, 120, 116, -72, -76, "gfx/"+a+"/"+b+"_32bpp.png"]
+    [672,   0, 192,  80, -96, -60, "gfx/"+a+"/"+b+"_32bpp.png"]
+    [872,   0, 120, 116, -40, -76, "gfx/"+a+"/"+b+"_32bpp.png"]
 }
 
 template template_reversed (a, b) {
-    [500, 0, 36, 160, -12, -80, "gfx/"+a+"/"+b+"_32bpp.png"]
-    [544, 0, 120, 116, -72, -76, "gfx/"+a+"/"+b+"_32bpp.png"]
-    [672, 0, 192, 80, -96, -60, "gfx/"+a+"/"+b+"_32bpp.png"]
-    [872, 0, 120, 116, -40, -76, "gfx/"+a+"/"+b+"_32bpp.png"]
-    [ 0, 0, 36, 160, -12, -80, "gfx/"+a+"/"+b+"_32bpp.png"]
-    [ 44, 0, 120, 116, -72, -76, "gfx/"+a+"/"+b+"_32bpp.png"]
-    [172, 0, 192, 80, -96, -60, "gfx/"+a+"/"+b+"_32bpp.png"]
-    [372, 0, 120, 116, -40, -76, "gfx/"+a+"/"+b+"_32bpp.png"]
+    [500,   0,  36, 160, -12, -80, "gfx/"+a+"/"+b+"_32bpp.png"]
+    [544,   0, 120, 116, -72, -76, "gfx/"+a+"/"+b+"_32bpp.png"]
+    [672,   0, 192,  80, -96, -60, "gfx/"+a+"/"+b+"_32bpp.png"]
+    [872,   0, 120, 116, -40, -76, "gfx/"+a+"/"+b+"_32bpp.png"]
+    [  0,   0,  36, 160, -12, -80, "gfx/"+a+"/"+b+"_32bpp.png"]
+    [ 44,   0, 120, 116, -72, -76, "gfx/"+a+"/"+b+"_32bpp.png"]
+    [172,   0, 192,  80, -96, -60, "gfx/"+a+"/"+b+"_32bpp.png"]
+    [372,   0, 120, 116, -40, -76, "gfx/"+a+"/"+b+"_32bpp.png"]
 }
 
 // Below shamelessly stolen from JP+ Shinkansen
@@ -211,14 +202,14 @@ spriteset (spriteset_too_many_12) {
 }
 
 alternative_sprites (spriteset_too_many_12, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP, "gfx/less12.png") {
-    [ 0, 0, 32, 144, -12, -72]
-    [ 40, 0, 120, 116, -72, -76]
-    [168, 0, 192, 80, -96, -60]
-    [368, 0, 120, 116, -40, -76]
-    [496, 0, 32, 144, -12, -72]
-    [536, 0, 120, 116, -72, -76]
-    [664, 0, 192, 80, -96, -60]
-    [864, 0, 120, 116, -40, -76]
+    [  0,   0,  32, 144, -12, -72]
+    [ 40,   0, 120, 116, -72, -76]
+    [168,   0, 192,  80, -96, -60]
+    [368,   0, 120, 116, -40, -76]
+    [496,   0,  32, 144, -12, -72]
+    [536,   0, 120, 116, -72, -76]
+    [664,   0, 192,  80, -96, -60]
+    [864,   0, 120, 116, -40, -76]
 }
 
 spriteset (spriteset_erroremu) {
@@ -226,128 +217,75 @@ spriteset (spriteset_erroremu) {
 }
 
 alternative_sprites (spriteset_erroremu, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP, "gfx/erroremu.png") {
-    [ 0, 0, 32, 144, -12, -72]
-    [ 40, 0, 120, 116, -72, -76]
-    [168, 0, 192, 80, -96, -60]
-    [368, 0, 120, 116, -40, -76]
-    [496, 0, 32, 144, -12, -72]
-    [536, 0, 120, 116, -72, -76]
-    [664, 0, 192, 80, -96, -60]
-    [864, 0, 120, 116, -40, -76]
+    [  0,   0,  32, 144, -12, -72]
+    [ 40,   0, 120, 116, -72, -76]
+    [168,   0, 192,  80, -96, -60]
+    [368,   0, 120, 116, -40, -76]
+    [496,   0,  32, 144, -12, -72]
+    [536,   0, 120, 116, -72, -76]
+    [664,   0, 192,  80, -96, -60]
+    [864,   0, 120, 116, -40, -76]
 }
 
 spriteset (empty_sprites, "gfx/empty.png") {
   [0, 0, 2, 2, 0, 0, CROP]
 }
-# 6 "chinaset-mtraddon.pnml" 2
-
-
-// Helpers
-# 1 "src/railtypetable.pnml" 1
 /* 
-
 Using Semi-Standardised Railtype Scheme.
-
 The First Letter:
-
 S - 1435 mm gauge
-
 B - 1520 mm gauge
-
 N - 1067(1000) mm gauge
-
 n - 762(600) mm gauge
-
 D - 1435/1520 mm gauge
-
 d - 1435/1067(1000) mm gauge
-
 c - 1067/762(600) mm gauge
-
 M - Monorail;
-
 L - Magnetic Levitation (Maglev);
 
-
-
 The Second Letter:
-
 For S, B, D gauges:
-
 A - 80 km/h
-
 B - 120 km/h
-
 C - 160 km/h
-
 D - 210 km/h
-
 E - 250 km/h (unlimited for B gauge)
-
 F - 310 km/h
-
 G - Unlimited;
-
 For N, d, c gauges:
-
 A - 80 km/h
-
 B - 100 km/h
-
 C - 130 km/h
-
 D - 160 km/h;
-
 For n and c gauges:
-
 A - 60 km/h;
-
 For Monorail:
-
 A - Unlimited;
-
 For Maglev:
-
 A - 120 km/h
-
 B - Unlimited;
 
-
-
 The Third Letter:
-
 A - Very Low Axle Load - <= 15 t
-
 B - Low Axle Load - 16-19 t
-
 C - Medium Axle Load - 20-23 t
-
 D - High Axle Load - 24-27 t
-
 E - Very High Axle Load - >= 28 t;
 
-
-
 The Last Letter:
-
 N - Non-Electrified
-
 A - 25 kV AC
-
 d - 1.5 kV DC
-
 ( - 25 kV AC / 1.5 kV DC
-
 3 - Third Rail Electrification;
-
 */
-# 51 "src/railtypetable.pnml"
+
 railtypetable {
     RAIL,
     ELRL,
     MONO,
     MGLV,
-    SAAN: [SAAN, RAIL], //NOT IN CHINA SET: RAILS
+    SAAN: [SAAN, RAIL],       //NOT IN CHINA SET: RAILS
     SABN: [SABN, SAAN, RAIL], //NOT IN CHINA SET: RAILS
     SACN: [SACN, SAAN, RAIL], //NOT IN CHINA SET: RAILS
     SADN: [SADN, SAAN, RAIL],
@@ -355,7 +293,7 @@ railtypetable {
 //    SBDN: [SBDN, SADN, SAAN, RAIL],
 //    SBEN: [SBEN, SAEN, SAAN, RAIL],
 //    SCDN: [SCDN, SADN, SAAN, RAIL],
-    SAAA: [SAAA, SAAE, ELRL], //NOT IN CHINA SET: RAILS
+    SAAA: [SAAA, SAAE, ELRL],       //NOT IN CHINA SET: RAILS
     SABA: [SABA, SAAA, SAAE, ELRL], //NOT IN CHINA SET: RAILS
     SACA: [SACA, SAAA, SAAE, ELRL], //NOT IN CHINA SET: RAILS
     SADA: [SADA, SAAA, SAAE, ELRL], //NOT IN CHINA SET: RAILS
@@ -423,126 +361,37 @@ railtypetable {
 //    cACN: [cACN, cAAN, NGRL],
 //    LACN: [LACN, LAAN, MGLV],
 }
-# 10 "chinaset-mtraddon.pnml" 2
-# 1 "src/cargotable.pnml" 1
 cargotable {
-    PASS, COAL, MAIL, OIL_, LVST, GOOD, GRAI, WOOD,
-    IORE, STEL, VALU, PAPR, WHEA, FOOD, GOLD, RUBR,
-    FRUT, MAIZ, CORE, WATR, DIAM, SUGR, TOYS, BATT,
-    SWET, TOFF, COLA, CTCD, BUBL, PLST, FZDR, AORE,
-    BDMT, BEAN, BEER, BOOM, BRCK, CBLK, CERA, CERE,
-    CLAY, CMNT, COPR, CSTI, CTAR, DYES, ENSP, FECR,
-    FERT, FICR, FISH, FMSP, GLAS, GRVL, JAVA, KAOL,
-    LIME, MILK, OLSD, PEAT, PETR, PHOS, PLAS, PORE,
-    POTA, RFPR, SAND, SCMT, SULP, TOUR, TYRE, URAN,
-    VEHI, WDPR, WOOL, ZINC, ACID, ALUM, BAKE, CASS,
-    CHLO, CHSE, CIGR, COAT, COBL, COKE, ELTR, EOIL,
-    FRVG, FUEL, FURN, IRON, LYE_, MEAT, METL, MNO2,
-    MNSP, MOLS, MPTS, NH3_, NUTS, NICK, NITR, NKOR,
-    NUKF, NUKW, OILI, OILD, OTI1, OTI2, OYST, O2__,
-    PCL_, PIPE, POWR, QLME, RCYC, SALT, SASH, SEED,
-    SESP, SGBT, SGCN, SLAG, SOAP, STAL, STCB, STSE,
-    STSH, STST, STWR, TATO, TEXT, TBCO, TWOD, VBOD,
+    PASS, COAL, MAIL, OIL_, LVST, GOOD, GRAI, WOOD, 
+    IORE, STEL, VALU, PAPR, WHEA, FOOD, GOLD, RUBR, 
+    FRUT, MAIZ, CORE, WATR, DIAM, SUGR, TOYS, BATT, 
+    SWET, TOFF, COLA, CTCD, BUBL, PLST, FZDR, AORE, 
+    BDMT, BEAN, BEER, BOOM, BRCK, CBLK, CERA, CERE, 
+    CLAY, CMNT, COPR, CSTI, CTAR, DYES, ENSP, FECR, 
+    FERT, FICR, FISH, FMSP, GLAS, GRVL, JAVA, KAOL, 
+    LIME, MILK, OLSD, PEAT, PETR, PHOS, PLAS, PORE, 
+    POTA, RFPR, SAND, SCMT, SULP, TOUR, TYRE, URAN, 
+    VEHI, WDPR, WOOL, ZINC, ACID, ALUM, BAKE, CASS, 
+    CHLO, CHSE, CIGR, COAT, COBL, COKE, ELTR, EOIL, 
+    FRVG, FUEL, FURN, IRON, LYE_, MEAT, METL, MNO2, 
+    MNSP, MOLS, MPTS, NH3_, NUTS, NICK, NITR, NKOR, 
+    NUKF, NUKW, OILI, OILD, OTI1, OTI2, OYST, O2__, 
+    PCL_, PIPE, POWR, QLME, RCYC, SALT, SASH, SEED, 
+    SESP, SGBT, SGCN, SLAG, SOAP, STAL, STCB, STSE, 
+    STSH, STST, STWR, TATO, TEXT, TBCO, TWOD, VBOD, 
     VENG, VPTS, WSTE, YETI, YETY, RSGR, SCRP, ALO_,
-    COCO, FOCA, PPAR, NHNO, C2H4, H2__, N7__ // This line is copied from xUSSR, I am not sure what they acctually are.
+    COCO, FOCA, PPAR, NHNO, C2H4, H2__, N7__       // This line is copied from xUSSR, I am not sure what they acctually are.
 }
-# 11 "chinaset-mtraddon.pnml" 2
-# 1 "src/vehicleid.pnml" 1
-//This file sets all vehicle IDs. Each type has a range of 32/64/128/256/512/768/1024 possible IDs.
 
-//Steam Locomotive, available ID range: 512-767 (hex 0x0200..0x02FF)
+sort (FEAT_TRAINS, [
+    yellowhead_exurb,
+    yellowhead_suburb,
+    mlr,
+    first_emucoach_with_mailroom,
+    first_emucoach,
+    first_emucoach_with_mailroom,
+]);
 
-
-//Narrow Guage Steam Locomotive, available ID range: 768-895 (hex 0x0300..0x037F)
-
-
-//Diesel Locomotive, available ID range: 896-959 (hex 0x0380..0x03BF)
-
-
-//Electric Locomotive, available ID range: 960-1023 (hex 0x03C0..0x03FF)
-
-
-//Coaches, available ID range: 1024-1535 (hex 0x0400..0x05FF)
-
-
-//Narrow Guage Coaches, available ID range: 1536-1663 (hex 0x0600..0x067F)
-
-
-//Wagons, available ID range: 1664-1791 (hex 0x0680..0x06FF)
-
-
-//Narrow Guage Wagons, available ID range: 1792-1855 (hex 0x0700..0x073F)
-
-
-//Mutipile-Unit Wagons, available ID range: 1856-1983 (hex 0x0740..0x07BF)
-
-item (FEAT_TRAINS, normal_emucoach, 1856) {}
-item (FEAT_TRAINS, first_emucoach, 1857) {}
-item (FEAT_TRAINS, first_emucoach_with_mailroom, 1858) {}
-
-//25kV AC Electric Mutipile-Unit, available ID range: 1984-2239 (hex 0x07C0..0x08BF)
-
-item (FEAT_TRAINS, yellowhead_exurb, 1984) {}
-item (FEAT_TRAINS, yellowhead_suburb, 1985) {}
-item (FEAT_TRAINS, mlr, 1986) {}
-
-//1500V DC Electric Mutipile-Unit, available ID range: 2240-2751 (hex 0x08C0..0x0ABF)
-
-
-//Misc, available ID range: 2240-2751 (hex 0x0AC0..0x0CBF)
-
-item (FEAT_TRAINS, yellowhead_mailroom, 2240) {}
-# 12 "chinaset-mtraddon.pnml" 2
-# 1 "src/roadvehicleid.pnml" 1
-# 13 "chinaset-mtraddon.pnml" 2
-# 1 "src/vehicleid.pnml" 1
-//This file sets all vehicle IDs. Each type has a range of 32/64/128/256/512/768/1024 possible IDs.
-
-//Steam Locomotive, available ID range: 512-767 (hex 0x0200..0x02FF)
-
-
-//Narrow Guage Steam Locomotive, available ID range: 768-895 (hex 0x0300..0x037F)
-
-
-//Diesel Locomotive, available ID range: 896-959 (hex 0x0380..0x03BF)
-
-
-//Electric Locomotive, available ID range: 960-1023 (hex 0x03C0..0x03FF)
-
-
-//Coaches, available ID range: 1024-1535 (hex 0x0400..0x05FF)
-
-
-//Narrow Guage Coaches, available ID range: 1536-1663 (hex 0x0600..0x067F)
-
-
-//Wagons, available ID range: 1664-1791 (hex 0x0680..0x06FF)
-
-
-//Narrow Guage Wagons, available ID range: 1792-1855 (hex 0x0700..0x073F)
-
-
-//Mutipile-Unit Wagons, available ID range: 1856-1983 (hex 0x0740..0x07BF)
-
-item (FEAT_TRAINS, normal_emucoach, 1856) {}
-item (FEAT_TRAINS, first_emucoach, 1857) {}
-item (FEAT_TRAINS, first_emucoach_with_mailroom, 1858) {}
-
-//25kV AC Electric Mutipile-Unit, available ID range: 1984-2239 (hex 0x07C0..0x08BF)
-
-item (FEAT_TRAINS, yellowhead_exurb, 1984) {}
-item (FEAT_TRAINS, yellowhead_suburb, 1985) {}
-item (FEAT_TRAINS, mlr, 1986) {}
-
-//1500V DC Electric Mutipile-Unit, available ID range: 2240-2751 (hex 0x08C0..0x0ABF)
-
-
-//Misc, available ID range: 2240-2751 (hex 0x0AC0..0x0CBF)
-
-item (FEAT_TRAINS, yellowhead_mailroom, 2240) {}
-# 14 "chinaset-mtraddon.pnml" 2
-
-# 1 "src/functions.pnml" 1
 /* Begin Functions */
 // shamelessly stolen from jp+ shinkansen
 
@@ -621,16 +470,16 @@ switch (FEAT_TRAINS, SELF, runningcost400, current_speed) {
 }
 
 switch (FEAT_TRAINS, SELF, runningcostfactor, max_speed) {
-    0..20: runningcost60; // < 75 km/h
-    21..30: runningcost80; // 75-110 km/h
-    31..40: runningcost120; // 110-145 km/h
-    41..50: runningcost160; // 145-180 km/h
-    51..60: runningcost200; // 180-220 km/h
-    61..70: runningcost250; // 220-255 km/h
-    71..80: runningcost280; // 255-290 km/h
-    81..90: runningcost300; // 290-325 km/h
-    91..100: runningcost350; // 325-360 km/h      
-    runningcost400; // > 360 km/h
+    0..20: runningcost60;                   // < 75 km/h
+    21..30: runningcost80;          	    // 75-110 km/h
+    31..40: runningcost120; 		       	// 110-145 km/h
+    41..50: runningcost160;                 // 145-180 km/h
+    51..60: runningcost200;                 // 180-220 km/h
+    61..70: runningcost250;                 // 220-255 km/h
+    71..80: runningcost280;                 // 255-290 km/h
+    81..90: runningcost300;                 // 290-325 km/h
+    91..100: runningcost350;                // 325-360 km/h      
+    runningcost400;                         // > 360 km/h
 }
 
 // For High-Speed Hexie EMUs, speed is limited to 310 km/h IRL, but they can go up to 350 even 380, but with increased running costs
@@ -672,37 +521,25 @@ switch (FEAT_TRAINS, SELF, crh380costpower, vehicle_is_potentially_powered) {
 switch (FEAT_TRAINS, PARENT, crhspeedcost, max_speed) {
     0..87: return 0;
     88..98: crh350costpower;
-    crh380costpower;
+    crh380costpower; 
 }
 
 /*
 
-
-
 BITMASK SHEET
 
-
-
 bitmask(0): to return error consists
-
 bitmask(1): restaurant car
-
 bitmask(2): air condition generator car
-
 bitmask(3): ////
-
 bitmask(4): brake van
 
-
-
 For example, 
-
 bitmask_vehicle_info:           bitmask(1, 3);
 
-
-
 */
-# 149 "src/functions.pnml"
+
+
 // Pushpull trains should have locomotives on their front/end, not middle
 switch (FEAT_TRAINS, SELF, switch_pushpull_consist_correction, ((position_in_consist < 3) || (position_in_consist_from_end < 3))) {
     1: return bitmask(2);
@@ -742,67 +579,37 @@ switch (FEAT_TRAINS, SELF, airconditioner, vehicle_is_powered) {
 }
 
 /* switch (FEAT_TRAINS, SELF, crhwagon, vehicle_type_id) {
-
     1024..1035: return CB_RESULT_ATTACH_ALLOW_IF_RAILTYPES;
-
     return CB_RESULT_ATTACH_DISALLOW;
-
 }
-
-
-
 
 
 switch (FEAT_TRAINS, SELF, muhead, vehicle_type_id) {
-
     1024..1051: return CB_RESULT_ATTACH_ALLOW_IF_RAILTYPES;
-
     8192..14335: return CB_RESULT_ATTACH_ALLOW_IF_RAILTYPES;
-
     return CB_RESULT_ATTACH_DISALLOW;
-
 }
-
-
 
 switch (FEAT_TRAINS, SELF, singlemu, vehicle_type_id) {
-
     1024..1051: return CB_RESULT_ATTACH_ALLOW_IF_RAILTYPES;
-
     return CB_RESULT_ATTACH_DISALLOW;
-
 }
-
-
 
 switch (FEAT_TRAINS, SELF, locowagon, vehicle_type_id) {
-
     1024..1051: return CB_RESULT_ATTACH_DISALLOW;
-
     8192..14335: return CB_RESULT_ATTACH_DISALLOW;
-
     return CB_RESULT_ATTACH_ALLOW_IF_RAILTYPES;
-
 } */
-# 210 "src/functions.pnml"
+
 /* switch (FEAT_TRAINS, SELF, muwagon, vehicle_type_id) {
-
     1856..2751: return CB_RESULT_ATTACH_ALLOW_IF_RAILTYPES;
-
     return CB_RESULT_ATTACH_DISALLOW;
-
 }
 
-
-
 switch (FEAT_TRAINS, SELF, muhead_mtr, vehicle_type_id) {
-
     1856: return CB_RESULT_ATTACH_ALLOW_IF_RAILTYPES;
-
     return CB_RESULT_ATTACH_DISALLOW;
-
 } */
-# 219 "src/functions.pnml"
 //Atention: Different from China Set : Trains, can_attach swiths' name are named by type cars whivh use them 
 
 switch (FEAT_TRAINS, SELF, mu_with_first_class, vehicle_type_id) {
@@ -840,8 +647,8 @@ switch (FEAT_TRAINS, SELF, muhead_without_first_class, vehicle_type_id) {
 
 
 switch (FEAT_TRAINS, SELF, switch_visual_effect_and_powered, ((position_in_articulated_veh == 0) && !func_is_reversed()) || ((position_in_articulated_veh_from_end == 0) && func_is_reversed()) ) {
- 1: return visual_effect_and_powered(VISUAL_EFFECT_ELECTRIC, 0, ENABLE_WAGON_POWER);
- return visual_effect_and_powered(VISUAL_EFFECT_DISABLE, 0, DISABLE_WAGON_POWER);
+	1: return visual_effect_and_powered(VISUAL_EFFECT_ELECTRIC, 0, ENABLE_WAGON_POWER);
+	return visual_effect_and_powered(VISUAL_EFFECT_DISABLE, 0, DISABLE_WAGON_POWER);
 }
 
 
@@ -931,120 +738,96 @@ switch (FEAT_TRAINS, SELF, mu5to17car, num_vehs_in_consist) {
         1: return 3;
         return 2;
     }
-
+    
 // Standard 2-2-2 Length
     switch (FEAT_TRAINS, SELF, switch_length_2_2_2, position_in_articulated_veh % 3) {
         1: return 2;
         return 2;
     }
-/* End Functions */
+/* End Functions */ 
 
 //the train is too long
 switch (FEAT_TRAINS, SELF, too_many_graphics_12, position_in_articulated_veh % 3) {
     1: spriteset_too_many_12;
     empty_sprites;
 }
-# 16 "chinaset-mtraddon.pnml" 2
-# 1 "src/misc/mailroom.pnml" 1
+
+
 
 
 
 item(FEAT_TRAINS, yellowhead_mailroom) {
     property {
 
-        introduction_date: date(1,1,1);
-        model_life: VEHICLE_NEVER_EXPIRES;
-        vehicle_life: 255;
-        loading_speed: 24 << param_loading_speed;
-        misc_flags: bitmask(TRAIN_FLAG_AUTOREFIT);
-        cost_factor: 0;
-        running_cost_factor: 0;
-        speed: 0 km/h;
-        power: 0 hpM;
-        cargo_capacity: 24;
-        weight: 0 ton;
-        tractive_effort_coefficient: 0;
-        air_drag_coefficient: 0;
+        introduction_date:              date(1,1,1);
+        model_life:                     VEHICLE_NEVER_EXPIRES;
+        vehicle_life:                   255;
+        loading_speed:                  24 << param_loading_speed;
+        misc_flags:                     bitmask(TRAIN_FLAG_AUTOREFIT);
+        cost_factor:                    0;
+        running_cost_factor:            0;
+        speed:                          0 km/h;
+        power:                          0 hpM;
+        cargo_capacity:                 24;
+        weight:                         0 ton;
+        tractive_effort_coefficient:    0;
+        air_drag_coefficient:           0;
 
-        reliability_decay: 10;
-        refittable_cargo_classes: bitmask(CC_MAIL, CC_EXPRESS);
-        cargo_allow_refit: [MAIL, VALU, GOLD, DIAM];
-        cargo_disallow_refit: [];
-        cargo_age_period: 185;
-        refit_cost: 0;
-        default_cargo_type: MAIL;
-        track_type: SAAN;
-        ai_special_flag: 0;
-        running_cost_base: RUNNING_COST_ELECTRIC;
-        engine_class: ENGINE_CLASS_ELECTRIC;
-        visual_effect_and_powered: visual_effect_and_powered(VISUAL_EFFECT_ELECTRIC, 0, DISABLE_WAGON_POWER);
+        reliability_decay:              10;
+        refittable_cargo_classes:       bitmask(CC_MAIL, CC_EXPRESS);
+        cargo_allow_refit:              [MAIL, VALU, GOLD, DIAM];
+        cargo_disallow_refit:           [];
+        cargo_age_period:               185;
+        refit_cost:                     0;
+        default_cargo_type:             MAIL;
+        track_type:                     SAAN;
+        ai_special_flag:                0;
+        running_cost_base:              RUNNING_COST_ELECTRIC;
+        engine_class:                   ENGINE_CLASS_ELECTRIC;
+        visual_effect_and_powered:      visual_effect_and_powered(VISUAL_EFFECT_ELECTRIC, 0, DISABLE_WAGON_POWER);
 
-        climates_available: NO_CLIMATE;
-        retire_early: 0;
-        sprite_id: SPRITE_ID_NEW_TRAIN;
-        length: 2;
-        extra_power_per_wagon: 0;
-        bitmask_vehicle_info: 0;
+        climates_available:             NO_CLIMATE;
+        retire_early:                   0;
+        sprite_id:                      SPRITE_ID_NEW_TRAIN;
+        length:                         2;
+        extra_power_per_wagon:          0;
+        bitmask_vehicle_info:           0;
  }
     graphics {
-        cargo_capacity: 24;
-        purchase_cargo_capacity: 24;
-        default: empty_sprites;
+        cargo_capacity:                 24;
+        purchase_cargo_capacity:        24;
+        default:                        empty_sprites;
     }
 }
-# 17 "chinaset-mtraddon.pnml" 2
-# 1 "src/function2.pnml" 1
 /* Begin Functions Again */
 
 
 /* switch (FEAT_TRAINS, SELF, switch_crh_wagon_articulated_part, vehicle_type_id) {
-
     1024: switch_zemuw_articulated_part;
-
     1025: switch_zymuw_articulated_part;
-
     1027: switch_zsmuw_articulated_part;
-
     1028: switch_swmuw_articulated_part;
-
     1035: switch_zecmuw_articulated_part;
-
     return;
-
 }
-
-
 
 switch (FEAT_TRAINS, SELF, switch_crh_wagon_cargo_decay, vehicle_type_id) {
-
     1024: return 12 * 5;
-
     1025: return 20 * 5;
-
     1027: return 32 * 5;
-
     1028: return 36 * 5;
-
     1035: return 12 * 5;
-
     return;
-
 }
-
-
 
 switch (FEAT_TRAINS, SELF, switch_crh_wagon_bitmask, vehicle_type_id) {
-
     1035: return bitmask(1);
-
     return 0;
-
 }
 
-
-
  */
-# 30 "src/function2.pnml"
+
+
  // Purchase Menu off MU Cars
 spriteset (spriteset_mtruw_purchase_original) {
     template_purchase_empty ()
@@ -1077,22 +860,22 @@ alternative_sprites(spriteset_mtruw_1c_original, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32B
 switch (FEAT_TRAINS, SELF, switch_mtruw_1c_original, position_in_consist % 3) {
     1: spriteset_mtruw_1c_original;
     empty_sprites;
-}
+} 
 
 switch (FEAT_TRAINS, SELF, switch_mtruw_1c_purchase_original, position_in_consist % 3) {
     1: spriteset_mtruw_1c_purchase_original;
     empty_sprites;
-}
+} 
 
 switch (FEAT_TRAINS, SELF, switch_mtruw_original, position_in_consist % 3) {
     1: spriteset_mtruw_original;
     empty_sprites;
-}
+} 
 
 switch (FEAT_TRAINS, SELF, switch_mtruw_purchase_original, position_in_consist % 3) {
     1: spriteset_mtruw_purchase_original;
     empty_sprites;
-}
+} 
 
 
 //Sprite of 1st Class car with Luggage Room
@@ -1112,30 +895,21 @@ alternative_sprites(spriteset_mtruw_1c_original_withmail, ZOOM_LEVEL_IN_4X, BIT_
 switch (FEAT_TRAINS, SELF, switch_mtruw_1c_purchase_original_withmail, position_in_consist % 3) {
     1: spriteset_mtruw_1c_purchase_original_withmail;
     empty_sprites;
-}
+} 
 switch (FEAT_TRAINS, SELF, switch_mtruw_1c_original_withmail, position_in_consist % 3) {
     1: spriteset_mtruw_1c_original_withmail;
     empty_sprites;
-}
+} 
 
 /* switch (FEAT_TRAINS, SELF, switch_mtrmuw_graphics, position_in_articulated_veh % 3) {
-
     1: spriteset_mtruw_original;
-
     empty_sprites;   
-
 } */
-# 107 "src/function2.pnml"
 /* switch (FEAT_TRAINS, SELF, switch_first_emucoach_articulated_part_no_mailroom, extra_callback_info1) {
-
     1..2: return first_emucoach;
-
     return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
-
 }
-
  */
-# 112 "src/function2.pnml"
 switch (FEAT_TRAINS, SELF, switch_first_emucoach_articulated_part_with_mailroom, extra_callback_info1) {
     1: return first_emucoach_with_mailroom;
     2: return yellowhead_mailroom;
@@ -1149,13 +923,11 @@ switch (FEAT_TRAINS, SELF, switch_first_emucoach_articulated_part_with_mailroom,
 }
 
 /* switch (FEAT_TRAINS, SELF, switch_first_emucoach_articulated_part, hasbit(bitmask_consist_info, 3)) {
-
     0: switch_first_emucoach_articulated_part_no_mailroom;
-
     switch_first_emucoach_articulated_part_with_mailroom;
-
 } */
-# 130 "src/function2.pnml"
+
+
 switch (FEAT_TRAINS, SELF, switch_normal_emucoach_articulated_part, extra_callback_info1) {
     1..2: return normal_emucoach;
     return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
@@ -1170,11 +942,7 @@ switch (FEAT_TRAINS, SELF, switch_mtr_wagon_articulated_part, vehicle_type_id) {
 
 
 //
-# 18 "chinaset-mtraddon.pnml" 2
 
-
-//Coeches
-# 1 "src/emucoach/first-emucoach_graphics.pnml" 1
 // Begin FIRST_EMUCOACH
 
 // Graphics
@@ -1197,121 +965,120 @@ switch (FEAT_TRAINS, SELF, switch_first_emucoach_additional_text, param_cargo_de
 switch (FEAT_TRAINS, SELF, switch_first_emucoach_with_mail_additional_text, param_cargo_decay) {
     return string(STR_DESC_2, string(STR_ATTACH_MTR_FIRST_EMU_WUTH_MAILROOM), string(STR_WITH_MAILROOM), string(STR_COMFORT_240));
 }
-# 22 "chinaset-mtraddon.pnml" 2
-# 1 "src/emucoach/first-emucoach_item.pnml" 1
+
 item (FEAT_TRAINS, first_emucoach) {
     property {
         // Menu
-        name: string(STR_NAME_FIRST_EMUCOACH);
-        sprite_id: SPRITE_ID_NEW_TRAIN;
-        misc_flags: bitmask(TRAIN_FLAG_AUTOREFIT);
-        variant_group: 1856;
+        name:                           string(STR_NAME_FIRST_EMUCOACH);
+        sprite_id:                      SPRITE_ID_NEW_TRAIN;
+        misc_flags:                     bitmask(TRAIN_FLAG_AUTOREFIT);
+        variant_group:                  normal_emucoach;
 
         // Availability
-        climates_available: ALL_CLIMATES;
-        introduction_date: date(1980,01,01);
-        model_life: VEHICLE_NEVER_EXPIRES;
-        vehicle_life: 30;
-        track_type: SAAN;
+        climates_available:             ALL_CLIMATES;
+        introduction_date:              date(1980,01,01);
+        model_life:                     VEHICLE_NEVER_EXPIRES;
+        vehicle_life:                   30;
+        track_type:                     SAAN;
 
         // Cargo
-        refittable_cargo_classes: bitmask(CC_PASSENGERS);
-        non_refittable_cargo_classes: 0;
-        cargo_allow_refit: [PASS, TOUR, YETI, YETY];
-        cargo_disallow_refit: [];
-        refit_cost: 0;
-        default_cargo_type: PASS;
-        ai_special_flag: AI_FLAG_PASSENGER;
-        cargo_capacity: 72; //depending on the mu
-        loading_speed: 8 << param_loading_speed;
-        cargo_age_period: 240 << param_cargo_decay;
+        refittable_cargo_classes:       bitmask(CC_PASSENGERS);
+        non_refittable_cargo_classes:   0;
+        cargo_allow_refit:              [PASS, TOUR, YETI, YETY];
+        cargo_disallow_refit:           [];
+        refit_cost:                     0;
+        default_cargo_type:             PASS;
+        ai_special_flag:                AI_FLAG_PASSENGER;
+        cargo_capacity:                 72;                         //depending on the mu
+        loading_speed:                  8 << param_loading_speed;   
+        cargo_age_period:               240 << param_cargo_decay;
 
         // Stats
-        speed: 0 km/h; //depending on the mu
-        power: 0 hp; //depending on the mu
-        weight: 50 ton; //depending on the mu
-        cost_factor: 24;
-        running_cost_base: RUNNING_COST_ELECTRIC;
-        running_cost_factor: 6; //depending on the mu
+        speed:                          0 km/h;                 //depending on the mu
+        power:                          0 hp;                   //depending on the mu
+        weight:                         50 ton;                 //depending on the mu
+        cost_factor:                    24;                     
+        running_cost_base:              RUNNING_COST_ELECTRIC;  
+        running_cost_factor:            6;                      //depending on the mu
     }
     graphics {
         // Menu
-        additional_text: switch_first_emucoach_additional_text;
-        can_attach_wagon: mu_with_first_class;
+        additional_text:                switch_first_emucoach_additional_text;
+        can_attach_wagon:               mu_with_first_class;
 
         // Graphics
-        default: switch_mtruw_1c_original;
-        purchase: switch_mtruw_1c_purchase_original;
-        articulated_part: switch_first_emucoach_articulated_part;
+        default:                        switch_mtruw_1c_original;
+        purchase:                       switch_mtruw_1c_purchase_original;
+        articulated_part:               switch_first_emucoach_articulated_part;
         // Stats
-        length: switch_length_2_8_2;
-        cargo_capacity: switch_first_emucoach_capacity;
-        cargo_age_period: (12 * 5 * cafedecayfactor()) << param_cargo_decay;
-        cost_factor: 24;
-        running_cost_factor: 6 * runningcostfactor() * cafecostfactor() + accostfactor();
-        purchase_running_cost_factor: 36;
-        purchase_cargo_capacity: 90/3;
+        length:                         switch_length_2_8_2;
+        cargo_capacity:                 switch_first_emucoach_capacity;
+        cargo_age_period:               (12 * 5 * cafedecayfactor()) << param_cargo_decay;
+        cost_factor:                    24;
+        running_cost_factor:            6 * runningcostfactor() * cafecostfactor() + accostfactor();
+        purchase_running_cost_factor:   36;
+        purchase_cargo_capacity:        90/3;
     }
 }
 
 item (FEAT_TRAINS, first_emucoach_with_mailroom) {
     property {
         // Menu
-        name: string(STR_NAME_FIRST_EMUCOACH_WITH_MAILROOM);
-        sprite_id: SPRITE_ID_NEW_TRAIN;
-        misc_flags: bitmask(TRAIN_FLAG_AUTOREFIT);
-        variant_group: 1856;
+        name:                           string(STR_NAME_FIRST_EMUCOACH_WITH_MAILROOM);
+        sprite_id:                      SPRITE_ID_NEW_TRAIN;
+        misc_flags:                     bitmask(TRAIN_FLAG_AUTOREFIT);
+        variant_group:                  normal_emucoach;
 
         // Availability
-        climates_available: ALL_CLIMATES;
-        introduction_date: date(1980,01,01);
-        model_life: VEHICLE_NEVER_EXPIRES;
-        vehicle_life: 30;
-        track_type: SAAN;
+        climates_available:             ALL_CLIMATES;
+        introduction_date:              date(1980,01,01);
+        model_life:                     VEHICLE_NEVER_EXPIRES;
+        vehicle_life:                   30;
+        track_type:                     SAAN;
 
         // Cargo
-        refittable_cargo_classes: bitmask(CC_PASSENGERS);
-        non_refittable_cargo_classes: 0;
-        cargo_allow_refit: [PASS, TOUR, YETI, YETY];
-        cargo_disallow_refit: [];
-        refit_cost: 0;
-        default_cargo_type: PASS;
-        ai_special_flag: AI_FLAG_PASSENGER;
-        cargo_capacity: 72; //depending on the mu
-        loading_speed: 8 << param_loading_speed;
-        cargo_age_period: 240 << param_cargo_decay;
+        refittable_cargo_classes:       bitmask(CC_PASSENGERS);
+        non_refittable_cargo_classes:   0;
+        cargo_allow_refit:              [PASS, TOUR, YETI, YETY];
+        cargo_disallow_refit:           [];
+        refit_cost:                     0;
+        default_cargo_type:             PASS;
+        ai_special_flag:                AI_FLAG_PASSENGER;
+        cargo_capacity:                 72;                         //depending on the mu
+        loading_speed:                  8 << param_loading_speed;   
+        cargo_age_period:               240 << param_cargo_decay;
 
         // Stats
-        speed: 0 km/h; //depending on the mu
-        power: 0 hp; //depending on the mu
-        weight: 50 ton; //depending on the mu
-        cost_factor: 24;
-        running_cost_base: RUNNING_COST_ELECTRIC;
-        running_cost_factor: 6; //depending on the mu
+        speed:                          0 km/h;                 //depending on the mu
+        power:                          0 hp;                   //depending on the mu
+        weight:                         50 ton;                 //depending on the mu
+        cost_factor:                    24;                     
+        running_cost_base:              RUNNING_COST_ELECTRIC;  
+        running_cost_factor:            6;                      //depending on the mu
     }
     graphics {
         // Menu
-        additional_text: switch_first_emucoach_with_mail_additional_text;
-        can_attach_wagon: mu_with_first_class;
+        additional_text:                switch_first_emucoach_with_mail_additional_text;
+        can_attach_wagon:               mu_with_first_class;
 
         // Graphics
-        default: switch_mtruw_1c_original_withmail;
-        purchase: switch_mtruw_1c_purchase_original_withmail;
-        articulated_part: switch_first_emucoach_articulated_part_with_mailroom;
+        default:                        switch_mtruw_1c_original_withmail;
+        purchase:                       switch_mtruw_1c_purchase_original_withmail;
+        articulated_part:               switch_first_emucoach_articulated_part_with_mailroom;
         // Stats
-        length: switch_length_2_7_2;
-        cargo_capacity: switch_first_emucoach_capacity;
-        cargo_age_period: (12 * 5 * cafedecayfactor()) << param_cargo_decay;
-        cost_factor: 24;
-        running_cost_factor: 6 * runningcostfactor() * cafecostfactor() + accostfactor();
-        purchase_running_cost_factor: 36;
-        purchase_cargo_capacity: 90/3;
+        length:                         switch_length_2_7_2;
+        cargo_capacity:                 switch_first_emucoach_capacity;
+        cargo_age_period:               (12 * 5 * cafedecayfactor()) << param_cargo_decay;
+        cost_factor:                    24;
+        running_cost_factor:            6 * runningcostfactor() * cafecostfactor() + accostfactor();
+        purchase_running_cost_factor:   36;
+        purchase_cargo_capacity:        90/3;
     }
 }
 
 // End FIRST_EMUCOACH
-# 23 "chinaset-mtraddon.pnml" 2
-# 1 "src/emucoach/normal-emucoach_graphics.pnml" 1
+
+
 // Begin NORMAL_EMUCOACH
 
 // Graphics
@@ -1329,67 +1096,64 @@ switch (FEAT_TRAINS, SELF, switch_normal_emucoach_capacity, position_in_articula
 switch (FEAT_TRAINS, SELF, switch_normal_emucoach_additional_text, param_cargo_decay) {
     return string(STR_DESC_2, string(STR_ATTACH_MTR_EMU), string(STR_COMFORT_140));
 }
-# 24 "chinaset-mtraddon.pnml" 2
-# 1 "src/emucoach/normal-emucoach_item.pnml" 1
+
 item (FEAT_TRAINS, normal_emucoach) {
     property {
         // Menu
-        name: string(STR_NAME_NORMAL_EMUCOACH);
-        sprite_id: SPRITE_ID_NEW_TRAIN;
-        misc_flags: bitmask(TRAIN_FLAG_AUTOREFIT);
-
+        name:                           string(STR_NAME_NORMAL_EMUCOACH);
+        sprite_id:                      SPRITE_ID_NEW_TRAIN;
+        misc_flags:                     bitmask(TRAIN_FLAG_AUTOREFIT);
+        
         // Availability
-        climates_available: ALL_CLIMATES;
-        introduction_date: date(1980,01,01);
-        model_life: VEHICLE_NEVER_EXPIRES;
-        vehicle_life: 30;
-        track_type: SAAN;
+        climates_available:             ALL_CLIMATES;
+        introduction_date:              date(1980,01,01);
+        model_life:                     VEHICLE_NEVER_EXPIRES;
+        vehicle_life:                   30;
+        track_type:                     SAAN;
 
         // Cargo
-        refittable_cargo_classes: bitmask(CC_PASSENGERS);
-        non_refittable_cargo_classes: 0;
-        cargo_allow_refit: [PASS, TOUR, YETI, YETY];
-        cargo_disallow_refit: [];
-        refit_cost: 0;
-        default_cargo_type: PASS;
-        ai_special_flag: AI_FLAG_PASSENGER;
-        cargo_capacity: 218; //depending on the mu
-        loading_speed: 8 << param_loading_speed;
-        cargo_age_period: 240 << param_cargo_decay;
+        refittable_cargo_classes:       bitmask(CC_PASSENGERS);
+        non_refittable_cargo_classes:   0;
+        cargo_allow_refit:              [PASS, TOUR, YETI, YETY];
+        cargo_disallow_refit:           [];
+        refit_cost:                     0;
+        default_cargo_type:             PASS;
+        ai_special_flag:                AI_FLAG_PASSENGER;
+        cargo_capacity:                 218;                         //depending on the mu
+        loading_speed:                  8 << param_loading_speed;   
+        cargo_age_period:               240 << param_cargo_decay;
 
         // Stats
-        speed: 0 km/h; //depending on the mu
-        power: 0 hp; //depending on the mu
-        weight: 50 ton; //depending on the mu
-        cost_factor: 24;
-        running_cost_base: RUNNING_COST_ELECTRIC;
-        running_cost_factor: 6; //depending on the mu
+        speed:                          0 km/h;                 //depending on the mu
+        power:                          0 hp;                   //depending on the mu
+        weight:                         50 ton;                 //depending on the mu
+        cost_factor:                    24;                     
+        running_cost_base:              RUNNING_COST_ELECTRIC;  
+        running_cost_factor:            6;                      //depending on the mu
     }
     graphics {
         // Menu
-        additional_text: switch_normal_emucoach_additional_text;
-        can_attach_wagon: mu_of_mtr;
+        additional_text:                switch_normal_emucoach_additional_text;
+        can_attach_wagon:               mu_of_mtr;
 
         // Graphics
-        default: switch_mtruw_original;
-        purchase: switch_mtruw_purchase_original;
-        articulated_part: switch_normal_emucoach_articulated_part;
+        default:                        switch_mtruw_original;
+        purchase:                       switch_mtruw_purchase_original;
+        articulated_part:               switch_normal_emucoach_articulated_part;
         // Stats
-        length: switch_length_2_8_2;
-        cargo_capacity: switch_normal_emucoach_capacity;
-        cargo_age_period: (7 * 5 * cafedecayfactor()) << param_cargo_decay;
-        cost_factor: 24;
-        running_cost_factor: 6 * runningcostfactor() * cafecostfactor() + accostfactor();
-        purchase_running_cost_factor: 36;
-        purchase_cargo_capacity: 333/3;
+        length:                         switch_length_2_8_2;
+        cargo_capacity:                 switch_normal_emucoach_capacity;
+        cargo_age_period:               (7 * 5 * cafedecayfactor()) << param_cargo_decay;
+        cost_factor:                    24;
+        running_cost_factor:            6 * runningcostfactor() * cafecostfactor() + accostfactor();
+        purchase_running_cost_factor:   36;
+        purchase_cargo_capacity:        333/3;
     }
 }
 
 // End NORMAL_EMUCOACH
-# 25 "chinaset-mtraddon.pnml" 2
 
-//25kV EMUS
-# 1 "src/25kvmu/yellowhead_main.pnml" 1
+
 //Main of YellowHead Train
 // Vehicle
 spriteset (spriteset_yellowhead_c) {
@@ -1416,7 +1180,7 @@ alternative_sprites (spriteset_yellowhead_c, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP) 
     template_standard ("25kvemu/yellowhead", "3049stock-c")
 }
 alternative_sprites (spriteset_yellowhead_m, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP) {
-    template_standard ("25kvemu/yellowhead", "3049stock-tp")
+    template_standard ("25kvemu/yellowhead", "3049stock-tp") 
 }
 alternative_sprites (spriteset_yellowhead_c_reversed, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP) {
     template_standard ("25kvemu/yellowhead", "3049stock-c-r")
@@ -1438,25 +1202,25 @@ switch (FEAT_TRAINS, SELF, switch_yellowhead_first_wagon, position_in_consist % 
     4: spriteset_yellowhead_1c_m;
     7: spriteset_yellowhead_1c_c_reversed;
     empty_sprites;
-}
+} 
 
 switch (FEAT_TRAINS, SELF, switch_yellowhead_normal_wagon, position_in_consist % 9) {
     1: spriteset_yellowhead_c;
     4: spriteset_yellowhead_m;
     7: spriteset_yellowhead_c_reversed;
     empty_sprites;
-}
+} 
 
 switch (FEAT_TRAINS, SELF, switch_yellowhead_wagon_type, vehicle_type_id) {
     1856: switch_yellowhead_normal_wagon;
     1857..1858: switch_yellowhead_first_wagon;
     empty_sprites;
-}
+} 
 
 switch (FEAT_TRAINS, SELF, switch_yellowhead_graphics, (position_in_consist_from_end % 3) == 1) {
     1: switch_yellowhead_wagon_type;
     empty_sprites;
-}
+} 
 
 //Weight
 
@@ -1519,8 +1283,6 @@ switch (FEAT_TRAINS, SELF, switch_yellowhead_traction, vehicle_is_potentially_po
     1: return int(0.171*255);
     return 0;
 }
-# 28 "chinaset-mtraddon.pnml" 2
-# 1 "src/25kvmu/yellowhead_exurb_graphics.pnml" 1
 // Begin YELLOWHEAD_EXURB
 // Purchase Menu
 spriteset (spriteset_yellowhead_exurb_purchase_original) {
@@ -1534,7 +1296,7 @@ alternative_sprites(spriteset_yellowhead_exurb_purchase_original, ZOOM_LEVEL_IN_
 switch (FEAT_TRAINS, SELF, switch_yellowhead_exurb_purchase_original, position_in_consist % 3) {
     1: spriteset_yellowhead_exurb_purchase_original;
     empty_sprites;
-}
+} 
 
 // Graphics
 
@@ -1563,122 +1325,121 @@ switch (FEAT_TRAINS, SELF, switch_yellowhead_1c_without_mailroom_capacity, posit
 switch (FEAT_TRAINS, SELF, switch_yellowhead_exurb_additional_text, param_cargo_decay) {
     return string(STR_DESC_6, string(STR_ELECTRIC_25KVAC), string(STR_MTR_FIRST_CAN_ATTACH_WAGON), string(STR_NICKNAME_YELLOWHEAD),string(STR_RELIABILITY_10), string(STR_FIRST_HEAD_SEAT));
 }
-# 29 "chinaset-mtraddon.pnml" 2
-# 1 "src/25kvmu/yellowhead_exurb_item.pnml" 1
+
 item (FEAT_TRAINS, yellowhead_exurb) {
     property {
         // Menu
-        name: string(STR_NAME_YELLOWHEAD_EXURB);
-        sprite_id: SPRITE_ID_NEW_TRAIN;
-        misc_flags: bitmask(TRAIN_FLAG_AUTOREFIT, TRAIN_FLAG_MU);
-        engine_class: ENGINE_CLASS_ELECTRIC;
-
+        name:                           string(STR_NAME_YELLOWHEAD_EXURB);
+        sprite_id:                      SPRITE_ID_NEW_TRAIN;
+        misc_flags:                     bitmask(TRAIN_FLAG_AUTOREFIT, TRAIN_FLAG_MU);
+        engine_class:                   ENGINE_CLASS_ELECTRIC;
+        
         // Availability
-        climates_available: ALL_CLIMATES;
-        introduction_date: date(1981,04,01);
-        model_life: 60;
-        retire_early: 45;
-        vehicle_life: 35;
-        track_type: SACA;
+        climates_available:             ALL_CLIMATES;
+        introduction_date:              date(1981,04,01);
+        model_life:                     60;
+        retire_early:                   45;
+        vehicle_life:                   35;
+        track_type:                     SACA;
 
         // Cargo
-        refittable_cargo_classes: bitmask(CC_PASSENGERS);
-        non_refittable_cargo_classes: 0;
-        cargo_allow_refit: [PASS, TOUR, YETI, YETY];
-        cargo_disallow_refit: [];
-        refit_cost: 0;
-        default_cargo_type: PASS;
-        ai_special_flag: AI_FLAG_PASSENGER;
-        cargo_capacity: 1;
-        loading_speed: 24 << param_loading_speed;
-        cargo_age_period: 240 << param_cargo_decay;
+        refittable_cargo_classes:       bitmask(CC_PASSENGERS);
+        non_refittable_cargo_classes:   0;
+        cargo_allow_refit:              [PASS, TOUR, YETI, YETY];
+        cargo_disallow_refit:           [];
+        refit_cost:                     0;
+        default_cargo_type:             PASS;
+        ai_special_flag:                AI_FLAG_PASSENGER;
+        cargo_capacity:                 1;
+        loading_speed:                  24 << param_loading_speed;
+        cargo_age_period:               240 << param_cargo_decay;
 
         // Stats
-        speed: 120 km/h;
-        power: 908 kW;
-        weight: 32 ton;
-        tractive_effort_coefficient: 0.171;
-        cost_factor: 40;
-        running_cost_base: RUNNING_COST_ELECTRIC;
-        running_cost_factor: 10;
-        reliability_decay: 10;
-        bitmask_vehicle_info: bitmask(2);
+        speed:                          120 km/h;
+        power:                          908 kW;
+        weight:                         32 ton;
+        tractive_effort_coefficient:    0.171;
+        cost_factor:                    40;
+        running_cost_base:              RUNNING_COST_ELECTRIC;
+        running_cost_factor:            10;
+        reliability_decay:              10;
+        bitmask_vehicle_info:           bitmask(2);
     }
     graphics {
         // Menu
-        additional_text: switch_yellowhead_exurb_additional_text;
-        can_attach_wagon: muhead_yellowhead_exurb;
-        start_stop: mu3multicar;
+        additional_text:                switch_yellowhead_exurb_additional_text;
+        can_attach_wagon:               muhead_yellowhead_exurb;
+        start_stop:                     mu3multicar;
 
         // Graphics
-        default: switch_yellowhead_first_wagon;
-        purchase: switch_yellowhead_exurb_purchase_original;
-        articulated_part: switch_yellowhead_exurb_articulated_part;
+        default:                        switch_yellowhead_first_wagon;
+        purchase:                       switch_yellowhead_exurb_purchase_original;
+        articulated_part:               switch_yellowhead_exurb_articulated_part;
 
         // Stats
-        length: switch_length_2_7_2;
-        speed: 120;
-        power: return 0;
-        purchase_power: return 1218; // HP
-        tractive_effort_coefficient: return 0;
+        length:                         switch_length_2_7_2;
+        speed:                          120;
+        power:                          return 0;
+        purchase_power:                 return 1218; // HP
+        tractive_effort_coefficient:    return 0;
         purchase_tractive_effort_coefficient: return int(0.171*255);
-        cargo_capacity: switch_yellowhead_1c_capacity;
-        cargo_age_period: 240 << param_cargo_decay;
-        cost_factor: 40;
-        running_cost_factor: 10 * runningcostfactor() + 20;
-        purchase_running_cost_factor: 60;
-        purchase_cargo_capacity: 56/2;
-        bitmask_vehicle_info: bitmask(2);
+        cargo_capacity:                 switch_yellowhead_1c_capacity;
+        cargo_age_period:               240 << param_cargo_decay;
+        cost_factor:                    40;
+        running_cost_factor:            10  * runningcostfactor() + 20;
+        purchase_running_cost_factor:   60;
+        purchase_cargo_capacity:        56/2;
+        bitmask_vehicle_info:           bitmask(2);
     }
 
     // Multiple Unit Wagons
     livery_override(normal_emucoach) {
-        default: switch_yellowhead_graphics;
-        cargo_capacity: switch_yellowhead_capacity;
-        power: switch_yellowhead_power;
-        tractive_effort_coefficient: switch_yellowhead_traction;
-        length: switch_length_2_7_2;
-        weight: switch_yellowhead_weight;
-        can_attach_wagon: mu_of_mtr;
-        cargo_age_period: 160 << param_cargo_decay;
-        bitmask_vehicle_info: 0;
-        articulated_part: switch_mtr_wagon_articulated_part;
-        cost_factor: 60;
-        running_cost_factor: switch_yellowhead_running() * runningcostfactor() + accostfactor();
+        default:                        switch_yellowhead_graphics;
+        cargo_capacity:                 switch_yellowhead_capacity;
+        power:                          switch_yellowhead_power;
+        tractive_effort_coefficient:    switch_yellowhead_traction;
+        length:                         switch_length_2_7_2;
+        weight:                         switch_yellowhead_weight;
+        can_attach_wagon:               mu_of_mtr;
+        cargo_age_period:               160 << param_cargo_decay;
+        bitmask_vehicle_info:           0;
+        articulated_part:               switch_mtr_wagon_articulated_part;
+        cost_factor:                    60;
+        running_cost_factor:            switch_yellowhead_running() * runningcostfactor() + accostfactor();
     }
     livery_override(first_emucoach) {
-        default: switch_yellowhead_graphics;
-        cargo_capacity: switch_yellowhead_1c_without_mailroom_capacity;
-        power: switch_yellowhead_power;
-        tractive_effort_coefficient: switch_yellowhead_traction;
-        length: switch_length_2_7_2;
-        weight: switch_yellowhead_weight;
-        can_attach_wagon: mu_with_first_class;
-        cargo_age_period: 240 << param_cargo_decay;
-        bitmask_vehicle_info: 0;
-        articulated_part: switch_mtr_wagon_articulated_part;
-        cost_factor: 60;
-        running_cost_factor: switch_yellowhead_running() * runningcostfactor() + accostfactor();
+        default:                        switch_yellowhead_graphics;
+        cargo_capacity:                 switch_yellowhead_1c_without_mailroom_capacity;
+        power:                          switch_yellowhead_power;
+        tractive_effort_coefficient:    switch_yellowhead_traction;
+        length:                         switch_length_2_7_2;
+        weight:                         switch_yellowhead_weight;
+        can_attach_wagon:               mu_with_first_class;
+        cargo_age_period:               240 << param_cargo_decay;
+        bitmask_vehicle_info:           0;
+        articulated_part:               switch_mtr_wagon_articulated_part;
+        cost_factor:                    60;
+        running_cost_factor:            switch_yellowhead_running() * runningcostfactor() + accostfactor();
     }
     livery_override(first_emucoach_with_mailroom) {
-        default: switch_yellowhead_graphics;
-        cargo_capacity: switch_yellowhead_1c_capacity;
-        power: switch_yellowhead_power;
-        tractive_effort_coefficient: switch_yellowhead_traction;
-        length: switch_length_2_7_2;
-        weight: switch_yellowhead_weight;
-        can_attach_wagon: mu_with_first_class;
-        cargo_age_period: 240 << param_cargo_decay;
-        bitmask_vehicle_info: 0;
-        articulated_part: switch_mtr_wagon_articulated_part;
-        cost_factor: 60;
-        running_cost_factor: switch_yellowhead_running() * runningcostfactor() + accostfactor();
+        default:                        switch_yellowhead_graphics;
+        cargo_capacity:                 switch_yellowhead_1c_capacity;
+        power:                          switch_yellowhead_power;
+        tractive_effort_coefficient:    switch_yellowhead_traction;
+        length:                         switch_length_2_7_2;
+        weight:                         switch_yellowhead_weight;
+        can_attach_wagon:               mu_with_first_class;
+        cargo_age_period:               240 << param_cargo_decay;
+        bitmask_vehicle_info:           0;
+        articulated_part:               switch_mtr_wagon_articulated_part;
+        cost_factor:                    60;
+        running_cost_factor:            switch_yellowhead_running() * runningcostfactor() + accostfactor();
     }
 }
 
 // End YELLOWHEAD_EXURB
-# 30 "chinaset-mtraddon.pnml" 2
-# 1 "src/25kvmu/yellowhead_suburb_graphics.pnml" 1
+
+
 // Begin YELLOWHEAD_SUBURB
 // Purchase Menu
 spriteset (spriteset_yellowhead_suburb_purchase_original) {
@@ -1692,7 +1453,7 @@ alternative_sprites(spriteset_yellowhead_suburb_purchase_original, ZOOM_LEVEL_IN
 switch (FEAT_TRAINS, SELF, switch_yellowhead_suburb_purchase_original, position_in_consist % 3) {
     1: spriteset_yellowhead_suburb_purchase_original;
     empty_sprites;
-}
+} 
 
 // Graphics
 
@@ -1709,94 +1470,93 @@ switch (FEAT_TRAINS, SELF, switch_yellowhead_suburb_articulated_part, extra_call
 switch (FEAT_TRAINS, SELF, switch_yellowhead_suburb_additional_text, param_cargo_decay) {
     return string(STR_DESC_6, string(STR_ELECTRIC_25KVAC), string(STR_MTR_FIRST_CAN_ATTACH_WAGON), string(STR_NICKNAME_YELLOWHEAD),string(STR_RELIABILITY_10), string(STR_NORMAL_HEAD_SEAT));
 }
-# 31 "chinaset-mtraddon.pnml" 2
-# 1 "src/25kvmu/yellowhead_suburb_item.pnml" 1
+
 item (FEAT_TRAINS, yellowhead_suburb) {
     property {
         // Menu
-        name: string(STR_NAME_YELLOWHEAD_SUBURB);
-        sprite_id: SPRITE_ID_NEW_TRAIN;
-        misc_flags: bitmask(TRAIN_FLAG_AUTOREFIT, TRAIN_FLAG_MU);
-        engine_class: ENGINE_CLASS_ELECTRIC;
-        variant_group: 1984;
+        name:                           string(STR_NAME_YELLOWHEAD_SUBURB);
+        sprite_id:                      SPRITE_ID_NEW_TRAIN;
+        misc_flags:                     bitmask(TRAIN_FLAG_AUTOREFIT, TRAIN_FLAG_MU);
+        engine_class:                   ENGINE_CLASS_ELECTRIC;
+        variant_group:                  yellowhead_exurb;
 
         // Availability
-        climates_available: ALL_CLIMATES;
-        introduction_date: date(1981,04,01);
-        model_life: 60;
-        retire_early: 45;
-        vehicle_life: 35;
-        track_type: SACA;
+        climates_available:             ALL_CLIMATES;
+        introduction_date:              date(1981,04,01);
+        model_life:                     60;
+        retire_early:                   45;
+        vehicle_life:                   35;
+        track_type:                     SACA;
 
         // Cargo
-        refittable_cargo_classes: bitmask(CC_PASSENGERS);
-        non_refittable_cargo_classes: 0;
-        cargo_allow_refit: [PASS, TOUR, YETI, YETY];
-        cargo_disallow_refit: [];
-        refit_cost: 0;
-        default_cargo_type: PASS;
-        ai_special_flag: AI_FLAG_PASSENGER;
-        cargo_capacity: 1;
-        loading_speed: 24 << param_loading_speed;
-        cargo_age_period: 160 << param_cargo_decay;
+        refittable_cargo_classes:       bitmask(CC_PASSENGERS);
+        non_refittable_cargo_classes:   0;
+        cargo_allow_refit:              [PASS, TOUR, YETI, YETY];
+        cargo_disallow_refit:           [];
+        refit_cost:                     0;
+        default_cargo_type:             PASS;
+        ai_special_flag:                AI_FLAG_PASSENGER;
+        cargo_capacity:                 1;
+        loading_speed:                  24 << param_loading_speed;
+        cargo_age_period:               160 << param_cargo_decay;
 
         // Stats
-        speed: 120 km/h;
-        power: 908 kW;
-        weight: 32 ton;
-        tractive_effort_coefficient: 0.171;
-        cost_factor: 40;
-        running_cost_base: RUNNING_COST_ELECTRIC;
-        running_cost_factor: 10;
-        reliability_decay: 10;
-        bitmask_vehicle_info: bitmask(2);
+        speed:                          120 km/h;
+        power:                          908 kW;
+        weight:                         32 ton;
+        tractive_effort_coefficient:    0.171;
+        cost_factor:                    40;
+        running_cost_base:              RUNNING_COST_ELECTRIC;
+        running_cost_factor:            10;
+        reliability_decay:              10;
+        bitmask_vehicle_info:           bitmask(2);
     }
     graphics {
         // Menu
-        additional_text: switch_yellowhead_suburb_additional_text;
-        can_attach_wagon: muhead_without_first_class;
-        start_stop: mu3multicar;
+        additional_text:                switch_yellowhead_suburb_additional_text;
+        can_attach_wagon:               muhead_without_first_class;
+        start_stop:                     mu3multicar;
 
         // Graphics
-        default: switch_yellowhead_normal_wagon;
-        purchase: switch_yellowhead_suburb_purchase_original;
-        articulated_part: switch_yellowhead_suburb_articulated_part;
+        default:                        switch_yellowhead_normal_wagon;
+        purchase:                       switch_yellowhead_suburb_purchase_original;
+        articulated_part:               switch_yellowhead_suburb_articulated_part;
 
         // Stats
-        length: switch_length_2_7_2;
-        speed: 120;
-        power: return 0;
-        purchase_power: return 1218; // HP
-        tractive_effort_coefficient: return 0;
+        length:                         switch_length_2_7_2;
+        speed:                          120;
+        power:                          return 0;
+        purchase_power:                 return 1218; // HP
+        tractive_effort_coefficient:    return 0;
         purchase_tractive_effort_coefficient: return int(0.171*255);
-        cargo_capacity: switch_yellowhead_capacity;
-        cargo_age_period: 160 << param_cargo_decay;
-        cost_factor: 40;
-        running_cost_factor: 10 * runningcostfactor() + 20;
-        purchase_running_cost_factor: 60;
-        purchase_cargo_capacity: 218/3;
+        cargo_capacity:                 switch_yellowhead_capacity;
+        cargo_age_period:               160 << param_cargo_decay;
+        cost_factor:                    40;
+        running_cost_factor:            10  * runningcostfactor() + 20;
+        purchase_running_cost_factor:   60;
+        purchase_cargo_capacity:        218/3;
     }
 
     // Multiple Unit Wagons
     livery_override(normal_emucoach) {
-        default: switch_yellowhead_graphics;
-        cargo_capacity: switch_yellowhead_capacity;
-        power: switch_yellowhead_power;
-        tractive_effort_coefficient: switch_yellowhead_traction;
-        length: switch_length_2_7_2;
-        weight: switch_yellowhead_weight;
-        can_attach_wagon: mu_of_mtr;
-        cargo_age_period: 160 << param_cargo_decay;
-        bitmask_vehicle_info: 0;
-        articulated_part: switch_mtr_wagon_articulated_part;
-        cost_factor: 60;
-        running_cost_factor: switch_yellowhead_running() * runningcostfactor() + accostfactor();
+        default:                        switch_yellowhead_graphics;
+        cargo_capacity:                 switch_yellowhead_capacity;
+        power:                          switch_yellowhead_power;
+        tractive_effort_coefficient:    switch_yellowhead_traction;
+        length:                         switch_length_2_7_2;
+        weight:                         switch_yellowhead_weight;
+        can_attach_wagon:               mu_of_mtr;
+        cargo_age_period:               160 << param_cargo_decay;
+        bitmask_vehicle_info:           0;
+        articulated_part:               switch_mtr_wagon_articulated_part;
+        cost_factor:                    60;
+        running_cost_factor:            switch_yellowhead_running() * runningcostfactor() + accostfactor();
     }
 }
 
 // End YELLOWHEAD_SUBURB
-# 32 "chinaset-mtraddon.pnml" 2
-# 1 "src/25kvmu/mlr_gfx.pnml" 1
+
+
 // Begin MLR
 // Vehicle
 spriteset (spriteset_mlr_c_a) {
@@ -1841,11 +1601,8 @@ alternative_sprites (spriteset_mlr_tp, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP) {
     template_standard ("25kvemu/mlr", "mlr-tp")
 }
 /* alternative_sprites (spriteset_mlr_tp-r, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP) {
-
     template_standard ("25kvemu/mlr", "mlr-tp-r")
-
 } */
-# 47 "src/25kvmu/mlr_gfx.pnml"
 alternative_sprites (spriteset_mlr_1c_c_b, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP) {
     template_standard ("25kvemu/mlr", "mlr-1c-c-b")
 }
@@ -1856,13 +1613,9 @@ alternative_sprites (spriteset_mlr_1c_tp, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP) {
     template_standard ("25kvemu/mlr", "mlr-1c-tp")
 }
 /* alternative_sprites (spriteset_mlr_1c_tp-r, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP) {
-
     template_standard ("25kvemu/mlr", "mlr-tp-1c-r")
-
 }
-
  */
-# 60 "src/25kvmu/mlr_gfx.pnml"
 // Purchase Menu
 spriteset (spriteset_mlr_purchase_original) {
     template_purchase_empty ()
@@ -1875,68 +1628,59 @@ alternative_sprites(spriteset_mlr_purchase_original, ZOOM_LEVEL_IN_4X, BIT_DEPTH
 switch (FEAT_TRAINS, SELF, switch_mlr_purchase_original, position_in_consist % 3) {
     1: spriteset_mlr_purchase_original;
     empty_sprites;
-}
+} 
 
 
 //Graphics
 switch (FEAT_TRAINS, SELF, switch_mlr_first_wagon, position_in_consist % 9) {
     4: spriteset_mlr_1c_tp;
     spriteset_mlr_1c_t;
-}
+} 
 
 switch (FEAT_TRAINS, SELF, switch_mlr_normal_wagon, position_in_consist % 9) {
     4: spriteset_mlr_tp;
     spriteset_mlr_t;
-}
+} 
 
 switch (FEAT_TRAINS, SELF, switch_mlr_wagon_type, vehicle_type_id) {
     1856: switch_mlr_normal_wagon;
     1857: switch_mlr_first_wagon;
     empty_sprites;
-}
+} 
 
 switch (FEAT_TRAINS, SELF, switch_mlr_wagon_type_end, vehicle_type_id) {
     1856: spriteset_mlr_c_b;
     1857: spriteset_mlr_1c_c_b;
     empty_sprites;
-}
+} 
 
-switch (FEAT_TRAINS, SELF, switch_mlr_graphics_if_end, position_in_consist_from_end == 1) {
+switch (FEAT_TRAINS, SELF, switch_mlr_graphics_if_end, position_in_consist_from_end  == 1) {
     1: switch_mlr_wagon_type_end;
     switch_mlr_wagon_type;
-}
+} 
 
 switch (FEAT_TRAINS, SELF, switch_mlr_middle_wagon_graphics, (position_in_consist % 3) == 1) {
     1: switch_mlr_graphics_if_end;
     empty_sprites;
-}
+} 
 
 switch (FEAT_TRAINS, SELF, switch_mlr_graphics, position_in_consist % 3) {
     1: spriteset_mlr_c_a;
     empty_sprites;
-}
+} 
 
 
 //Weight
 
 /* switch (FEAT_TRAINS, SELF, switch_mlr_weight, num_vehs_in_consist % 18) {
-
     0..2: return 32;
-
     6..11: return 32;
-
     15..17: return 32;
-
     3..5: return 52;
-
     12..14: return 52;
-
     return 0;
-
 }
-
  */
-# 125 "src/25kvmu/mlr_gfx.pnml"
 //Capacity
 
 
@@ -1962,77 +1706,42 @@ switch (FEAT_TRAINS, SELF, switch_mlr_1c_capacity, position_in_consist % 3) {
 //Cost
 
 /* 
-
 switch (FEAT_TRAINS, SELF, switch_yellowhead_running_power, vehicle_type_id) {
-
     1856: return 32;
-
     1857: return 36;
-
     return 0;
-
 }
-
-
-
 
 
 switch (FEAT_TRAINS, SELF, switch_yellowhead_running_unpower, vehicle_type_id) {
-
     1856: return 10;
-
     1857: return 12;
-
     return 0;
-
 }
-
-
 
 switch (FEAT_TRAINS, SELF, switch_yellowhead_cost, vehicle_is_potentially_powered) {
-
     1: switch_yellowhead_cost_power;
-
     switch_yellowhead_cost_unpower;
-
 }
-
-
 
 switch (FEAT_TRAINS, SELF, switch_yellowhead_running, vehicle_is_potentially_powered) {
-
     1: switch_yellowhead_running_power;
-
     switch_yellowhead_running_unpower;
-
 }
-
  */
-# 173 "src/25kvmu/mlr_gfx.pnml"
 //Power
 
 /* switch (FEAT_TRAINS, SELF, switch_yellowhead_power, position_in_consist % 9) {
-
     3..5: return 1218;
-
     6..8: return 0;
-
     return 0;
-
 }
-
-
 
 switch (FEAT_TRAINS, SELF, switch_yellowhead_traction, vehicle_is_potentially_powered) {
-
     1: return int(0.171*255);
-
     return 0;
-
 }
-
  */
-# 186 "src/25kvmu/mlr_gfx.pnml"
 // Articulate
 
 
@@ -2048,118 +1757,111 @@ switch (FEAT_TRAINS, SELF, switch_mlr_articulated_part, extra_callback_info1) {
 switch (FEAT_TRAINS, SELF, switch_mlr_additional_text, param_cargo_decay) {
     return string(STR_DESC_6, string(STR_ELECTRIC_25KVAC), string(STR_MTR_FIRST_CAN_ATTACH_WAGON), string(STR_FULLNAME_MLR), string(STR_NICKNAME_MLR),string(STR_RELIABILITY_10), string(STR_NORMAL_HEAD_SEAT));
 }
-# 33 "chinaset-mtraddon.pnml" 2
-# 1 "src/25kvmu/mlr_item.pnml" 1
+
 item (FEAT_TRAINS, mlr) {
     property {
         // Menu
-        name: string(STR_NAME_MLR);
-        sprite_id: SPRITE_ID_NEW_TRAIN;
-        misc_flags: bitmask(TRAIN_FLAG_AUTOREFIT, TRAIN_FLAG_MU);
-        engine_class: ENGINE_CLASS_ELECTRIC;
-        variant_group: 1984;
-
+        name:                           string(STR_NAME_MLR);
+        sprite_id:                      SPRITE_ID_NEW_TRAIN;
+        misc_flags:                     bitmask(TRAIN_FLAG_AUTOREFIT, TRAIN_FLAG_MU);
+        engine_class:                   ENGINE_CLASS_ELECTRIC;
+        variant_group:                  yellowhead_exurb;
+        
         // Availability
-        climates_available: ALL_CLIMATES;
-        introduction_date: date(1997,01,01);
-        model_life: 60;
-        retire_early: 35;
-        vehicle_life: 35;
-        track_type: SACA;
+        climates_available:             ALL_CLIMATES;
+        introduction_date:              date(1997,01,01);
+        model_life:                     60;
+        retire_early:                   35;
+        vehicle_life:                   35;
+        track_type:                     SACA;
 
         // Cargo
-        refittable_cargo_classes: bitmask(CC_PASSENGERS);
-        non_refittable_cargo_classes: 0;
-        cargo_allow_refit: [PASS, TOUR, YETI, YETY];
-        cargo_disallow_refit: [];
-        refit_cost: 0;
-        default_cargo_type: PASS;
-        ai_special_flag: AI_FLAG_PASSENGER;
-        cargo_capacity: 1;
-        loading_speed: 36 << param_loading_speed;
-        cargo_age_period: 140 << param_cargo_decay;
+        refittable_cargo_classes:       bitmask(CC_PASSENGERS);
+        non_refittable_cargo_classes:   0;
+        cargo_allow_refit:              [PASS, TOUR, YETI, YETY];
+        cargo_disallow_refit:           [];
+        refit_cost:                     0;
+        default_cargo_type:             PASS;
+        ai_special_flag:                AI_FLAG_PASSENGER;
+        cargo_capacity:                 1;
+        loading_speed:                  36 << param_loading_speed;
+        cargo_age_period:               140 << param_cargo_decay;
 
         // Stats
-        speed: 120 km/h;
-        power: 908 kW;
-        weight: 32 ton;
-        tractive_effort_coefficient: 0.171;
-        cost_factor: 40;
-        running_cost_base: RUNNING_COST_ELECTRIC;
-        running_cost_factor: 10;
-        reliability_decay: 10;
-        bitmask_vehicle_info: bitmask(2);
+        speed:                          120 km/h;
+        power:                          908 kW;
+        weight:                         32 ton;
+        tractive_effort_coefficient:    0.171;
+        cost_factor:                    40;
+        running_cost_base:              RUNNING_COST_ELECTRIC;
+        running_cost_factor:            10;
+        reliability_decay:              10;
+        bitmask_vehicle_info:           bitmask(2);
     }
     graphics {
         // Menu
-        additional_text: switch_mlr_additional_text;
-        can_attach_wagon: muhead_with_first_class;
-        start_stop: mu3multicar;
+        additional_text:                switch_mlr_additional_text;
+        can_attach_wagon:               muhead_with_first_class;
+        start_stop:                     mu3multicar;
 
         // Graphics
-        default: switch_mlr_graphics;
-        purchase: switch_mlr_purchase_original;
-        articulated_part: switch_mlr_articulated_part;
+        default:                        switch_mlr_graphics;
+        purchase:                       switch_mlr_purchase_original;
+        articulated_part:               switch_mlr_articulated_part;
 
         // Stats
-        length: switch_length_2_7_2;
-        speed: 120;
-        power: return 0;
-        purchase_power: return 1218; // HP
-        tractive_effort_coefficient: return 0;
+        length:                         switch_length_2_7_2;
+        speed:                          120;
+        power:                          return 0;
+        purchase_power:                 return 1218; // HP
+        tractive_effort_coefficient:    return 0;
         purchase_tractive_effort_coefficient: return int(0.171*255);
-        cargo_capacity: switch_mlr_capacity;
-        cargo_age_period: 140 << param_cargo_decay;
-        cost_factor: 40;
-        running_cost_factor: 10 * runningcostfactor() + 20;
-        purchase_running_cost_factor: 60;
-        purchase_cargo_capacity: 332/2;
-        bitmask_vehicle_info: bitmask(2);
+        cargo_capacity:                 switch_mlr_capacity;
+        cargo_age_period:               140 << param_cargo_decay;
+        cost_factor:                    40;
+        running_cost_factor:            10  * runningcostfactor() + 20;
+        purchase_running_cost_factor:   60;
+        purchase_cargo_capacity:        332/2;
+        bitmask_vehicle_info:           bitmask(2);
     }
 
     // Multiple Unit Wagons
     livery_override(normal_emucoach) {
-        default: switch_mlr_middle_wagon_graphics;
-        cargo_capacity: switch_mlr_capacity;
-        power: switch_yellowhead_power;
-        tractive_effort_coefficient: switch_yellowhead_traction;
-        length: switch_length_2_7_2;
-        weight: switch_yellowhead_weight;
-        can_attach_wagon: mu_of_mtr;
-        cargo_age_period: 140 << param_cargo_decay;
-        bitmask_vehicle_info: 0;
-        articulated_part: switch_mtr_wagon_articulated_part;
-        cost_factor: 60;
-        running_cost_factor: switch_yellowhead_running() * runningcostfactor() + accostfactor();
+        default:                        switch_mlr_middle_wagon_graphics;
+        cargo_capacity:                 switch_mlr_capacity;
+        power:                          switch_yellowhead_power;
+        tractive_effort_coefficient:    switch_yellowhead_traction;
+        length:                         switch_length_2_7_2;
+        weight:                         switch_yellowhead_weight;
+        can_attach_wagon:               mu_of_mtr;
+        cargo_age_period:               140 << param_cargo_decay;
+        bitmask_vehicle_info:           0;
+        articulated_part:               switch_mtr_wagon_articulated_part;
+        cost_factor:                    60;
+        running_cost_factor:            switch_yellowhead_running() * runningcostfactor() + accostfactor();
     }
     livery_override(first_emucoach) {
-        default: switch_mlr_middle_wagon_graphics;
-        cargo_capacity: switch_mlr_1c_capacity;
-        power: switch_yellowhead_power;
-        tractive_effort_coefficient: switch_yellowhead_traction;
-        length: switch_length_2_7_2;
-        weight: switch_yellowhead_weight;
-        can_attach_wagon: mu_with_first_class;
-        cargo_age_period: 240 << param_cargo_decay;
-        bitmask_vehicle_info: 0;
-        articulated_part: switch_mtr_wagon_articulated_part;
-        cost_factor: 60;
-        running_cost_factor: switch_yellowhead_running() * runningcostfactor() + accostfactor();
+        default:                        switch_mlr_middle_wagon_graphics;
+        cargo_capacity:                 switch_mlr_1c_capacity;
+        power:                          switch_yellowhead_power;
+        tractive_effort_coefficient:    switch_yellowhead_traction;
+        length:                         switch_length_2_7_2;
+        weight:                         switch_yellowhead_weight;
+        can_attach_wagon:               mu_with_first_class;
+        cargo_age_period:               240 << param_cargo_decay;
+        bitmask_vehicle_info:           0;
+        articulated_part:               switch_mtr_wagon_articulated_part;
+        cost_factor:                    60;
+        running_cost_factor:            switch_yellowhead_running() * runningcostfactor() + accostfactor();
     }
 }
 
 // End MLR
-# 34 "chinaset-mtraddon.pnml" 2
-
-
-// Sort Vehicles
-# 1 "src/vehiclesort.pnml" 1
 sort (FEAT_TRAINS, [
     yellowhead_exurb,
     yellowhead_suburb,
     mlr,
-    1856,
-    1857,
-    1858,
+    first_emucoach_with_mailroom,
+    first_emucoach,
+    first_emucoach_with_mailroom,
 ]);
-# 38 "chinaset-mtraddon.pnml" 2
