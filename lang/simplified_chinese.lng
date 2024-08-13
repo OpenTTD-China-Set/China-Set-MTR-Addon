@@ -2,7 +2,6 @@
 # STRING   :SIMPLIFIED CHINESE
 STR_GRF_NAME   :中国包：港铁追加包 {VERSION_STRING}
 STR_GRF_DESC   :为中国包追加了港铁的载具
-STR_GRF_URL   ://www.tt-forums.net/viewtopic.php?t=91092
 STR_GRF_DESC_README   :仍在测试当中，可能存在不稳定情况。后续更新可能会破坏兼容
 STR_GRF_DESC_MTR   :{RED}心系生活每一程
 STR_PARAM_LOADING_SPEED   :装载速度

@@ -19,14 +19,17 @@ with open("lang/english.lng", 'w', encoding='utf-8') as f:
         else:
             f.write(strs[i][0]+"   :"+strs[i][1]+"\n")
 
-with open("lang/simplified_chinese.lng", 'w', encoding='utf-8') as f:
-    f.write("##grflangid 0x56"+"\n")
-    for i in range(len(strs)):
-        if strs[i][2] == None:
-            if strs[i][1] == None:
-                f.write(strs[i][0]+"\n")
+def other_lang_generate(lang_name, lang_row, lang_code):
+    with open("lang/"+lang_name+".lng", 'w', encoding='utf-8') as f:
+        f.write("##grflangid "+lang_code+"\n")
+        for i in range(len(strs)):
+            if strs[i][lang_row] == None:
+                if strs[i][1] == None:
+                    f.write(strs[i][0]+"\n")
+                else:
+                    pass
             else:
-                pass
-        else:
-            f.write(strs[i][0]+"   :"+strs[i][2]+"\n")
+                f.write(strs[i][0]+"   :"+strs[i][lang_row]+"\n")
    
+other_lang_generate("simplified_chinese", 2, "0x56")
+other_lang_generate("traditional_chinese", 3, "0x0c")
