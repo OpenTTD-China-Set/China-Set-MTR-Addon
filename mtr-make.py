@@ -1,4 +1,4 @@
-import os, sys, re, subprocess
+import os, sys, re, subprocess, glob
 
 with open("chinaset-mtraddon.pnml","r",encoding='utf-8') as f:
     files_content = f.read()
@@ -11,6 +11,7 @@ with open("chinaset-mtraddon.nml","w",encoding='utf-8') as f:
             files_content = g.read()
         f.write(files_content)
         f.write("\n")
+
 
 
 result = subprocess.run("nmlc chinaset-mtraddon.nml", shell=True, capture_output=True, text=True)
