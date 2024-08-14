@@ -1,4 +1,4 @@
-import os, sys, re, subprocess, glob
+import os, sys, re, subprocess, glob, hashlib
 
 with open("chinaset-mtraddon.pnml","r",encoding='utf-8') as f:
     files_content = f.read()

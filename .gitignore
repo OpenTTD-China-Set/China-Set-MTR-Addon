@@ -3,3 +3,5 @@
 *.grf
 *.tar
 chinasettrains-*
+.gfxhash/
+gfx/**/**/*.png
