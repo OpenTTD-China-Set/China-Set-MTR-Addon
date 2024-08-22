@@ -71,7 +71,7 @@ item (FEAT_TRAINS, yellowhead_suburb) {
     }
     graphics {
         // Menu
-        additional_text:                switch_yellowhead_suburb_additional_text;
+        additional_text:                string(STR_DESC_6, string(STR_ELECTRIC_25KVAC), string(STR_MTR_FIRST_CAN_ATTACH_WAGON), string(STR_NICKNAME_YELLOWHEAD),string(STR_RELDEC_LOW, 10), string(STR_NORMAL_HEAD_SEAT));
         can_attach_wagon:               muhead_without_first_class;
         start_stop:                     mu3multicar;
 

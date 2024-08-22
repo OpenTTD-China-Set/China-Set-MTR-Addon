@@ -35,11 +35,9 @@ switch (FEAT_TRAINS, SELF, switch_yellowhead_1c_without_mailroom_capacity, posit
     return 0;
 }
 
-//Text
 
-switch (FEAT_TRAINS, SELF, switch_yellowhead_exurb_additional_text, param_cargo_decay) {
-    return string(STR_DESC_6, string(STR_ELECTRIC_25KVAC), string(STR_MTR_FIRST_CAN_ATTACH_WAGON), string(STR_NICKNAME_YELLOWHEAD),string(STR_RELIABILITY_10), string(STR_FIRST_HEAD_SEAT));
-}
+
+
 
 item (FEAT_TRAINS, yellowhead_exurb) {
     property {
@@ -82,7 +80,7 @@ item (FEAT_TRAINS, yellowhead_exurb) {
     }
     graphics {
         // Menu
-        additional_text:                switch_yellowhead_exurb_additional_text;
+        additional_text:                string(STR_DESC_6, string(STR_ELECTRIC_25KVAC), string(STR_MTR_FIRST_CAN_ATTACH_WAGON), string(STR_NICKNAME_YELLOWHEAD),string(STR_RELDEC_LOW, 10), string(STR_FIRST_HEAD_SEAT));
         can_attach_wagon:               muhead_yellowhead_exurb;
         start_stop:                     mu3multicar;
 

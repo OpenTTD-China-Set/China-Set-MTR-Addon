@@ -813,7 +813,7 @@ item(FEAT_TRAINS, yellowhead_mailroom) {
         refittable_cargo_classes:       bitmask(CC_MAIL, CC_EXPRESS);
         cargo_allow_refit:              [MAIL, VALU, GOLD, DIAM];
         cargo_disallow_refit:           [];
-        cargo_age_period:               185;
+        cargo_age_period:               200;
         refit_cost:                     0;
         default_cargo_type:             MAIL;
         track_type:                     SAAN;
@@ -994,13 +994,6 @@ switch (FEAT_TRAINS, SELF, switch_first_emucoach_capacity, position_in_articulat
     return 0;
 }
 
-switch (FEAT_TRAINS, SELF, switch_first_emucoach_additional_text, param_cargo_decay) {
-    return string(STR_DESC_2, string(STR_ATTACH_MTR_FIRST_EMU), string(STR_COMFORT_240));
-}
-
-switch (FEAT_TRAINS, SELF, switch_first_emucoach_with_mail_additional_text, param_cargo_decay) {
-    return string(STR_DESC_2, string(STR_ATTACH_MTR_FIRST_EMU_WUTH_MAILROOM), string(STR_WITH_MAILROOM), string(STR_COMFORT_240));
-}
 
 item (FEAT_TRAINS, first_emucoach) {
     property {
@@ -1039,7 +1032,7 @@ item (FEAT_TRAINS, first_emucoach) {
     }
     graphics {
         // Menu
-        additional_text:                switch_first_emucoach_additional_text;
+        additional_text:                string(STR_DESC_3, string(STR_ATTACH_MTR_FIRST_EMU), string(STR_COMFORT_MEDIUM, 240));
         can_attach_wagon:               mu_with_first_class;
 
         // Graphics
@@ -1094,7 +1087,7 @@ item (FEAT_TRAINS, first_emucoach_with_mailroom) {
     }
     graphics {
         // Menu
-        additional_text:                switch_first_emucoach_with_mail_additional_text;
+        additional_text:                string(STR_DESC_2, string(STR_ATTACH_MTR_FIRST_EMU_WUTH_MAILROOM), string(STR_WITH_MAILROOM), string(STR_COMFORT_MEDIUM, 240), string(STR_FRESHNESS_MEDIUM));
         can_attach_wagon:               mu_with_first_class;
 
         // Graphics
@@ -1129,9 +1122,6 @@ switch (FEAT_TRAINS, SELF, switch_normal_emucoach_capacity, position_in_articula
     return 0;
 }
 
-switch (FEAT_TRAINS, SELF, switch_normal_emucoach_additional_text, param_cargo_decay) {
-    return string(STR_DESC_2, string(STR_ATTACH_MTR_EMU), string(STR_COMFORT_140));
-}
 
 item (FEAT_TRAINS, normal_emucoach) {
     property {
@@ -1169,7 +1159,7 @@ item (FEAT_TRAINS, normal_emucoach) {
     }
     graphics {
         // Menu
-        additional_text:                switch_normal_emucoach_additional_text;
+        additional_text:                string(STR_DESC_2, string(STR_ATTACH_MTR_EMU), string(STR_COMFORT_LOW, 140));
         can_attach_wagon:               mu_of_mtr;
 
         // Graphics
@@ -1356,11 +1346,9 @@ switch (FEAT_TRAINS, SELF, switch_yellowhead_1c_without_mailroom_capacity, posit
     return 0;
 }
 
-//Text
 
-switch (FEAT_TRAINS, SELF, switch_yellowhead_exurb_additional_text, param_cargo_decay) {
-    return string(STR_DESC_6, string(STR_ELECTRIC_25KVAC), string(STR_MTR_FIRST_CAN_ATTACH_WAGON), string(STR_NICKNAME_YELLOWHEAD),string(STR_RELIABILITY_10), string(STR_FIRST_HEAD_SEAT));
-}
+
+
 
 item (FEAT_TRAINS, yellowhead_exurb) {
     property {
@@ -1403,7 +1391,7 @@ item (FEAT_TRAINS, yellowhead_exurb) {
     }
     graphics {
         // Menu
-        additional_text:                switch_yellowhead_exurb_additional_text;
+        additional_text:                string(STR_DESC_6, string(STR_ELECTRIC_25KVAC), string(STR_MTR_FIRST_CAN_ATTACH_WAGON), string(STR_NICKNAME_YELLOWHEAD),string(STR_RELDEC_LOW, 10), string(STR_FIRST_HEAD_SEAT));
         can_attach_wagon:               muhead_yellowhead_exurb;
         start_stop:                     mu3multicar;
 
@@ -1549,7 +1537,7 @@ item (FEAT_TRAINS, yellowhead_suburb) {
     }
     graphics {
         // Menu
-        additional_text:                switch_yellowhead_suburb_additional_text;
+        additional_text:                string(STR_DESC_6, string(STR_ELECTRIC_25KVAC), string(STR_MTR_FIRST_CAN_ATTACH_WAGON), string(STR_NICKNAME_YELLOWHEAD),string(STR_RELDEC_LOW, 10), string(STR_NORMAL_HEAD_SEAT));
         can_attach_wagon:               muhead_without_first_class;
         start_stop:                     mu3multicar;
 
@@ -1836,7 +1824,7 @@ item (FEAT_TRAINS, mlr) {
     }
     graphics {
         // Menu
-        additional_text:                switch_mlr_additional_text;
+        additional_text:                 string(STR_DESC_6, string(STR_ELECTRIC_25KVAC), string(STR_MTR_FIRST_CAN_ATTACH_WAGON), string(STR_FULLNAME_MLR), string(STR_NICKNAME_MLR),string(STR_RELDEC_LOW, 10), string(STR_NORMAL_HEAD_SEAT));
         can_attach_wagon:               muhead_with_first_class;
         start_stop:                     mu3multicar;
 

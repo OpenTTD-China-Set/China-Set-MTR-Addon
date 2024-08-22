@@ -6,3 +6,4 @@ chinasettrains-*
 .gfxhash/
 gfx/**/*.png
 !gfx/*.png
+*.lng
