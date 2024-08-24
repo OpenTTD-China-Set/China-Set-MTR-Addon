@@ -89,29 +89,18 @@ switch (FEAT_TRAINS, SELF, runningcostfactor, max_speed) {
 }
 
 // For High-Speed Hexie EMUs, speed is limited to 310 km/h IRL, but they can go up to 350 even 380, but with increased running costs
-switch (FEAT_TRAINS, SELF, switch_crh_c_cargo_subtype, cargo_subtype) {
-    0: return string(STR_310_KMH);
-    1: return string(STR_350_KMH);
-    return CB_RESULT_NO_TEXT;
-}
 
-switch (FEAT_TRAINS, SELF, switch_crh_c_speed, cargo_subtype) {
-    0: return 310;
-    return 350;
-}
 
 switch (FEAT_TRAINS, SELF, switch_crh380_cargo_subtype, cargo_subtype) {
     0: return string(STR_310_KMH);
     1: return string(STR_350_KMH);
-    2: return string(STR_380_KMH);
     return CB_RESULT_NO_TEXT;
 }
 
  //也许可以给动感号用这些东西
 switch (FEAT_TRAINS, SELF, switch_crh380_speed, cargo_subtype) {
     0: return 310;
-    1: return 350;
-    return 380;
+    return 350;
 }
 
 switch (FEAT_TRAINS, SELF, crh350costpower, vehicle_is_potentially_powered) {
@@ -119,15 +108,11 @@ switch (FEAT_TRAINS, SELF, crh350costpower, vehicle_is_potentially_powered) {
     return 4;
 }
 
-switch (FEAT_TRAINS, SELF, crh380costpower, vehicle_is_potentially_powered) {
-    1: return 25;
-    return 10;
-}
+
 
 switch (FEAT_TRAINS, PARENT, crhspeedcost, max_speed) {
     0..87: return 0;
-    88..98: crh350costpower;
-    crh380costpower; 
+    crh350costpower;
 }
 
 /*
@@ -271,10 +256,10 @@ switch (FEAT_TRAINS, SELF, mu4to24car, (num_vehs_in_consist < 12) || (num_vehs_i
     return CB_RESULT_NO_TEXT;
 }
 
-// MUs need at least 8 and at most 24 cars to start
+// MUs need at least 4 and at most 12 cars to start
 
-switch (FEAT_TRAINS, SELF, mu8to24car, (num_vehs_in_consist < 12) || (num_vehs_in_consist > 72)) {
-    1: return string(STR_MUST_BE_8_TO_24_CARS);
+switch (FEAT_TRAINS, SELF, mu4to16car, (num_vehs_in_consist < 12) || (num_vehs_in_consist > 48)) {
+    1: return string(STR_MUST_BE_4_TO_16_CARS);
     return CB_RESULT_NO_TEXT;
 }
 
@@ -302,10 +287,7 @@ switch (FEAT_TRAINS, SELF, mu3multicar, num_vehs_in_consist) {
     return string(STR_MUST_BE_3MULTI_CARS);
 }
 
-switch (FEAT_TRAINS, SELF, mu5to17car, num_vehs_in_consist) {
-    15..51: return CB_RESULT_NO_TEXT;
-    return string(STR_MUST_BE_5_TO_17_CARS);
-}
+
 
 /* LENGTHS */
 
@@ -352,9 +334,9 @@ switch (FEAT_TRAINS, SELF, mu5to17car, num_vehs_in_consist) {
     }
 /* End Functions */ 
 
-//the train is too long
+/* //the train is too long
 switch (FEAT_TRAINS, SELF, too_many_graphics_12, position_in_articulated_veh % 3) {
     1: spriteset_too_many_12;
     empty_sprites;
 }
-
+ */

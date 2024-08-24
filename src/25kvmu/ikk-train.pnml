@@ -1,0 +1,347 @@
+// Begin IKK TRAIN
+// Vehicle
+
+spriteset (spriteset_ikk_c_a, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP) {
+    template_reversed ("25kvemu/ikk-train", "sp1900-c-a")
+}
+spriteset (spriteset_ikk_1c_c_a, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP) {
+    template_reversed ("25kvemu/ikk-train", "sp1900-1c-c")
+}
+spriteset (spriteset_ikk_c_b, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP) {
+    template_standard ("25kvemu/ikk-train", "sp1900-c-b")
+}
+spriteset (spriteset_ikk_m, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP) {
+    template_standard ("25kvemu/ikk-train", "sp1900-m")
+}
+spriteset (spriteset_ikk_1c_m, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP) {
+    template_reversed ("25kvemu/ikk-train", "sp1900-1c-m")
+}
+spriteset (spriteset_ikk_p, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP) {
+    template_reversed ("25kvemu/ikk-train", "sp1900-p-a")
+}
+spriteset (spriteset_ikk_p_r, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP) {
+    template_reversed ("25kvemu/ikk-train", "sp1900-p-b")
+}
+spriteset (spriteset_ikk_1c_p, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP) {
+    template_standard ("25kvemu/ikk-train", "sp1900-1c-p")
+}
+spriteset (spriteset_ikk_1c_p_r, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP) {
+    template_reversed ("25kvemu/ikk-train", "sp1900-1c-p")
+}
+
+// Purchase Menu
+spriteset (spriteset_ikk_purchase_original, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP) {
+    template_purchase ("25kvemu/ikk-train", "sp1900-c-b")
+}
+
+
+switch (FEAT_TRAINS, SELF, switch_ikk_purchase_original, position_in_consist % 3) {
+    1: spriteset_ikk_purchase_original;
+    empty_sprites;
+} 
+
+
+//Graphics
+switch (FEAT_TRAINS, SELF, switch_ikk_wagon_p_front, vehicle_type_id) {
+    1856: spriteset_ikk_p;
+    1857: spriteset_ikk_1c_p;
+    empty_sprites;
+} 
+
+switch (FEAT_TRAINS, SELF, switch_ikk_wagon_m, vehicle_type_id) {
+    1856: spriteset_ikk_m;
+    1857: spriteset_ikk_1c_m;
+    empty_sprites;
+} 
+
+switch (FEAT_TRAINS, SELF, switch_ikk_wagon_p_back, vehicle_type_id) {
+    1856: spriteset_ikk_p_r;
+    1857: spriteset_ikk_1c_p_r;
+    empty_sprites;
+} 
+
+
+
+switch (FEAT_TRAINS, SELF, switch_ikk_wagon_type_long, (position_in_consist / 3) + 1) {
+    2: switch_ikk_wagon_p_front;
+    5: switch_ikk_wagon_p_front;
+    switch_ikk_wagon_m;
+} 
+
+switch (FEAT_TRAINS, SELF, switch_ikk_wagon_type_middium, (position_in_consist / 3) + 1) {
+    2: switch_ikk_wagon_p_front;
+    switch_ikk_wagon_m;
+} 
+
+
+switch (FEAT_TRAINS, SELF, switch_ikk_wagon_type, num_vehs_in_consist / 3) {
+    2..5: switch_ikk_wagon_m;
+    6..9: switch_ikk_wagon_type_middium;
+    switch_ikk_wagon_type_long;
+} 
+
+
+switch (FEAT_TRAINS, SELF, switch_ikk_wagon_type_end, vehicle_type_id) {
+    1856: spriteset_ikk_c_a;
+    1857: spriteset_ikk_1c_c_a;
+    empty_sprites;
+} 
+
+switch (FEAT_TRAINS, SELF, switch_ikk_graphics_if_end, (position_in_consist_from_end / 3) + 1) {
+    1: switch_ikk_wagon_type_end;
+    2: switch_ikk_wagon_p_back;
+    switch_ikk_wagon_type;
+} 
+
+switch (FEAT_TRAINS, SELF, switch_ikk_middle_wagon_graphics, (position_in_consist % 3) == 1) {
+    1: switch_ikk_graphics_if_end;
+    empty_sprites;
+} 
+
+switch (FEAT_TRAINS, SELF, switch_ikk_graphics, position_in_consist % 3) {
+    1: spriteset_ikk_c_b;
+    empty_sprites;
+} 
+
+
+//Weight
+
+/* switch (FEAT_TRAINS, SELF, switch_ikk_weight, vehicle_is_potentially_powered) {
+    1: return 48;
+    return 37;
+} */
+
+switch (FEAT_TRAINS, SELF, switch_ikk_weight_long_back, (position_in_consist_from_end / 3) + 1) {
+    2..3: return 48;
+    5..6: return 48;
+    8: return 48;
+    return 37;
+}
+switch (FEAT_TRAINS, SELF, switch_ikk_weight_long, (position_in_consist / 3) + 1) {
+    2..3: return 48;
+    4..6: return 37;
+    switch_ikk_weight_long_back;
+}
+
+switch (FEAT_TRAINS, SELF, switch_ikk_weight_middium_front, (position_in_consist / 3) + 1) {
+    2..3: return 48;
+    return 37;
+}
+switch (FEAT_TRAINS, SELF, switch_ikk_weight_middium, (position_in_consist_from_end / 3) + 1) {
+    2..3: return 48;
+    switch_ikk_weight_middium_front;
+}
+
+switch (FEAT_TRAINS, SELF, switch_ikk_weight_short, (position_in_consist_from_end / 3) + 1) {
+    2..3: return 48;
+    return 37;
+}
+
+switch (FEAT_TRAINS, SELF, switch_ikk_weight, num_vehs_in_consist / 3) {
+    2..4: switch_ikk_weight_short;
+    5..9: switch_ikk_weight_middium;
+    switch_ikk_weight_long;
+}
+//Capacity
+
+
+
+switch (FEAT_TRAINS, SELF, switch_ikk_capacity_1, param_cargo_capacity) {
+    0: return 226;
+    1: return 339;
+    3: return 565;
+    4: return 678;
+    5: return 664;
+    return 904;
+}
+switch (FEAT_TRAINS, SELF, switch_ikk_capacity_cab_1, param_cargo_capacity) {
+    0: return 215;
+    1: return 322;
+    3: return 537;
+    4: return 654;
+    5: return 860;
+    return 430;
+}
+switch (FEAT_TRAINS, SELF, switch_ikk_capacity_cab, (position_in_consist_from_end / 3) == 1 || (position_in_consist / 3) == 1) {
+    1: switch_ikk_capacity_cab_1;
+    switch_ikk_capacity_1;
+}
+
+switch (FEAT_TRAINS, SELF, switch_ikk_capacity, position_in_consist % 3) {
+    1: switch_ikk_capacity_cab;
+    return 0;
+}
+
+switch (FEAT_TRAINS, SELF, switch_ikk_1c_capacity, position_in_consist % 3) {
+    1: return 72;
+    return 0;
+}
+//Cost
+
+
+switch (FEAT_TRAINS, SELF, switch_ikk_running_power, vehicle_type_id) {
+    1856: return 36;
+    1857: return 40;
+    return 0;
+}
+
+
+switch (FEAT_TRAINS, SELF, switch_ikk_running_unpower, vehicle_type_id) {
+    1856: return 12;
+    1857: return 14;
+    return 0;
+}
+
+
+switch (FEAT_TRAINS, SELF, switch_ikk_running, vehicle_is_potentially_powered) {
+    1: switch_yellowhead_running_power;
+    switch_yellowhead_running_unpower;
+}
+
+//Power
+
+switch (FEAT_TRAINS, SELF, switch_ikk_power_long_back, (position_in_consist_from_end / 3) + 1) {
+    2..3: return 1287;
+    5..6: return 1287;
+    8: return 1287;
+    return 0;
+}
+switch (FEAT_TRAINS, SELF, switch_ikk_power_long, (position_in_consist / 3) + 1) {
+    2..3: return 1287;
+    4..6: return 0;
+    switch_ikk_power_long_back;
+}
+
+switch (FEAT_TRAINS, SELF, switch_ikk_power_middium_front, (position_in_consist / 3) + 1) {
+    2..3: return 1287;
+    return 0;
+}
+switch (FEAT_TRAINS, SELF, switch_ikk_power_middium, (position_in_consist_from_end / 3) + 1) {
+    2..3: return 1287;
+    switch_ikk_power_middium_front;
+}
+
+switch (FEAT_TRAINS, SELF, switch_ikk_power_short, (position_in_consist_from_end / 3) + 1) {
+    2..3: return 1287;
+    return 0;
+}
+
+switch (FEAT_TRAINS, SELF, switch_ikk_power, num_vehs_in_consist / 3) {
+    2..4: switch_ikk_power_short;
+    5..9: switch_ikk_power_middium;
+    switch_ikk_power_long;
+}
+
+switch (FEAT_TRAINS, SELF, switch_ikk_traction, vehicle_is_potentially_powered) {
+    1: return int(0.185*255);
+    return 0;
+}
+
+// Articulate
+
+
+switch (FEAT_TRAINS, SELF, switch_ikk_articulated_part, extra_callback_info1) {
+    1..2: return ikk;
+    return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
+}
+
+
+
+
+
+item (FEAT_TRAINS, ikk) {
+    property {
+        // Menu
+        name:                           string(STR_NAME_IKK);
+        sprite_id:                      SPRITE_ID_NEW_TRAIN;
+        misc_flags:                     bitmask(TRAIN_FLAG_AUTOREFIT, TRAIN_FLAG_MU);
+        engine_class:                   ENGINE_CLASS_ELECTRIC;
+        
+        // Availability
+        climates_available:             ALL_CLIMATES;
+        introduction_date:              date(2001,09,04);
+        model_life:                     60;
+        retire_early:                   35;
+        vehicle_life:                   35;
+        track_type:                     SACA;
+
+        // Cargo
+        refittable_cargo_classes:       bitmask(CC_PASSENGERS);
+        non_refittable_cargo_classes:   0;
+        cargo_allow_refit:              [PASS, TOUR, YETI, YETY];
+        cargo_disallow_refit:           [];
+        refit_cost:                     0;
+        default_cargo_type:             PASS;
+        ai_special_flag:                AI_FLAG_PASSENGER;
+        cargo_capacity:                 1;
+        loading_speed:                  36 << param_loading_speed;
+        cargo_age_period:               140 << param_cargo_decay;
+
+        // Stats
+        speed:                          130 km/h;
+        power:                          908 kW;
+        weight:                         37 ton;
+        tractive_effort_coefficient:    0.185;
+        cost_factor:                    50;
+        running_cost_base:              RUNNING_COST_ELECTRIC;
+        running_cost_factor:            10;
+        reliability_decay:              10;
+        bitmask_vehicle_info:           bitmask(2);
+    }
+    graphics {
+        // Menu
+        additional_text:                string(STR_DESC_7, string(STR_ELECTRIC_25KVAC), string(STR_FULLNAME_IKK), string(STR_NICKNAME_IKK), string(STR_USEDLINE_KCRC), string(STR_MTR_FIRST_CAN_ATTACH_WAGON),string(STR_RELDEC_LOW, 10), string(STR_NORMAL_HEAD_SEAT));
+        can_attach_wagon:               muhead_with_first_class;
+        start_stop:                     mu4to16car;
+
+        // Graphics
+        default:                        switch_ikk_graphics;
+        purchase:                       switch_ikk_purchase_original;
+        articulated_part:               switch_ikk_articulated_part;
+
+        // Stats
+        length:                         switch_length_2_8_2;
+        speed:                          120;
+        power:                          return 0;
+        purchase_power:                 return 1218; // HP
+        tractive_effort_coefficient:    return 0;
+        purchase_tractive_effort_coefficient: return int(0.171*255);
+        cargo_capacity:                 switch_ikk_capacity;
+        cargo_age_period:               140 << param_cargo_decay;
+        cost_factor:                    50;
+        running_cost_factor:            12  * runningcostfactor() + 20;
+        purchase_running_cost_factor:   80;
+        purchase_cargo_capacity:        332/2;
+        bitmask_vehicle_info:           bitmask(2);
+    }
+
+    // Multiple Unit Wagons
+    livery_override(normal_emucoach) {
+        default:                        switch_ikk_middle_wagon_graphics;
+        cargo_capacity:                 switch_ikk_capacity;
+        power:                          switch_ikk_power;
+        tractive_effort_coefficient:    switch_ikk_traction;
+        length:                         switch_length_2_8_2;
+        weight:                         switch_ikk_weight;
+        can_attach_wagon:               mu_of_mtr;
+        cargo_age_period:               140 << param_cargo_decay;
+        bitmask_vehicle_info:           0;
+        articulated_part:               switch_mtr_wagon_articulated_part;
+        running_cost_factor:            switch_ikk_running() * runningcostfactor() + accostfactor();
+    }
+    livery_override(first_emucoach) {
+        default:                        switch_ikk_middle_wagon_graphics;
+        cargo_capacity:                 switch_ikk_1c_capacity;
+        power:                          switch_ikk_power;
+        tractive_effort_coefficient:    switch_ikk_traction;
+        length:                         switch_length_2_8_2;
+        weight:                         switch_ikk_weight;
+        can_attach_wagon:               mu_with_first_class;
+        cargo_age_period:               240 << param_cargo_decay;
+        bitmask_vehicle_info:           0;
+        articulated_part:               switch_mtr_wagon_articulated_part;
+        running_cost_factor:            switch_ikk_running() * runningcostfactor() + accostfactor();
+    }
+}
+
+// End IKK TRAIN

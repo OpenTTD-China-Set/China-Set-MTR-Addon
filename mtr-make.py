@@ -46,7 +46,7 @@ for gfx in gfx_list:            #读取hash并比较
             pass
         """ print(gfx_hash_path +"_32bpp.png") """
     except FileNotFoundError:                # 目标文件不存在时的处理
-        print(f"E: file:", gfx," not be found")
+        print(f"E: file:", gfx_hash_path," not be found")
         result = subprocess.run("renderobject -i "+ gfx +" -m manifest.json -overwrite -palette "+ gfx_palette_path +"ttd_palette.json", shell=True, capture_output=True, text=True)
         #print(gfx_palette_path +"ttd_palette.json")
         print(result.stdout, "render ", gfx)
@@ -100,3 +100,5 @@ other_lang_generate("traditional_chinese", 3, "0x0c")
 result = subprocess.run("nmlc chinaset-mtraddon.nml", shell=True, capture_output=True, text=True)
 print(result.stderr)
 print(result.stdout)
+
+input("Press Enter to close")

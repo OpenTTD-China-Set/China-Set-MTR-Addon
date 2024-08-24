@@ -1,56 +1,29 @@
 // Begin MLR
 // Vehicle
-spriteset (spriteset_mlr_c_a) {
-    template_empty ()
-}
-spriteset (spriteset_mlr_c_b) {
-    template_empty ()
-}
-spriteset (spriteset_mlr_t) {
-    template_empty ()
-}
-spriteset (spriteset_mlr_tp) {
-    template_empty ()
-}
-spriteset (spriteset_mlr_tp_r) {
-    template_empty ()
-}
-spriteset (spriteset_mlr_1c_c_b) {
-    template_empty ()
-}
-spriteset (spriteset_mlr_1c_t) {
-    template_empty ()
-}
-spriteset (spriteset_mlr_1c_tp) {
-    template_empty ()
-}
-spriteset (spriteset_mlr_1c_tp_r) {
-    template_empty ()
-}
 
 
-alternative_sprites (spriteset_mlr_c_a, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP) {
+spriteset (spriteset_mlr_c_a, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP) {
     template_standard ("25kvemu/mlr", "mlr-c-a")
 }
-alternative_sprites (spriteset_mlr_c_b, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP) {
+spriteset (spriteset_mlr_c_b, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP) {
     template_standard ("25kvemu/mlr", "mlr-c-b")
 }
-alternative_sprites (spriteset_mlr_t, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP) {
+spriteset (spriteset_mlr_t, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP) {
     template_standard ("25kvemu/mlr", "mlr-t")
 }
-alternative_sprites (spriteset_mlr_tp, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP) {
+spriteset (spriteset_mlr_tp, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP) {
     template_standard ("25kvemu/mlr", "mlr-tp")
 }
 /* alternative_sprites (spriteset_mlr_tp-r, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP) {
     template_standard ("25kvemu/mlr", "mlr-tp-r")
 } */
-alternative_sprites (spriteset_mlr_1c_c_b, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP) {
+spriteset (spriteset_mlr_1c_c_b, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP) {
     template_standard ("25kvemu/mlr", "mlr-1c-c-b")
 }
-alternative_sprites (spriteset_mlr_1c_t, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP) {
+spriteset (spriteset_mlr_1c_t, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP) {
     template_standard ("25kvemu/mlr", "mlr-1c-t")
 }
-alternative_sprites (spriteset_mlr_1c_tp, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP) {
+spriteset (spriteset_mlr_1c_tp, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP) {
     template_standard ("25kvemu/mlr", "mlr-1c-tp")
 }
 /* alternative_sprites (spriteset_mlr_1c_tp-r, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP) {
@@ -58,10 +31,8 @@ alternative_sprites (spriteset_mlr_1c_tp, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP) {
 }
  */
 // Purchase Menu
-spriteset (spriteset_mlr_purchase_original) {
-    template_purchase_empty ()
-}
-alternative_sprites(spriteset_mlr_purchase_original, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP) {
+
+spriteset (spriteset_mlr_purchase_original, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP) {
     template_purchase ("25kvemu/mlr", "mlr-c-a")
 }
 
@@ -130,7 +101,7 @@ switch (FEAT_TRAINS, SELF, switch_mlr_graphics, position_in_consist % 3) {
 switch (FEAT_TRAINS, SELF, switch_mlr_capacity_1, param_cargo_capacity) {
     0: return 166;
     1: return 249;
-    3: return 273;
+    3: return 415;
     4: return 498;
     5: return 664;
     return 332;
@@ -195,9 +166,7 @@ switch (FEAT_TRAINS, SELF, switch_mlr_articulated_part, extra_callback_info1) {
 
 //Text
 
-switch (FEAT_TRAINS, SELF, switch_mlr_additional_text, param_cargo_decay) {
-    return string(STR_DESC_6, string(STR_ELECTRIC_25KVAC), string(STR_MTR_FIRST_CAN_ATTACH_WAGON), string(STR_FULLNAME_MLR), string(STR_NICKNAME_MLR),string(STR_RELIABILITY_10), string(STR_NORMAL_HEAD_SEAT));
-}
+
 
 item (FEAT_TRAINS, mlr) {
     property {
@@ -241,7 +210,7 @@ item (FEAT_TRAINS, mlr) {
     }
     graphics {
         // Menu
-        additional_text:                 string(STR_DESC_6, string(STR_ELECTRIC_25KVAC), string(STR_MTR_FIRST_CAN_ATTACH_WAGON), string(STR_FULLNAME_MLR), string(STR_NICKNAME_MLR),string(STR_RELDEC_LOW, 10), string(STR_NORMAL_HEAD_SEAT));
+        additional_text:                string(STR_DESC_7, string(STR_ELECTRIC_25KVAC), string(STR_FULLNAME_MLR), string(STR_NICKNAME_MLR), string(STR_USEDLINE_ERL), string(STR_MTR_FIRST_CAN_ATTACH_WAGON), string(STR_FULLNAME_MLR), string(STR_NICKNAME_MLR),string(STR_RELDEC_LOW, 10), string(STR_NORMAL_HEAD_SEAT));
         can_attach_wagon:               muhead_with_first_class;
         start_stop:                     mu3multicar;
 

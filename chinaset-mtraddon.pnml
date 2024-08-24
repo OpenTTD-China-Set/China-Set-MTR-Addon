@@ -20,11 +20,11 @@
 #include "src/emucoach/normal-emucoach.pnml" 
 
 //25kV EMUS
-#include "src/25kvmu/yellowhead_main.pnml"
-#include "src/25kvmu/yellowhead_exurb.pnml"
-#include "src/25kvmu/yellowhead_suburb.pnml"
+#include "src/25kvmu/yellowhead-main.pnml"
+#include "src/25kvmu/yellowhead-exurb.pnml"
+#include "src/25kvmu/yellowhead-suburb.pnml"
 #include "src/25kvmu/mlr.pnml"
-
+#include "src/25kvmu/ikk-train.pnml"
 
 // Sort Vehicles
 #include "src/vehiclesort.pnml"

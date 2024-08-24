@@ -2,6 +2,7 @@ sort (FEAT_TRAINS, [
     yellowhead_exurb,
     yellowhead_suburb,
     mlr,
+    ikk,
     first_emucoach_with_mailroom,
     first_emucoach,
     first_emucoach_with_mailroom,

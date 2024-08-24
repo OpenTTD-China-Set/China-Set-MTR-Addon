@@ -1,41 +1,24 @@
 //Main of YellowHead Train
 // Vehicle
-spriteset (spriteset_yellowhead_c) {
-    template_empty ()
-}
-spriteset (spriteset_yellowhead_m) {
-    template_empty ()
-}
-spriteset (spriteset_yellowhead_c_reversed) {
-    template_empty ()
-}
-spriteset (spriteset_yellowhead_1c_c) {
-    template_empty ()
-}
-spriteset (spriteset_yellowhead_1c_m) {
-    template_empty ()
-}
-spriteset (spriteset_yellowhead_1c_c_reversed) {
-    template_empty ()
-}
 
 
-alternative_sprites (spriteset_yellowhead_c, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP) {
+
+spriteset (spriteset_yellowhead_c, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP) {
     template_standard ("25kvemu/yellowhead", "3049stock-c")
 }
-alternative_sprites (spriteset_yellowhead_m, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP) {
+spriteset (spriteset_yellowhead_m, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP) {
     template_standard ("25kvemu/yellowhead", "3049stock-tp") 
 }
-alternative_sprites (spriteset_yellowhead_c_reversed, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP) {
+spriteset (spriteset_yellowhead_c_reversed, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP) {
     template_standard ("25kvemu/yellowhead", "3049stock-c-r")
 }
-alternative_sprites (spriteset_yellowhead_1c_c, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP) {
+spriteset (spriteset_yellowhead_1c_c, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP) {
     template_standard ("25kvemu/yellowhead", "3049stock-1c-c")
 }
-alternative_sprites (spriteset_yellowhead_1c_m, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP) {
+spriteset (spriteset_yellowhead_1c_m, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP) {
     template_standard ("25kvemu/yellowhead", "3049stock-1c-tp")
 }
-alternative_sprites (spriteset_yellowhead_1c_c_reversed, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP) {
+spriteset (spriteset_yellowhead_1c_c_reversed, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP) {
     template_standard ("25kvemu/yellowhead", "3049stock-1c-c-r")
 }
 
