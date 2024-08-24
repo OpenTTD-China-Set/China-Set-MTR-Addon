@@ -233,6 +233,7 @@ item (FEAT_TRAINS, mlr) {
         purchase_running_cost_factor:   60;
         purchase_cargo_capacity:        332/2;
         bitmask_vehicle_info:           bitmask(2);
+        name:                           switch_yellowhead_name;
     }
 
     // Multiple Unit Wagons

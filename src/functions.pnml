@@ -184,13 +184,12 @@ switch (FEAT_TRAINS, SELF, muhead, vehicle_type_id) {
 switch (FEAT_TRAINS, SELF, singlemu, vehicle_type_id) {
     1024..1051: return CB_RESULT_ATTACH_ALLOW_IF_RAILTYPES;
     return CB_RESULT_ATTACH_DISALLOW;
-}
+}*/
 
 switch (FEAT_TRAINS, SELF, locowagon, vehicle_type_id) {
-    1024..1051: return CB_RESULT_ATTACH_DISALLOW;
-    8192..14335: return CB_RESULT_ATTACH_DISALLOW;
+    1856..2751: return CB_RESULT_ATTACH_DISALLOW;
     return CB_RESULT_ATTACH_ALLOW_IF_RAILTYPES;
-} */
+} 
 
 /* switch (FEAT_TRAINS, SELF, muwagon, vehicle_type_id) {
     1856..2751: return CB_RESULT_ATTACH_ALLOW_IF_RAILTYPES;

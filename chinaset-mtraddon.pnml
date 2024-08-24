@@ -15,9 +15,16 @@
 #include "src/function2.pnml"
 
 
-//Coeches
+//MU Wagon
 #include "src/emucoach/first-emucoach.pnml"
 #include "src/emucoach/normal-emucoach.pnml" 
+
+//25kV Locoamotives
+#include "src/25kvloco/lok2000.pnml"
+
+//Coaches
+#include "src/coaches/t2.pnml"
+#include "src/coaches/t1.pnml"
 
 //25kV EMUS
 #include "src/25kvmu/yellowhead-main.pnml"

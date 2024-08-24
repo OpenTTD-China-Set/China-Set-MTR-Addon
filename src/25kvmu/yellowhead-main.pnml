@@ -1,4 +1,10 @@
 //Main of YellowHead Train
+switch (FEAT_TRAINS, SELF, switch_yellowhead_name, getbits(extra_callback_info1, 0, 8) == 0x20? getbits(extra_callback_info1, 8, 8) : 0xFFFF) {
+    0: return string(STR_SERIES_YELLOWHEAD);
+    return CB_RESULT_NO_TEXT;
+}
+
+
 // Vehicle
 
 

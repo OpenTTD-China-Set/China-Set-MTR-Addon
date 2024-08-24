@@ -1,9 +1,12 @@
 sort (FEAT_TRAINS, [
+    lok2000,
+    t2,
+    t1,
     yellowhead_exurb,
     yellowhead_suburb,
     mlr,
     ikk,
-    first_emucoach_with_mailroom,
+    normal_emucoach,
     first_emucoach,
     first_emucoach_with_mailroom,
 ]);

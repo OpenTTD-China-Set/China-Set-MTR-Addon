@@ -86,6 +86,7 @@ item (FEAT_TRAINS, yellowhead_suburb) {
         cost_factor:                    40;
         running_cost_factor:            10  * runningcostfactor() + 20;
         purchase_cargo_capacity:        218/3;
+        name:                           switch_yellowhead_name;
     }
 
     // Multiple Unit Wagons

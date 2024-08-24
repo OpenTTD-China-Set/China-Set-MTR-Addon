@@ -64,6 +64,7 @@ item (FEAT_TRAINS, normal_emucoach) {
         running_cost_factor:            6 * runningcostfactor() * cafecostfactor() + accostfactor();
         purchase_running_cost_factor:   36;
         purchase_cargo_capacity:        333/3;
+        name:                           switch_emucoach_name;
     }
 }
 

@@ -11,9 +11,12 @@
 
 //Electric Locomotive, available ID range: 960-1023 (hex 0x03C0..0x03FF)
 //define id_range_electric_locomotive 0x03C0..0x03FF
+item (FEAT_TRAINS, lok2000, 960) {}
 
 //Coaches, available ID range: 1024-1535 (hex 0x0400..0x05FF)
 //define id_range_coaches 0x0400..0x05FF
+item (FEAT_TRAINS, t2, 1024) {}
+item (FEAT_TRAINS, t1, 1025) {}
 
 //Narrow Guage Coaches, available ID range: 1536-1663 (hex 0x0600..0x067F)
 //define id_range_narrow_guage_coaches 0x0600..0x067F
