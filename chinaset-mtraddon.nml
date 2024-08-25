@@ -425,6 +425,7 @@ item (FEAT_TRAINS, yellowhead_exurb, 1984) {}
 item (FEAT_TRAINS, yellowhead_suburb, 1985) {}
 item (FEAT_TRAINS, mlr, 1986) {}
 item (FEAT_TRAINS, ikk, 1987) {}
+item (FEAT_TRAINS, mtr380a, 1989) {}
 
 //1500V DC Electric Mutipile-Unit, available ID range: 2240-2751 (hex 0x08C0..0x0ABF)
 //define id_range_1500v_emu 0x08C0..0x0ABF
@@ -2114,7 +2115,7 @@ item (FEAT_TRAINS, mlr) {
     }
     graphics {
         // Menu
-        additional_text:                string(STR_DESC_7, string(STR_ELECTRIC_25KVAC), string(STR_FULLNAME_MLR), string(STR_NICKNAME_MLR), string(STR_USEDLINE_ERL), string(STR_MTR_FIRST_CAN_ATTACH_WAGON), string(STR_FULLNAME_MLR), string(STR_NICKNAME_MLR),string(STR_RELDEC_LOW, 10), string(STR_NORMAL_HEAD_SEAT));
+        additional_text:                string(STR_DESC_7, string(STR_ELECTRIC_25KVAC), string(STR_FULLNAME_MLR), string(STR_NICKNAME_MLR), string(STR_USEDLINE_ERL), string(STR_MTR_FIRST_CAN_ATTACH_WAGON),string(STR_RELDEC_LOW, 10), string(STR_NORMAL_HEAD_SEAT));
         can_attach_wagon:               muhead_with_first_class;
         start_stop:                     mu3multicar;
 
@@ -2519,6 +2520,359 @@ item (FEAT_TRAINS, ikk) {
 }
 
 // End IKK TRAIN
+// Begin MTR380A
+/* switch (FEAT_TRAINS, SELF, switch_mtr380a_name, getbits(extra_callback_info1, 0, 8) == 0x20? getbits(extra_callback_info1, 8, 8) : 0xFFFF) {
+    0: return string(STR_MTR380A_SERIES);
+    return CB_RESULT_NO_TEXT;
+} */
+// Graphics
+
+// Purchase Menu
+spriteset (spriteset_mtr380a_purchase_original, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP) {
+    template_purchase ("25kvemu/mtr380a", "mtr380a-tc")
+}
+
+// Vehicle
+spriteset (spriteset_mtr380a_front, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP) {
+    template_standard ("25kvemu/mtr380a", "mtr380a-tc")
+}
+spriteset (spriteset_mtr380a_middle_m, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP) {
+    template_standard ("25kvemu/mtr380a", "mtr380a-t")
+}
+spriteset (spriteset_mtr380a_middle_p, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP) {
+    template_reversed ("25kvemu/mtr380a", "mtr380a-tp")
+}
+spriteset (spriteset_mtr380a_middle_p_reversed, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP) {
+    template_standard ("25kvemu/mtr380a", "mtr380a-tp")
+}
+spriteset (spriteset_mtr380a_cab, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP) {
+    template_reversed ("25kvemu/mtr380a", "mtr380a-tc")
+}
+spriteset (spriteset_mtr380a_cab_reconect, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP) {
+    template_reversed ("25kvemu/mtr380a", "mtr380a-tc-c")
+}
+spriteset (spriteset_mtr380a_cab_reconect_reversed, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP) {
+    template_standard ("25kvemu/mtr380a", "mtr380a-tc-c")
+}
+
+
+switch (FEAT_TRAINS, SELF, switch_mtr380a_articulated_part, extra_callback_info1) {
+    1..2: return mtr380a;
+    return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
+}
+
+switch (FEAT_TRAINS, SELF, switch_mtr380a_front_graphics, position_in_articulated_veh % 3) {
+    1: spriteset_mtr380a_front;
+    empty_sprites;
+}
+
+switch (FEAT_TRAINS, SELF, switch_mtr380a_head_capacity, position_in_articulated_veh % 3) {
+    1: return 32;
+    return 0;
+}
+
+/* switch (FEAT_TRAINS, SELF, switch_mtr380a_middle_wagon_three_quarters, ((position_in_consist / 3) + 1) == (num_vehs_in_consist * 3 / 12)) {
+    1: spriteset_mtr380a_middle_p;
+    spriteset_mtr380a_middle_p_reversed;
+}
+
+switch (FEAT_TRAINS, SELF, switch_mtr380a_middle_wagon_one_quarter, ((position_in_consist / 3) + 1) == (num_vehs_in_consist / 12)) {
+    1: spriteset_mtr380a_middle_p;
+    spriteset_mtr380a_middle_p_reversed;
+}
+
+switch (FEAT_TRAINS, SELF, switch_mtr380a_middle_wagon_in_witch_quarters, ((position_in_consist / 3) + 1) == (num_vehs_in_consist * 3 / 12) || ((position_in_consist / 3) == (num_vehs_in_consist *3 / 12))) {
+    1: switch_mtr380a_middle_wagon_three_quarters;
+    switch_mtr380a_middle_wagon_one_quarter;
+}
+
+switch (FEAT_TRAINS, SELF, switch_mtr380a_if_middle_wagon_in_quarters, (((position_in_consist / 3) + 1) == (num_vehs_in_consist * 3 / 12) || ((position_in_consist / 3) == (num_vehs_in_consist *3 / 12))) || (((position_in_consist / 3) + 1) == (num_vehs_in_consist / 12) || ((position_in_consist / 3) == (num_vehs_in_consist / 12)))) {
+    1: switch_mtr380a_middle_wagon_in_witch_quarters;
+    spriteset_mtr380a_middle_m;
+}
+
+switch (FEAT_TRAINS, SELF, switch_mtr380a_middle_wagon_half_long, ((position_in_consist / 3) + 1) == (num_vehs_in_consist / 6)) {
+    1: spriteset_mtr380a_cab_reconect;
+    spriteset_mtr380a_cab_reconect_reversed;
+}
+
+switch (FEAT_TRAINS, SELF, switch_mtr380a_middle_wagon_reconect, (((position_in_consist / 3) + 1) == (num_vehs_in_consist / 6)) || ((position_in_consist / 3) == (num_vehs_in_consist / 6))) {
+    1: switch_mtr380a_middle_wagon_half_long;
+    switch_mtr380a_if_middle_wagon_in_quarters;
+}
+
+
+switch (FEAT_TRAINS, SELF, switch_mtr380a_middle_wagon_half_meddium, ((position_in_consist / 3) + 1) == (num_vehs_in_consist / 6)) {
+    1: spriteset_mtr380a_middle_p;
+    spriteset_mtr380a_middle_p_reversed;
+}
+
+switch (FEAT_TRAINS, SELF, switch_mtr380a_if_middle_wagon_half_meddium, (((position_in_consist / 3) + 1) == (num_vehs_in_consist / 6)) || ((position_in_consist / 3) == (num_vehs_in_consist / 6))) {
+    1: switch_mtr380a_middle_wagon_half_meddium;
+    spriteset_mtr380a_middle_m;
+}
+
+
+switch (FEAT_TRAINS, SELF, switch_mtr380a_if_middle_wagon_half_short, ((position_in_consist / 3) + 1) == (num_vehs_in_consist / 6)) {
+    1: spriteset_mtr380a_middle_p;
+    spriteset_mtr380a_middle_m;
+}
+
+
+switch (FEAT_TRAINS, SELF, switch_mtr380a_length_class, num_vehs_in_consist / 3) {
+    2..6:   switch_mtr380a_if_middle_wagon_half_short;
+    7..12:  switch_mtr380a_if_middle_wagon_half_meddium;
+    switch_mtr380a_middle_wagon_reconect;
+}
+
+switch (FEAT_TRAINS, SELF, switch_mtr380a_if_wagon_end, position_in_consist_from_end == 1) {
+    1: spriteset_mtr380a_cab;
+    switch_mtr380a_length_class;
+}
+
+switch (FEAT_TRAINS, SELF, switch_mtr380a_wagon_graphics, (position_in_consist_from_end % 3) == 1) {
+    1: switch_mtr380a_if_wagon_end;
+    empty_sprites;
+}
+ */
+
+switch (FEAT_TRAINS, SELF, switch_mtr380a_middle_wagon_back, (position_in_consist_from_end / 3) + 1 - (num_vehs_in_consist / 24)) {
+    2: spriteset_mtr380a_middle_p_reversed;
+    4: spriteset_mtr380a_middle_p;
+    spriteset_mtr380a_middle_m;
+}
+
+switch (FEAT_TRAINS, SELF, switch_mtr380a_middle_wagon_front, (position_in_consist / 3) + 1 - (num_vehs_in_consist / 24)) {
+    2: spriteset_mtr380a_middle_p;
+    4: spriteset_mtr380a_middle_p_reversed;
+    spriteset_mtr380a_middle_m;
+}
+
+
+switch (FEAT_TRAINS, SELF, switch_mtr380a_if_middle_wagon_front_or_back, (position_in_consist / 3) + 1 <= (num_vehs_in_consist / 6)) {
+    1: switch_mtr380a_middle_wagon_front;
+    switch_mtr380a_middle_wagon_back;
+}
+
+switch (FEAT_TRAINS, SELF, switch_mtr380a_middle_wagon_half_long, ((position_in_consist / 3) + 1) == (num_vehs_in_consist / 6)) {
+    1: spriteset_mtr380a_cab_reconect;
+    spriteset_mtr380a_cab_reconect_reversed;
+}
+
+switch (FEAT_TRAINS, SELF, switch_mtr380a_middle_wagon_reconect, (((position_in_consist / 3) + 1) == (num_vehs_in_consist / 6)) || ((position_in_consist / 3) == (num_vehs_in_consist / 6))) {
+    1: switch_mtr380a_middle_wagon_half_long;
+    switch_mtr380a_if_middle_wagon_front_or_back;
+}
+
+
+
+switch (FEAT_TRAINS, SELF, switch_mtr380a_if_middle_wagon_tp_short, (position_in_consist / 3) + 1 - (num_vehs_in_consist / 12)) {//8节时，后面的参数时2，此时4,6节有动力
+    2: spriteset_mtr380a_middle_p;
+    4: spriteset_mtr380a_middle_p_reversed;
+    spriteset_mtr380a_middle_m;
+}
+
+
+switch (FEAT_TRAINS, SELF, switch_mtr380a_length_class, num_vehs_in_consist / 3) {
+    2..12:   switch_mtr380a_if_middle_wagon_tp_short;
+    switch_mtr380a_middle_wagon_reconect;
+}
+
+switch (FEAT_TRAINS, SELF, switch_mtr380a_if_wagon_end, position_in_consist_from_end == 1) {
+    1: spriteset_mtr380a_cab;
+    switch_mtr380a_length_class;
+}
+
+switch (FEAT_TRAINS, SELF, switch_mtr380a_wagon_graphics, (position_in_consist_from_end % 3) == 1) {
+    1: switch_mtr380a_if_wagon_end;
+    empty_sprites;
+}
+//cap
+
+switch (FEAT_TRAINS, SELF, switch_mtr380a_middle_capacity, vehicle_type_id) {
+    normal_emucoach: return 91;
+    first_emucoach: return 56;
+    return 0;
+}
+
+switch (FEAT_TRAINS, SELF, switch_mtr380a_cab_capacity, vehicle_type_id) {
+    normal_emucoach: 50;
+    first_emucoach: 36;
+    return 0;
+}
+
+
+switch (FEAT_TRAINS, SELF, switch_mtr380a_wagon_capacity_if_reconect_cab, (((position_in_consist / 3) + 1) == (num_vehs_in_consist / 6)) || ((position_in_consist / 3) == (num_vehs_in_consist / 6))) {
+    0: switch_mtr380a_middle_capacity;
+    switch_mtr380a_cab_capacity;
+}
+
+switch (FEAT_TRAINS, SELF, switch_mtr380a_wagon_capacity_reconect, (position_in_consist < 3) || (position_in_consist_from_end < 3)) {
+    0: switch_mtr380a_wagon_capacity_if_reconect_cab;
+    switch_mtr380a_cab_capacity;
+}
+
+switch (FEAT_TRAINS, SELF, switch_mtr380a_wagon_capacity_single, (position_in_consist < 3) || (position_in_consist_from_end < 3)) {
+    0: switch_mtr380a_middle_capacity;
+    switch_mtr380a_cab_capacity;
+}
+
+switch (FEAT_TRAINS, SELF, switch_mtr380a_wagon_capacity, num_vehs_in_consist / 3) {
+    2..12: switch_mtr380a_wagon_capacity_single;
+    switch_mtr380a_wagon_capacity_reconect;
+}
+
+/* switch (FEAT_TRAINS, SELF, switch_mtr380a_wagon_capacity, position_in_consist_from_end) {
+    0..2: switch_mtr380a_cab_capacity;
+    switch_mtr380a_middle_capacity;
+} */
+
+
+switch (FEAT_TRAINS, SELF, switch_mtr380a_wagon_running_power, vehicle_type_id) {
+    normal_emucoach: return 55;
+    first_emucoach: return 66;
+    return 0;
+}
+
+switch (FEAT_TRAINS, SELF, switch_mtr380a_wagon_running_unpower, vehicle_type_id) {
+    normal_emucoach: return 10;
+    first_emucoach: return 12;
+    return 0;
+}
+
+switch (FEAT_TRAINS, SELF, switch_mtr380a_wagon_running, vehicle_is_potentially_powered) {
+    1: switch_mtr380a_wagon_running_power;
+    switch_mtr380a_wagon_running_unpower;
+}
+
+switch (FEAT_TRAINS, SELF, switch_mtr380a_wagon_power_if_reconect_cab, (((position_in_consist / 3) + 1) == (num_vehs_in_consist / 6)) || ((position_in_consist / 3) == (num_vehs_in_consist / 6))) {
+    0: return 2038; // 2038 HP = 1520 KW
+    return 0;
+}
+
+switch (FEAT_TRAINS, SELF, switch_mtr380a_wagon_power_reconect, (position_in_consist < 3) || (position_in_consist_from_end < 3)) {
+    0: switch_mtr380a_wagon_power_if_reconect_cab;
+    return 0;
+}
+
+switch (FEAT_TRAINS, SELF, switch_mtr380a_wagon_power_single, (position_in_consist < 3) || (position_in_consist_from_end < 3)) {
+    0: return 2038; // 2038 HP = 1520 KW
+    return 0;
+}
+
+switch (FEAT_TRAINS, SELF, switch_mtr380a_wagon_power, num_vehs_in_consist / 3) {
+    2..12: switch_mtr380a_wagon_power_single;
+    switch_mtr380a_wagon_power_reconect;
+}
+
+/* switch (FEAT_TRAINS, SELF, switch_mtr380a_wagon_power, (position_in_consist < 3) || (position_in_consist_from_end < 3)) {
+    0: return 2038; // 2038 HP = 1520 KW
+    return 0;
+} */
+
+switch (FEAT_TRAINS, SELF, switch_mtr380a_wagon_traction, vehicle_is_potentially_powered) {
+    1: return int(0.0825*255);
+    return 0;
+}
+
+
+item (FEAT_TRAINS, mtr380a) {
+    property {
+        // Menu
+        name:                           string(STR_NAME_MTR380A);
+        sprite_id:                      SPRITE_ID_NEW_TRAIN;
+        misc_flags:                     bitmask(TRAIN_FLAG_AUTOREFIT, TRAIN_FLAG_MU);
+        engine_class:                   ENGINE_CLASS_ELECTRIC;
+
+        // Availability
+        climates_available:             ALL_CLIMATES;
+        introduction_date:              date(2013,11,07);
+        model_life:                     VEHICLE_NEVER_EXPIRES;
+        vehicle_life:                   25;
+        track_type:                     SAAA;
+
+        // Cargo
+        refittable_cargo_classes:       bitmask(CC_PASSENGERS);
+        non_refittable_cargo_classes:   0;
+        cargo_allow_refit:              [PASS, TOUR, YETI, YETY];
+        cargo_disallow_refit:           [];
+        refit_cost:                     0;
+        default_cargo_type:             PASS;
+        ai_special_flag:                AI_FLAG_PASSENGER;
+        cargo_capacity:                 1;
+        loading_speed:                  8 << param_loading_speed;
+        cargo_age_period:               400 << param_cargo_decay;
+
+        // Stats
+        speed:                          310 km/h;
+        power:                          1520 kW;
+        weight:                         51 ton;
+        tractive_effort_coefficient:    0.083;
+        cost_factor:                    68;
+        running_cost_base:              RUNNING_COST_ELECTRIC;
+        running_cost_factor:            56;
+        reliability_decay:              12;
+        bitmask_vehicle_info:           bitmask(2);
+        
+    }
+    graphics {
+        // Menu
+        additional_text:                string(STR_DESC_8, string(STR_FULLNAME_MTR380A), string(STR_NICKNAME_MTR380A), string(STR_USEDLINE_XRL), string(STR_MTR_FIRST_CAN_ATTACH_WAGON), string(STR_MTR380A_CONSIST), string(STR_RELDEC_LOW, 12), string(STR_FIRST_HEAD_SEAT), string(STR_350_AVAILABLE));
+        can_attach_wagon:               muhead_with_first_class;
+        start_stop:                     mu4to24car;
+        cargo_subtype_text:             switch_crh380_cargo_subtype;
+
+        // Graphics
+        default:                        switch_mtr380a_front_graphics;
+        purchase:                       spriteset_mtr380a_purchase_original;
+        articulated_part:               switch_mtr380a_articulated_part;
+
+        // Stats
+        length:                         switch_length_2_8_2;
+        speed:                          switch_crh380_speed;
+        power:                          return 0;
+        purchase_power:                 return 2038; // HP
+        tractive_effort_coefficient:    return 0;
+        purchase_tractive_effort_coefficient: return int(0.083*255);
+        cargo_capacity:                 switch_mtr380a_head_capacity;
+        cargo_age_period:               100 * cafedecayfactor() << param_cargo_decay;
+        cost_factor:                    68;
+        running_cost_factor:            (54 + crhspeedcost()) * runningcostfactor() * cafecostfactor() + 20;
+        purchase_running_cost_factor:   236;
+        purchase_cargo_capacity:        36/3;
+/*         name:                           switch_mtr380a_name; */
+    }
+
+    // Multiple Unit Wagons
+    livery_override(normal_emucoach) {
+        default:                        switch_mtr380a_wagon_graphics;
+        cargo_capacity:                 switch_mtr380a_wagon_capacity;
+        power:                          switch_mtr380a_wagon_power;
+        tractive_effort_coefficient:    switch_mtr380a_wagon_traction;
+        length:                         switch_length_2_8_2;
+        weight:                         51;
+        can_attach_wagon:               mu_of_mtr;
+        cargo_age_period:               (60 * 4) << param_cargo_decay;
+        bitmask_vehicle_info:           return 0;
+        articulated_part:               switch_mtr_wagon_articulated_part;
+        running_cost_factor:            (switch_mtr380a_wagon_running() + crhspeedcost()) * runningcostfactor() * cafecostfactor() + accostfactor();
+    }
+    livery_override(first_emucoach) {
+        default:                        switch_mtr380a_wagon_graphics;
+        cargo_capacity:                 switch_mtr380a_wagon_capacity;
+        power:                          switch_mtr380a_wagon_power;
+        tractive_effort_coefficient:    switch_mtr380a_wagon_traction;
+        length:                         switch_length_2_8_2;
+        weight:                         51;
+        can_attach_wagon:               mu_of_mtr;
+        cargo_age_period:               (100 * 4) << param_cargo_decay;
+        bitmask_vehicle_info:           return 0;
+        articulated_part:               switch_mtr_wagon_articulated_part;
+        running_cost_factor:            (switch_mtr380a_wagon_running() + crhspeedcost()) * runningcostfactor() * cafecostfactor() + accostfactor();
+    }
+}
+
+// End MTR380A
 sort (FEAT_TRAINS, [
     lok2000,
     t2,
@@ -2527,6 +2881,7 @@ sort (FEAT_TRAINS, [
     yellowhead_suburb,
     mlr,
     ikk,
+    mtr380a,
     normal_emucoach,
     first_emucoach,
     first_emucoach_with_mailroom,

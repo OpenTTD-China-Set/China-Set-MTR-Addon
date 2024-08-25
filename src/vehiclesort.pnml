@@ -6,6 +6,7 @@ sort (FEAT_TRAINS, [
     yellowhead_suburb,
     mlr,
     ikk,
+    mtr380a,
     normal_emucoach,
     first_emucoach,
     first_emucoach_with_mailroom,

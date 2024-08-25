@@ -32,6 +32,6 @@
 #include "src/25kvmu/yellowhead-suburb.pnml"
 #include "src/25kvmu/mlr.pnml"
 #include "src/25kvmu/ikk-train.pnml"
-
+#include "src/25kvmu/mtr380a.pnml"
 // Sort Vehicles
 #include "src/vehiclesort.pnml"

@@ -210,7 +210,7 @@ item (FEAT_TRAINS, mlr) {
     }
     graphics {
         // Menu
-        additional_text:                string(STR_DESC_7, string(STR_ELECTRIC_25KVAC), string(STR_FULLNAME_MLR), string(STR_NICKNAME_MLR), string(STR_USEDLINE_ERL), string(STR_MTR_FIRST_CAN_ATTACH_WAGON), string(STR_FULLNAME_MLR), string(STR_NICKNAME_MLR),string(STR_RELDEC_LOW, 10), string(STR_NORMAL_HEAD_SEAT));
+        additional_text:                string(STR_DESC_7, string(STR_ELECTRIC_25KVAC), string(STR_FULLNAME_MLR), string(STR_NICKNAME_MLR), string(STR_USEDLINE_ERL), string(STR_MTR_FIRST_CAN_ATTACH_WAGON),string(STR_RELDEC_LOW, 10), string(STR_NORMAL_HEAD_SEAT));
         can_attach_wagon:               muhead_with_first_class;
         start_stop:                     mu3multicar;
 
