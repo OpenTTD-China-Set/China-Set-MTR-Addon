@@ -136,9 +136,9 @@ switch (FEAT_TRAINS, SELF, switch_normal_emucoach_articulated_part, extra_callba
 }
 
 switch (FEAT_TRAINS, SELF, switch_mtr_wagon_articulated_part, vehicle_type_id) {
-    1856: switch_normal_emucoach_articulated_part;
-    1857: switch_first_emucoach_articulated_part;
-    1858: switch_first_emucoach_articulated_part_with_mailroom;
+    normal_emucoach: switch_normal_emucoach_articulated_part;
+    first_emucoach: switch_first_emucoach_articulated_part;
+    first_emucoach_with_mailroom: switch_first_emucoach_articulated_part_with_mailroom;
     return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
 }
 

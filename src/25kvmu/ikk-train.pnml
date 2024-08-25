@@ -336,7 +336,7 @@ item (FEAT_TRAINS, ikk) {
         tractive_effort_coefficient:    switch_ikk_traction;
         length:                         switch_length_2_8_2;
         weight:                         switch_ikk_weight;
-        can_attach_wagon:               mu_with_first_class;
+        can_attach_wagon:               mu_of_mtr;
         cargo_age_period:               240 << param_cargo_decay;
         bitmask_vehicle_info:           0;
         articulated_part:               switch_mtr_wagon_articulated_part;

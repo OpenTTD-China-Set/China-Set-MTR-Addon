@@ -175,7 +175,7 @@ item (FEAT_TRAINS, mlr) {
         sprite_id:                      SPRITE_ID_NEW_TRAIN;
         misc_flags:                     bitmask(TRAIN_FLAG_AUTOREFIT, TRAIN_FLAG_MU);
         engine_class:                   ENGINE_CLASS_ELECTRIC;
-        variant_group:                  1984;
+        variant_group:                  yellowhead_exurb;
         
         // Availability
         climates_available:             ALL_CLIMATES;
@@ -258,7 +258,7 @@ item (FEAT_TRAINS, mlr) {
         tractive_effort_coefficient:    switch_yellowhead_traction;
         length:                         switch_length_2_7_2;
         weight:                         switch_yellowhead_weight;
-        can_attach_wagon:               mu_with_first_class;
+        can_attach_wagon:               mu_of_mtr;
         cargo_age_period:               240 << param_cargo_decay;
         bitmask_vehicle_info:           0;
         articulated_part:               switch_mtr_wagon_articulated_part;

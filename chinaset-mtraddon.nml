@@ -3,8 +3,8 @@ grf {
     name:    string(STR_GRF_NAME);
     desc:    string(STR_DESC_4, string(STR_GRF_DESC), string(STR_GRF_DESC_README),string(STR_GRF_DESC_MTR));
     url:     string(STR_GRF_URL);
-    version: 5;
-    min_compatible_version: 5;
+    version: 6;
+    min_compatible_version: 6;
 
     param 0 {
         param_loading_speed {
@@ -605,6 +605,19 @@ switch (FEAT_TRAINS, SELF, airconditioner, vehicle_is_powered) {
     return 0;
 }
 
+//Can attach
+
+switch (FEAT_TRAINS, SELF, can_attach_in_mtr, grfid) {
+    str2number("\5F\5F\03\02"): return CB_RESULT_ATTACH_ALLOW_IF_RAILTYPES;
+    return CB_RESULT_ATTACH_DISALLOW;
+}
+
+switch (FEAT_TRAINS, SELF, cannot_attach_in_mtr, grfid) {
+    str2number("\5F\5F\03\02"): return CB_RESULT_ATTACH_DISALLOW;
+    return CB_RESULT_ATTACH_ALLOW_IF_RAILTYPES;
+}
+
+
 /* switch (FEAT_TRAINS, SELF, crhwagon, vehicle_type_id) {
     1024..1035: return CB_RESULT_ATTACH_ALLOW_IF_RAILTYPES;
     return CB_RESULT_ATTACH_DISALLOW;
@@ -623,8 +636,8 @@ switch (FEAT_TRAINS, SELF, singlemu, vehicle_type_id) {
 }*/
 
 switch (FEAT_TRAINS, SELF, locowagon, vehicle_type_id) {
-    1856..2751: return CB_RESULT_ATTACH_DISALLOW;
-    return CB_RESULT_ATTACH_ALLOW_IF_RAILTYPES;
+    1856..2751: return cannot_attach_in_mtr;
+    return can_attach_in_mtr;
 } 
 
 /* switch (FEAT_TRAINS, SELF, muwagon, vehicle_type_id) {
@@ -638,37 +651,37 @@ switch (FEAT_TRAINS, SELF, muhead_mtr, vehicle_type_id) {
 } */
 //Atention: Different from China Set : Trains, can_attach swiths' name are named by type cars whivh use them 
 
-switch (FEAT_TRAINS, SELF, mu_with_first_class, vehicle_type_id) {
+/* switch (FEAT_TRAINS, SELF, mu_with_first_class, vehicle_type_id) {
     1856..1859: return CB_RESULT_ATTACH_ALLOW_IF_RAILTYPES;
     1984: return CB_RESULT_ATTACH_ALLOW_IF_RAILTYPES;
     1986: return CB_RESULT_ATTACH_ALLOW_IF_RAILTYPES;
     return CB_RESULT_ATTACH_DISALLOW;
-}
+} */
 
 switch (FEAT_TRAINS, SELF, mu_of_mtr, vehicle_type_id) {
-    1856..2751: return CB_RESULT_ATTACH_ALLOW_IF_RAILTYPES;
-    return CB_RESULT_ATTACH_DISALLOW;
+    1856..2751: return can_attach_in_mtr;
+    return cannot_attach_in_mtr;
 }
 
 switch (FEAT_TRAINS, SELF, muhead_with_first_class, vehicle_type_id) {
-    1856..1857: return CB_RESULT_ATTACH_ALLOW_IF_RAILTYPES;
-    return CB_RESULT_ATTACH_DISALLOW;
+    1856..1857: return can_attach_in_mtr;
+    return cannot_attach_in_mtr;
 }
 
 switch (FEAT_TRAINS, SELF, muhead_yellowhead_exurb, vehicle_type_id) {
-    1856..1858: return CB_RESULT_ATTACH_ALLOW_IF_RAILTYPES;
-    return CB_RESULT_ATTACH_DISALLOW;
+    1856..1858: return can_attach_in_mtr;
+    return cannot_attach_in_mtr;
 }
 
 switch (FEAT_TRAINS, SELF, muhead_airport_express, vehicle_type_id) {
-    1857: return CB_RESULT_ATTACH_ALLOW_IF_RAILTYPES;
-    1859: return CB_RESULT_ATTACH_ALLOW_IF_RAILTYPES;
-    return CB_RESULT_ATTACH_DISALLOW;
+    1857: return can_attach_in_mtr;
+    1859: return can_attach_in_mtr;
+    return cannot_attach_in_mtr;
 }
 
 switch (FEAT_TRAINS, SELF, muhead_without_first_class, vehicle_type_id) {
-    1856: return CB_RESULT_ATTACH_ALLOW_IF_RAILTYPES;
-    return CB_RESULT_ATTACH_DISALLOW;
+    1856: return can_attach_in_mtr;
+    return cannot_attach_in_mtr;
 }
 
 
@@ -960,9 +973,9 @@ switch (FEAT_TRAINS, SELF, switch_normal_emucoach_articulated_part, extra_callba
 }
 
 switch (FEAT_TRAINS, SELF, switch_mtr_wagon_articulated_part, vehicle_type_id) {
-    1856: switch_normal_emucoach_articulated_part;
-    1857: switch_first_emucoach_articulated_part;
-    1858: switch_first_emucoach_articulated_part_with_mailroom;
+    normal_emucoach: switch_normal_emucoach_articulated_part;
+    first_emucoach: switch_first_emucoach_articulated_part;
+    first_emucoach_with_mailroom: switch_first_emucoach_articulated_part_with_mailroom;
     return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
 }
 
@@ -995,7 +1008,7 @@ item (FEAT_TRAINS, first_emucoach) {
         name:                           string(STR_NAME_FIRST_EMUCOACH);
         sprite_id:                      SPRITE_ID_NEW_TRAIN;
         misc_flags:                     bitmask(TRAIN_FLAG_AUTOREFIT);
-        variant_group:                  1856;
+        variant_group:                  normal_emucoach;
 
         // Availability
         climates_available:             ALL_CLIMATES;
@@ -1027,7 +1040,7 @@ item (FEAT_TRAINS, first_emucoach) {
     graphics {
         // Menu
         additional_text:                string(STR_DESC_3, string(STR_ATTACH_MTR_FIRST_EMU), string(STR_COMFORT_MEDIUM, 240));
-        can_attach_wagon:               mu_with_first_class;
+        can_attach_wagon:               mu_of_mtr;
 
         // Graphics
         default:                        switch_mtruw_1c_original;
@@ -1051,7 +1064,7 @@ item (FEAT_TRAINS, first_emucoach_with_mailroom) {
         name:                           string(STR_NAME_FIRST_EMUCOACH_WITH_MAILROOM);
         sprite_id:                      SPRITE_ID_NEW_TRAIN;
         misc_flags:                     bitmask(TRAIN_FLAG_AUTOREFIT);
-        variant_group:                  1856;
+        variant_group:                  normal_emucoach;
 
         // Availability
         climates_available:             ALL_CLIMATES;
@@ -1083,7 +1096,7 @@ item (FEAT_TRAINS, first_emucoach_with_mailroom) {
     graphics {
         // Menu
         additional_text:                string(STR_DESC_2, string(STR_ATTACH_MTR_FIRST_EMU_WUTH_MAILROOM), string(STR_WITH_MAILROOM), string(STR_COMFORT_MEDIUM, 240), string(STR_FRESHNESS_MEDIUM));
-        can_attach_wagon:               mu_with_first_class;
+        can_attach_wagon:               mu_of_mtr;
 
         // Graphics
         default:                        switch_mtruw_1c_withmailroom_original;
@@ -1571,8 +1584,9 @@ switch (FEAT_TRAINS, SELF, switch_yellowhead_normal_wagon, position_in_consist %
 } 
 
 switch (FEAT_TRAINS, SELF, switch_yellowhead_wagon_type, vehicle_type_id) {
-    1856: switch_yellowhead_normal_wagon;
-    1857..1858: switch_yellowhead_first_wagon;
+    normal_emucoach: switch_yellowhead_normal_wagon;
+    first_emucoach: switch_yellowhead_first_wagon;
+    first_emucoach_with_mailroom: switch_yellowhead_first_wagon;
     empty_sprites;
 } 
 
@@ -1612,15 +1626,17 @@ switch (FEAT_TRAINS, SELF, switch_yellowhead_capacity, position_in_consist % 3) 
 
 
 switch (FEAT_TRAINS, SELF, switch_yellowhead_running_power, vehicle_type_id) {
-    1856: return 32;
-    1857: return 36;
+    normal_emucoach: return 32;
+    first_emucoach: return 36;
+    first_emucoach_with_mailroom: return 36;
     return 0;
 }
 
 
 switch (FEAT_TRAINS, SELF, switch_yellowhead_running_unpower, vehicle_type_id) {
-    1856: return 10;
-    1857: return 12;
+    normal_emucoach: return 10;
+    first_emucoach: return 12;
+    first_emucoach_with_mailroom: return 36;
     return 0;
 }
 
@@ -1769,7 +1785,7 @@ item (FEAT_TRAINS, yellowhead_exurb) {
         tractive_effort_coefficient:    switch_yellowhead_traction;
         length:                         switch_length_2_7_2;
         weight:                         switch_yellowhead_weight;
-        can_attach_wagon:               mu_with_first_class;
+        can_attach_wagon:               mu_of_mtr;
         cargo_age_period:               240 << param_cargo_decay;
         bitmask_vehicle_info:           0;
         articulated_part:               switch_mtr_wagon_articulated_part;
@@ -1782,7 +1798,7 @@ item (FEAT_TRAINS, yellowhead_exurb) {
         tractive_effort_coefficient:    switch_yellowhead_traction;
         length:                         switch_length_2_7_2;
         weight:                         switch_yellowhead_weight;
-        can_attach_wagon:               mu_with_first_class;
+        can_attach_wagon:               mu_of_mtr;
         cargo_age_period:               240 << param_cargo_decay;
         bitmask_vehicle_info:           0;
         articulated_part:               switch_mtr_wagon_articulated_part;
@@ -1825,7 +1841,7 @@ item (FEAT_TRAINS, yellowhead_suburb) {
         sprite_id:                      SPRITE_ID_NEW_TRAIN;
         misc_flags:                     bitmask(TRAIN_FLAG_AUTOREFIT, TRAIN_FLAG_MU);
         engine_class:                   ENGINE_CLASS_ELECTRIC;
-        variant_group:                  1984;
+        variant_group:                  yellowhead_exurb;
 
         // Availability
         climates_available:             ALL_CLIMATES;
@@ -2080,7 +2096,7 @@ item (FEAT_TRAINS, mlr) {
         sprite_id:                      SPRITE_ID_NEW_TRAIN;
         misc_flags:                     bitmask(TRAIN_FLAG_AUTOREFIT, TRAIN_FLAG_MU);
         engine_class:                   ENGINE_CLASS_ELECTRIC;
-        variant_group:                  1984;
+        variant_group:                  yellowhead_exurb;
         
         // Availability
         climates_available:             ALL_CLIMATES;
@@ -2163,7 +2179,7 @@ item (FEAT_TRAINS, mlr) {
         tractive_effort_coefficient:    switch_yellowhead_traction;
         length:                         switch_length_2_7_2;
         weight:                         switch_yellowhead_weight;
-        can_attach_wagon:               mu_with_first_class;
+        can_attach_wagon:               mu_of_mtr;
         cargo_age_period:               240 << param_cargo_decay;
         bitmask_vehicle_info:           0;
         articulated_part:               switch_mtr_wagon_articulated_part;
@@ -2511,7 +2527,7 @@ item (FEAT_TRAINS, ikk) {
         tractive_effort_coefficient:    switch_ikk_traction;
         length:                         switch_length_2_8_2;
         weight:                         switch_ikk_weight;
-        can_attach_wagon:               mu_with_first_class;
+        can_attach_wagon:               mu_of_mtr;
         cargo_age_period:               240 << param_cargo_decay;
         bitmask_vehicle_info:           0;
         articulated_part:               switch_mtr_wagon_articulated_part;
@@ -2543,7 +2559,7 @@ spriteset (spriteset_mtr380a_middle_p, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP) {
     template_reversed ("25kvemu/mtr380a", "mtr380a-tp")
 }
 spriteset (spriteset_mtr380a_middle_p_reversed, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP) {
-    template_standard ("25kvemu/mtr380a", "mtr380a-tp")
+    template_reversed ("25kvemu/mtr380a", "mtr380a-tp-r")
 }
 spriteset (spriteset_mtr380a_cab, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP) {
     template_reversed ("25kvemu/mtr380a", "mtr380a-tc")
@@ -2555,7 +2571,7 @@ spriteset (spriteset_mtr380a_cab_reconect_reversed, ZOOM_LEVEL_IN_4X, BIT_DEPTH_
     template_standard ("25kvemu/mtr380a", "mtr380a-tc-c")
 }
 
-
+//GFX
 switch (FEAT_TRAINS, SELF, switch_mtr380a_articulated_part, extra_callback_info1) {
     1..2: return mtr380a;
     return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
@@ -2571,70 +2587,7 @@ switch (FEAT_TRAINS, SELF, switch_mtr380a_head_capacity, position_in_articulated
     return 0;
 }
 
-/* switch (FEAT_TRAINS, SELF, switch_mtr380a_middle_wagon_three_quarters, ((position_in_consist / 3) + 1) == (num_vehs_in_consist * 3 / 12)) {
-    1: spriteset_mtr380a_middle_p;
-    spriteset_mtr380a_middle_p_reversed;
-}
 
-switch (FEAT_TRAINS, SELF, switch_mtr380a_middle_wagon_one_quarter, ((position_in_consist / 3) + 1) == (num_vehs_in_consist / 12)) {
-    1: spriteset_mtr380a_middle_p;
-    spriteset_mtr380a_middle_p_reversed;
-}
-
-switch (FEAT_TRAINS, SELF, switch_mtr380a_middle_wagon_in_witch_quarters, ((position_in_consist / 3) + 1) == (num_vehs_in_consist * 3 / 12) || ((position_in_consist / 3) == (num_vehs_in_consist *3 / 12))) {
-    1: switch_mtr380a_middle_wagon_three_quarters;
-    switch_mtr380a_middle_wagon_one_quarter;
-}
-
-switch (FEAT_TRAINS, SELF, switch_mtr380a_if_middle_wagon_in_quarters, (((position_in_consist / 3) + 1) == (num_vehs_in_consist * 3 / 12) || ((position_in_consist / 3) == (num_vehs_in_consist *3 / 12))) || (((position_in_consist / 3) + 1) == (num_vehs_in_consist / 12) || ((position_in_consist / 3) == (num_vehs_in_consist / 12)))) {
-    1: switch_mtr380a_middle_wagon_in_witch_quarters;
-    spriteset_mtr380a_middle_m;
-}
-
-switch (FEAT_TRAINS, SELF, switch_mtr380a_middle_wagon_half_long, ((position_in_consist / 3) + 1) == (num_vehs_in_consist / 6)) {
-    1: spriteset_mtr380a_cab_reconect;
-    spriteset_mtr380a_cab_reconect_reversed;
-}
-
-switch (FEAT_TRAINS, SELF, switch_mtr380a_middle_wagon_reconect, (((position_in_consist / 3) + 1) == (num_vehs_in_consist / 6)) || ((position_in_consist / 3) == (num_vehs_in_consist / 6))) {
-    1: switch_mtr380a_middle_wagon_half_long;
-    switch_mtr380a_if_middle_wagon_in_quarters;
-}
-
-
-switch (FEAT_TRAINS, SELF, switch_mtr380a_middle_wagon_half_meddium, ((position_in_consist / 3) + 1) == (num_vehs_in_consist / 6)) {
-    1: spriteset_mtr380a_middle_p;
-    spriteset_mtr380a_middle_p_reversed;
-}
-
-switch (FEAT_TRAINS, SELF, switch_mtr380a_if_middle_wagon_half_meddium, (((position_in_consist / 3) + 1) == (num_vehs_in_consist / 6)) || ((position_in_consist / 3) == (num_vehs_in_consist / 6))) {
-    1: switch_mtr380a_middle_wagon_half_meddium;
-    spriteset_mtr380a_middle_m;
-}
-
-
-switch (FEAT_TRAINS, SELF, switch_mtr380a_if_middle_wagon_half_short, ((position_in_consist / 3) + 1) == (num_vehs_in_consist / 6)) {
-    1: spriteset_mtr380a_middle_p;
-    spriteset_mtr380a_middle_m;
-}
-
-
-switch (FEAT_TRAINS, SELF, switch_mtr380a_length_class, num_vehs_in_consist / 3) {
-    2..6:   switch_mtr380a_if_middle_wagon_half_short;
-    7..12:  switch_mtr380a_if_middle_wagon_half_meddium;
-    switch_mtr380a_middle_wagon_reconect;
-}
-
-switch (FEAT_TRAINS, SELF, switch_mtr380a_if_wagon_end, position_in_consist_from_end == 1) {
-    1: spriteset_mtr380a_cab;
-    switch_mtr380a_length_class;
-}
-
-switch (FEAT_TRAINS, SELF, switch_mtr380a_wagon_graphics, (position_in_consist_from_end % 3) == 1) {
-    1: switch_mtr380a_if_wagon_end;
-    empty_sprites;
-}
- */
 
 switch (FEAT_TRAINS, SELF, switch_mtr380a_middle_wagon_back, (position_in_consist_from_end / 3) + 1 - (num_vehs_in_consist / 24)) {
     2: spriteset_mtr380a_middle_p_reversed;
@@ -2696,8 +2649,8 @@ switch (FEAT_TRAINS, SELF, switch_mtr380a_middle_capacity, vehicle_type_id) {
 }
 
 switch (FEAT_TRAINS, SELF, switch_mtr380a_cab_capacity, vehicle_type_id) {
-    normal_emucoach: 50;
-    first_emucoach: 36;
+    normal_emucoach: return 50;
+    first_emucoach: return 36;
     return 0;
 }
 
@@ -2717,9 +2670,14 @@ switch (FEAT_TRAINS, SELF, switch_mtr380a_wagon_capacity_single, (position_in_co
     switch_mtr380a_cab_capacity;
 }
 
-switch (FEAT_TRAINS, SELF, switch_mtr380a_wagon_capacity, num_vehs_in_consist / 3) {
+switch (FEAT_TRAINS, SELF, switch_mtr380a_wagon_capacity_length, num_vehs_in_consist / 3) {
     2..12: switch_mtr380a_wagon_capacity_single;
     switch_mtr380a_wagon_capacity_reconect;
+}
+
+switch (FEAT_TRAINS, SELF, switch_mtr380a_wagon_capacity, position_in_articulated_veh % 3) {
+    2..12: switch_mtr380a_wagon_capacity_single;
+    return 0;
 }
 
 /* switch (FEAT_TRAINS, SELF, switch_mtr380a_wagon_capacity, position_in_consist_from_end) {

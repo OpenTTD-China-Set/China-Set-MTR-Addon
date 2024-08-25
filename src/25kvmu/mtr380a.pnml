@@ -21,7 +21,7 @@ spriteset (spriteset_mtr380a_middle_p, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP) {
     template_reversed ("25kvemu/mtr380a", "mtr380a-tp")
 }
 spriteset (spriteset_mtr380a_middle_p_reversed, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP) {
-    template_standard ("25kvemu/mtr380a", "mtr380a-tp")
+    template_reversed ("25kvemu/mtr380a", "mtr380a-tp-r")
 }
 spriteset (spriteset_mtr380a_cab, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP) {
     template_reversed ("25kvemu/mtr380a", "mtr380a-tc")
@@ -33,7 +33,7 @@ spriteset (spriteset_mtr380a_cab_reconect_reversed, ZOOM_LEVEL_IN_4X, BIT_DEPTH_
     template_standard ("25kvemu/mtr380a", "mtr380a-tc-c")
 }
 
-
+//GFX
 switch (FEAT_TRAINS, SELF, switch_mtr380a_articulated_part, extra_callback_info1) {
     1..2: return mtr380a;
     return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
@@ -49,70 +49,7 @@ switch (FEAT_TRAINS, SELF, switch_mtr380a_head_capacity, position_in_articulated
     return 0;
 }
 
-/* switch (FEAT_TRAINS, SELF, switch_mtr380a_middle_wagon_three_quarters, ((position_in_consist / 3) + 1) == (num_vehs_in_consist * 3 / 12)) {
-    1: spriteset_mtr380a_middle_p;
-    spriteset_mtr380a_middle_p_reversed;
-}
 
-switch (FEAT_TRAINS, SELF, switch_mtr380a_middle_wagon_one_quarter, ((position_in_consist / 3) + 1) == (num_vehs_in_consist / 12)) {
-    1: spriteset_mtr380a_middle_p;
-    spriteset_mtr380a_middle_p_reversed;
-}
-
-switch (FEAT_TRAINS, SELF, switch_mtr380a_middle_wagon_in_witch_quarters, ((position_in_consist / 3) + 1) == (num_vehs_in_consist * 3 / 12) || ((position_in_consist / 3) == (num_vehs_in_consist *3 / 12))) {
-    1: switch_mtr380a_middle_wagon_three_quarters;
-    switch_mtr380a_middle_wagon_one_quarter;
-}
-
-switch (FEAT_TRAINS, SELF, switch_mtr380a_if_middle_wagon_in_quarters, (((position_in_consist / 3) + 1) == (num_vehs_in_consist * 3 / 12) || ((position_in_consist / 3) == (num_vehs_in_consist *3 / 12))) || (((position_in_consist / 3) + 1) == (num_vehs_in_consist / 12) || ((position_in_consist / 3) == (num_vehs_in_consist / 12)))) {
-    1: switch_mtr380a_middle_wagon_in_witch_quarters;
-    spriteset_mtr380a_middle_m;
-}
-
-switch (FEAT_TRAINS, SELF, switch_mtr380a_middle_wagon_half_long, ((position_in_consist / 3) + 1) == (num_vehs_in_consist / 6)) {
-    1: spriteset_mtr380a_cab_reconect;
-    spriteset_mtr380a_cab_reconect_reversed;
-}
-
-switch (FEAT_TRAINS, SELF, switch_mtr380a_middle_wagon_reconect, (((position_in_consist / 3) + 1) == (num_vehs_in_consist / 6)) || ((position_in_consist / 3) == (num_vehs_in_consist / 6))) {
-    1: switch_mtr380a_middle_wagon_half_long;
-    switch_mtr380a_if_middle_wagon_in_quarters;
-}
-
-
-switch (FEAT_TRAINS, SELF, switch_mtr380a_middle_wagon_half_meddium, ((position_in_consist / 3) + 1) == (num_vehs_in_consist / 6)) {
-    1: spriteset_mtr380a_middle_p;
-    spriteset_mtr380a_middle_p_reversed;
-}
-
-switch (FEAT_TRAINS, SELF, switch_mtr380a_if_middle_wagon_half_meddium, (((position_in_consist / 3) + 1) == (num_vehs_in_consist / 6)) || ((position_in_consist / 3) == (num_vehs_in_consist / 6))) {
-    1: switch_mtr380a_middle_wagon_half_meddium;
-    spriteset_mtr380a_middle_m;
-}
-
-
-switch (FEAT_TRAINS, SELF, switch_mtr380a_if_middle_wagon_half_short, ((position_in_consist / 3) + 1) == (num_vehs_in_consist / 6)) {
-    1: spriteset_mtr380a_middle_p;
-    spriteset_mtr380a_middle_m;
-}
-
-
-switch (FEAT_TRAINS, SELF, switch_mtr380a_length_class, num_vehs_in_consist / 3) {
-    2..6:   switch_mtr380a_if_middle_wagon_half_short;
-    7..12:  switch_mtr380a_if_middle_wagon_half_meddium;
-    switch_mtr380a_middle_wagon_reconect;
-}
-
-switch (FEAT_TRAINS, SELF, switch_mtr380a_if_wagon_end, position_in_consist_from_end == 1) {
-    1: spriteset_mtr380a_cab;
-    switch_mtr380a_length_class;
-}
-
-switch (FEAT_TRAINS, SELF, switch_mtr380a_wagon_graphics, (position_in_consist_from_end % 3) == 1) {
-    1: switch_mtr380a_if_wagon_end;
-    empty_sprites;
-}
- */
 
 switch (FEAT_TRAINS, SELF, switch_mtr380a_middle_wagon_back, (position_in_consist_from_end / 3) + 1 - (num_vehs_in_consist / 24)) {
     2: spriteset_mtr380a_middle_p_reversed;
@@ -174,8 +111,8 @@ switch (FEAT_TRAINS, SELF, switch_mtr380a_middle_capacity, vehicle_type_id) {
 }
 
 switch (FEAT_TRAINS, SELF, switch_mtr380a_cab_capacity, vehicle_type_id) {
-    normal_emucoach: 50;
-    first_emucoach: 36;
+    normal_emucoach: return 50;
+    first_emucoach: return 36;
     return 0;
 }
 
@@ -195,9 +132,14 @@ switch (FEAT_TRAINS, SELF, switch_mtr380a_wagon_capacity_single, (position_in_co
     switch_mtr380a_cab_capacity;
 }
 
-switch (FEAT_TRAINS, SELF, switch_mtr380a_wagon_capacity, num_vehs_in_consist / 3) {
+switch (FEAT_TRAINS, SELF, switch_mtr380a_wagon_capacity_length, num_vehs_in_consist / 3) {
     2..12: switch_mtr380a_wagon_capacity_single;
     switch_mtr380a_wagon_capacity_reconect;
+}
+
+switch (FEAT_TRAINS, SELF, switch_mtr380a_wagon_capacity, position_in_articulated_veh % 3) {
+    2..12: switch_mtr380a_wagon_capacity_single;
+    return 0;
 }
 
 /* switch (FEAT_TRAINS, SELF, switch_mtr380a_wagon_capacity, position_in_consist_from_end) {

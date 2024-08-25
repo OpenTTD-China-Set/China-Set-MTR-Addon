@@ -45,8 +45,9 @@ switch (FEAT_TRAINS, SELF, switch_yellowhead_normal_wagon, position_in_consist %
 } 
 
 switch (FEAT_TRAINS, SELF, switch_yellowhead_wagon_type, vehicle_type_id) {
-    1856: switch_yellowhead_normal_wagon;
-    1857..1858: switch_yellowhead_first_wagon;
+    normal_emucoach: switch_yellowhead_normal_wagon;
+    first_emucoach: switch_yellowhead_first_wagon;
+    first_emucoach_with_mailroom: switch_yellowhead_first_wagon;
     empty_sprites;
 } 
 
@@ -86,15 +87,17 @@ switch (FEAT_TRAINS, SELF, switch_yellowhead_capacity, position_in_consist % 3) 
 
 
 switch (FEAT_TRAINS, SELF, switch_yellowhead_running_power, vehicle_type_id) {
-    1856: return 32;
-    1857: return 36;
+    normal_emucoach: return 32;
+    first_emucoach: return 36;
+    first_emucoach_with_mailroom: return 36;
     return 0;
 }
 
 
 switch (FEAT_TRAINS, SELF, switch_yellowhead_running_unpower, vehicle_type_id) {
-    1856: return 10;
-    1857: return 12;
+    normal_emucoach: return 10;
+    first_emucoach: return 12;
+    first_emucoach_with_mailroom: return 36;
     return 0;
 }
 

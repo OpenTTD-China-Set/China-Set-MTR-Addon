@@ -169,6 +169,19 @@ switch (FEAT_TRAINS, SELF, airconditioner, vehicle_is_powered) {
     return 0;
 }
 
+//Can attach
+
+switch (FEAT_TRAINS, SELF, can_attach_in_mtr, grfid) {
+    str2number("\5F\5F\03\02"): return CB_RESULT_ATTACH_ALLOW_IF_RAILTYPES;
+    return CB_RESULT_ATTACH_DISALLOW;
+}
+
+switch (FEAT_TRAINS, SELF, cannot_attach_in_mtr, grfid) {
+    str2number("\5F\5F\03\02"): return CB_RESULT_ATTACH_DISALLOW;
+    return CB_RESULT_ATTACH_ALLOW_IF_RAILTYPES;
+}
+
+
 /* switch (FEAT_TRAINS, SELF, crhwagon, vehicle_type_id) {
     1024..1035: return CB_RESULT_ATTACH_ALLOW_IF_RAILTYPES;
     return CB_RESULT_ATTACH_DISALLOW;
@@ -187,8 +200,8 @@ switch (FEAT_TRAINS, SELF, singlemu, vehicle_type_id) {
 }*/
 
 switch (FEAT_TRAINS, SELF, locowagon, vehicle_type_id) {
-    1856..2751: return CB_RESULT_ATTACH_DISALLOW;
-    return CB_RESULT_ATTACH_ALLOW_IF_RAILTYPES;
+    1856..2751: return cannot_attach_in_mtr;
+    return can_attach_in_mtr;
 } 
 
 /* switch (FEAT_TRAINS, SELF, muwagon, vehicle_type_id) {
@@ -202,37 +215,37 @@ switch (FEAT_TRAINS, SELF, muhead_mtr, vehicle_type_id) {
 } */
 //Atention: Different from China Set : Trains, can_attach swiths' name are named by type cars whivh use them 
 
-switch (FEAT_TRAINS, SELF, mu_with_first_class, vehicle_type_id) {
+/* switch (FEAT_TRAINS, SELF, mu_with_first_class, vehicle_type_id) {
     1856..1859: return CB_RESULT_ATTACH_ALLOW_IF_RAILTYPES;
     1984: return CB_RESULT_ATTACH_ALLOW_IF_RAILTYPES;
     1986: return CB_RESULT_ATTACH_ALLOW_IF_RAILTYPES;
     return CB_RESULT_ATTACH_DISALLOW;
-}
+} */
 
 switch (FEAT_TRAINS, SELF, mu_of_mtr, vehicle_type_id) {
-    1856..2751: return CB_RESULT_ATTACH_ALLOW_IF_RAILTYPES;
-    return CB_RESULT_ATTACH_DISALLOW;
+    1856..2751: return can_attach_in_mtr;
+    return cannot_attach_in_mtr;
 }
 
 switch (FEAT_TRAINS, SELF, muhead_with_first_class, vehicle_type_id) {
-    1856..1857: return CB_RESULT_ATTACH_ALLOW_IF_RAILTYPES;
-    return CB_RESULT_ATTACH_DISALLOW;
+    1856..1857: return can_attach_in_mtr;
+    return cannot_attach_in_mtr;
 }
 
 switch (FEAT_TRAINS, SELF, muhead_yellowhead_exurb, vehicle_type_id) {
-    1856..1858: return CB_RESULT_ATTACH_ALLOW_IF_RAILTYPES;
-    return CB_RESULT_ATTACH_DISALLOW;
+    1856..1858: return can_attach_in_mtr;
+    return cannot_attach_in_mtr;
 }
 
 switch (FEAT_TRAINS, SELF, muhead_airport_express, vehicle_type_id) {
-    1857: return CB_RESULT_ATTACH_ALLOW_IF_RAILTYPES;
-    1859: return CB_RESULT_ATTACH_ALLOW_IF_RAILTYPES;
-    return CB_RESULT_ATTACH_DISALLOW;
+    1857: return can_attach_in_mtr;
+    1859: return can_attach_in_mtr;
+    return cannot_attach_in_mtr;
 }
 
 switch (FEAT_TRAINS, SELF, muhead_without_first_class, vehicle_type_id) {
-    1856: return CB_RESULT_ATTACH_ALLOW_IF_RAILTYPES;
-    return CB_RESULT_ATTACH_DISALLOW;
+    1856: return can_attach_in_mtr;
+    return cannot_attach_in_mtr;
 }
 
 

@@ -20,7 +20,7 @@ item (FEAT_TRAINS, first_emucoach) {
         name:                           string(STR_NAME_FIRST_EMUCOACH);
         sprite_id:                      SPRITE_ID_NEW_TRAIN;
         misc_flags:                     bitmask(TRAIN_FLAG_AUTOREFIT);
-        variant_group:                  1856;
+        variant_group:                  normal_emucoach;
 
         // Availability
         climates_available:             ALL_CLIMATES;
@@ -52,7 +52,7 @@ item (FEAT_TRAINS, first_emucoach) {
     graphics {
         // Menu
         additional_text:                string(STR_DESC_3, string(STR_ATTACH_MTR_FIRST_EMU), string(STR_COMFORT_MEDIUM, 240));
-        can_attach_wagon:               mu_with_first_class;
+        can_attach_wagon:               mu_of_mtr;
 
         // Graphics
         default:                        switch_mtruw_1c_original;
@@ -76,7 +76,7 @@ item (FEAT_TRAINS, first_emucoach_with_mailroom) {
         name:                           string(STR_NAME_FIRST_EMUCOACH_WITH_MAILROOM);
         sprite_id:                      SPRITE_ID_NEW_TRAIN;
         misc_flags:                     bitmask(TRAIN_FLAG_AUTOREFIT);
-        variant_group:                  1856;
+        variant_group:                  normal_emucoach;
 
         // Availability
         climates_available:             ALL_CLIMATES;
@@ -108,7 +108,7 @@ item (FEAT_TRAINS, first_emucoach_with_mailroom) {
     graphics {
         // Menu
         additional_text:                string(STR_DESC_2, string(STR_ATTACH_MTR_FIRST_EMU_WUTH_MAILROOM), string(STR_WITH_MAILROOM), string(STR_COMFORT_MEDIUM, 240), string(STR_FRESHNESS_MEDIUM));
-        can_attach_wagon:               mu_with_first_class;
+        can_attach_wagon:               mu_of_mtr;
 
         // Graphics
         default:                        switch_mtruw_1c_withmailroom_original;

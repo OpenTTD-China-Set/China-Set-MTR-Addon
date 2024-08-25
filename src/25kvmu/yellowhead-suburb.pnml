@@ -30,7 +30,7 @@ item (FEAT_TRAINS, yellowhead_suburb) {
         sprite_id:                      SPRITE_ID_NEW_TRAIN;
         misc_flags:                     bitmask(TRAIN_FLAG_AUTOREFIT, TRAIN_FLAG_MU);
         engine_class:                   ENGINE_CLASS_ELECTRIC;
-        variant_group:                  1984;
+        variant_group:                  yellowhead_exurb;
 
         // Availability
         climates_available:             ALL_CLIMATES;
