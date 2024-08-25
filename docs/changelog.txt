@@ -1,5 +1,6 @@
 24/08/25 v5 by Babel
-= Add Ktt, MTR308A
++ Add Ktt, MTR308A
+= Fix can_attach with China Set:Train
 
 24/08/25 v4 by Babel
 =   GRF code optimisation
