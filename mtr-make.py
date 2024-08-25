@@ -72,7 +72,8 @@ with open('docs/str.csv', mode='r', newline='', encoding='utf-8-sig') as f:
         strs.append(row)
         print(row)
 
-
+if not os.path.exists("lang/"):
+        os.makedirs("lang/") 
 with open("lang/english.lng", 'w', encoding='utf-8') as f:
     f.write("##grflangid 0x01"+"\n")
     for i in range(len(strs)):
