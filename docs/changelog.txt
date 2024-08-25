@@ -1,3 +1,6 @@
+24/08/25 v5 by Babel
+= Add Ktt, MTR308A
+
 24/08/25 v4 by Babel
 =   GRF code optimisation
 +   Add IKK Train

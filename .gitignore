@@ -7,3 +7,4 @@ chinasettrains-*
 gfx/**/*.png
 !gfx/*.png
 *.lng
+*.zip
