@@ -224,28 +224,28 @@ switch (FEAT_TRAINS, SELF, muhead_mtr, vehicle_type_id) {
 
 switch (FEAT_TRAINS, SELF, mu_of_mtr, vehicle_type_id) {
     1856..2751: return can_attach_in_mtr;
-    return cannot_attach_in_mtr;
+    return CB_RESULT_ATTACH_DISALLOW;
 }
 
 switch (FEAT_TRAINS, SELF, muhead_with_first_class, vehicle_type_id) {
     1856..1857: return can_attach_in_mtr;
-    return cannot_attach_in_mtr;
+    return CB_RESULT_ATTACH_DISALLOW;
 }
 
 switch (FEAT_TRAINS, SELF, muhead_yellowhead_exurb, vehicle_type_id) {
     1856..1858: return can_attach_in_mtr;
-    return cannot_attach_in_mtr;
+    return CB_RESULT_ATTACH_DISALLOW;
 }
 
 switch (FEAT_TRAINS, SELF, muhead_airport_express, vehicle_type_id) {
     1857: return can_attach_in_mtr;
     1859: return can_attach_in_mtr;
-    return cannot_attach_in_mtr;
+    return CB_RESULT_ATTACH_DISALLOW;
 }
 
 switch (FEAT_TRAINS, SELF, muhead_without_first_class, vehicle_type_id) {
     1856: return can_attach_in_mtr;
-    return cannot_attach_in_mtr;
+    return CB_RESULT_ATTACH_DISALLOW;
 }
 
 
