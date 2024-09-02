@@ -38,7 +38,7 @@ spriteset (spriteset_ikk_purchase_original, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP) {
 switch (FEAT_TRAINS, SELF, switch_ikk_purchase_original, position_in_consist % 3) {
     1: spriteset_ikk_purchase_original;
     empty_sprites;
-} 
+}
 
 
 //Graphics
@@ -46,19 +46,19 @@ switch (FEAT_TRAINS, SELF, switch_ikk_wagon_p_front, vehicle_type_id) {
     1856: spriteset_ikk_p;
     1857: spriteset_ikk_1c_p;
     empty_sprites;
-} 
+}
 
 switch (FEAT_TRAINS, SELF, switch_ikk_wagon_m, vehicle_type_id) {
     1856: spriteset_ikk_m;
     1857: spriteset_ikk_1c_m;
     empty_sprites;
-} 
+}
 
 switch (FEAT_TRAINS, SELF, switch_ikk_wagon_p_back, vehicle_type_id) {
     1856: spriteset_ikk_p_r;
     1857: spriteset_ikk_1c_p_r;
     empty_sprites;
-} 
+}
 
 
 
@@ -66,42 +66,42 @@ switch (FEAT_TRAINS, SELF, switch_ikk_wagon_type_long, (position_in_consist / 3)
     2: switch_ikk_wagon_p_front;
     5: switch_ikk_wagon_p_front;
     switch_ikk_wagon_m;
-} 
+}
 
 switch (FEAT_TRAINS, SELF, switch_ikk_wagon_type_middium, (position_in_consist / 3) + 1) {
     2: switch_ikk_wagon_p_front;
     switch_ikk_wagon_m;
-} 
+}
 
 
 switch (FEAT_TRAINS, SELF, switch_ikk_wagon_type, num_vehs_in_consist / 3) {
     2..5: switch_ikk_wagon_m;
     6..9: switch_ikk_wagon_type_middium;
     switch_ikk_wagon_type_long;
-} 
+}
 
 
 switch (FEAT_TRAINS, SELF, switch_ikk_wagon_type_end, vehicle_type_id) {
     1856: spriteset_ikk_c_a;
     1857: spriteset_ikk_1c_c_a;
     empty_sprites;
-} 
+}
 
 switch (FEAT_TRAINS, SELF, switch_ikk_graphics_if_end, (position_in_consist_from_end / 3) + 1) {
     1: switch_ikk_wagon_type_end;
     2: switch_ikk_wagon_p_back;
     switch_ikk_wagon_type;
-} 
+}
 
 switch (FEAT_TRAINS, SELF, switch_ikk_middle_wagon_graphics, (position_in_consist % 3) == 1) {
     1: switch_ikk_graphics_if_end;
     empty_sprites;
-} 
+}
 
 switch (FEAT_TRAINS, SELF, switch_ikk_graphics, position_in_consist % 3) {
     1: spriteset_ikk_c_b;
     empty_sprites;
-} 
+}
 
 
 //Weight
@@ -256,7 +256,7 @@ item (FEAT_TRAINS, ikk) {
         sprite_id:                      SPRITE_ID_NEW_TRAIN;
         misc_flags:                     bitmask(TRAIN_FLAG_AUTOREFIT, TRAIN_FLAG_MU);
         engine_class:                   ENGINE_CLASS_ELECTRIC;
-        
+
         // Availability
         climates_available:             ALL_CLIMATES;
         introduction_date:              date(2001,09,04);
@@ -275,7 +275,7 @@ item (FEAT_TRAINS, ikk) {
         ai_special_flag:                AI_FLAG_PASSENGER;
         cargo_capacity:                 1;
         loading_speed:                  36 << param_loading_speed;
-        cargo_age_period:               140 << param_cargo_decay;
+        cargo_age_period:               128 << param_cargo_decay;
 
         // Stats
         speed:                          130 km/h;
@@ -307,7 +307,7 @@ item (FEAT_TRAINS, ikk) {
         tractive_effort_coefficient:    return 0;
         purchase_tractive_effort_coefficient: return int(0.171*255);
         cargo_capacity:                 switch_ikk_capacity;
-        cargo_age_period:               140 << param_cargo_decay;
+        cargo_age_period:               128 << param_cargo_decay;
         cost_factor:                    50;
         running_cost_factor:            12  * runningcostfactor() + 20;
         purchase_running_cost_factor:   80;
@@ -324,7 +324,7 @@ item (FEAT_TRAINS, ikk) {
         length:                         switch_length_2_8_2;
         weight:                         switch_ikk_weight;
         can_attach_wagon:               mu_of_mtr;
-        cargo_age_period:               140 << param_cargo_decay;
+        cargo_age_period:               128 << param_cargo_decay;
         bitmask_vehicle_info:           0;
         articulated_part:               switch_mtr_wagon_articulated_part;
         running_cost_factor:            switch_ikk_running() * runningcostfactor() + accostfactor();
