@@ -13,7 +13,7 @@ spriteset (spriteset_yellowhead_c, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP) {
     template_standard ("25kvemu/yellowhead", "3049stock-c")
 }
 spriteset (spriteset_yellowhead_m, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP) {
-    template_standard ("25kvemu/yellowhead", "3049stock-tp") 
+    template_standard ("25kvemu/yellowhead", "3049stock-tp")
 }
 spriteset (spriteset_yellowhead_c_reversed, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP) {
     template_standard ("25kvemu/yellowhead", "3049stock-c-r")
@@ -35,26 +35,26 @@ switch (FEAT_TRAINS, SELF, switch_yellowhead_first_wagon, position_in_consist % 
     4: spriteset_yellowhead_1c_m;
     7: spriteset_yellowhead_1c_c_reversed;
     empty_sprites;
-} 
+}
 
 switch (FEAT_TRAINS, SELF, switch_yellowhead_normal_wagon, position_in_consist % 9) {
     1: spriteset_yellowhead_c;
     4: spriteset_yellowhead_m;
     7: spriteset_yellowhead_c_reversed;
     empty_sprites;
-} 
+}
 
 switch (FEAT_TRAINS, SELF, switch_yellowhead_wagon_type, vehicle_type_id) {
     normal_emucoach: switch_yellowhead_normal_wagon;
     first_emucoach: switch_yellowhead_first_wagon;
     first_emucoach_with_mailroom: switch_yellowhead_first_wagon;
     empty_sprites;
-} 
+}
 
 switch (FEAT_TRAINS, SELF, switch_yellowhead_graphics, (position_in_consist_from_end % 3) == 1) {
     1: switch_yellowhead_wagon_type;
     empty_sprites;
-} 
+}
 
 //Weight
 
@@ -71,12 +71,8 @@ switch (FEAT_TRAINS, SELF, switch_yellowhead_weight, num_vehs_in_consist % 9) {
 
 
 switch (FEAT_TRAINS, SELF, switch_yellowhead_capacity_1, param_cargo_capacity) {
-    0: return 109;
-    1: return 164;
-    3: return 273;
-    4: return 327;
-    5: return 436;
-    return 218;
+    4: return 218;
+    return (218) / 4 * param_cargo_capacity;
 }
 switch (FEAT_TRAINS, SELF, switch_yellowhead_capacity, position_in_consist % 3) {
     1: switch_yellowhead_capacity_1;
