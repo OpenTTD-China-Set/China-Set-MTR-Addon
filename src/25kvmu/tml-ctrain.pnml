@@ -1,0 +1,226 @@
+// Begin TML C-TRAIN
+// Vehicle
+
+spriteset (spriteset_tml_ctrain, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP) {
+    template_standard ("25kvemu/tml-ctrain", "tml-ctrain-c")
+}
+spriteset (spriteset_tml_ctrain_r, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP) {
+    template_reversed ("25kvemu/tml-ctrain", "tml-ctrain-c")
+}
+spriteset (spriteset_tml_ctrain_m, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP) {
+    template_standard ("25kvemu/tml-ctrain", "tml-ctrain-m")
+}
+spriteset (spriteset_tml_ctrain_m_r, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP) {
+    template_reversed ("25kvemu/tml-ctrain", "tml-ctrain-m")
+}
+spriteset (spriteset_tml_ctrain_p, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP) {
+    template_standard ("25kvemu/tml-ctrain", "tml-ctrain-p")
+}
+spriteset (spriteset_tml_ctrain_p_r, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP) {
+    template_reversed ("25kvemu/tml-ctrain", "tml-ctrain-p")
+}
+
+// Purchase Menu
+spriteset (spriteset_tml_ctrain_purchase_original, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP) {
+    template_purchase ("25kvemu/tml-ctrain", "tml-ctrain-c")
+}
+
+
+switch (FEAT_TRAINS, SELF, switch_tml_ctrain_purchase_original, position_in_consist % 3) {
+    1: spriteset_tml_ctrain_purchase_original;
+    empty_sprites;
+}
+
+
+//Graphics
+
+
+
+
+switch (FEAT_TRAINS, SELF, switch_tml_ctrain_wagon_unit, ((position_in_consist / 3) + 1) % 8) {
+    1: spriteset_tml_ctrain_m;
+    2: spriteset_tml_ctrain_p;
+    3: spriteset_tml_ctrain_m;
+    4: spriteset_tml_ctrain_p;
+    5..6: spriteset_tml_ctrain_m_r;
+    7:  spriteset_tml_ctrain_p_r;
+    8: spriteset_tml_ctrain_m_r;
+}
+
+switch (FEAT_TRAINS, SELF, switch_tml_ctrain_graphics_if_end, (position_in_consist_from_end / 3) + 1) {
+    1: spriteset_tml_ctrain_r;
+    switch_tml_ctrain_wagon_unit;
+}
+
+switch (FEAT_TRAINS, SELF, switch_tml_ctrain_middle_wagon_graphics, position_in_consist % 3) {
+    1: switch_tml_ctrain_graphics_if_end;
+    empty_sprites;
+}
+
+switch (FEAT_TRAINS, SELF, switch_tml_ctrain_graphics, position_in_consist % 3) {
+    1: spriteset_tml_ctrain;
+    empty_sprites;
+}
+
+
+//Weight
+
+
+switch (FEAT_TRAINS, SELF, switch_tml_ctrain_weight_middle, ((position_in_consist_from_end / 3) + 1) % 8) {
+    5: return 37;
+    return 48;
+}
+
+switch (FEAT_TRAINS, SELF, switch_tml_ctrain_weight, ((position_in_consist_from_end / 3) == 0 ) || ((position_in_consist / 3) == 0 )) {
+    1: return 37;
+    switch_tml_ctrain_weight_middle;
+}
+//Capacity
+
+
+
+switch (FEAT_TRAINS, SELF, switch_tml_ctrain_capacity_1, param_cargo_capacity) {
+    4: return 430;
+    return (430) / 4 * param_cargo_capacity;
+}
+switch (FEAT_TRAINS, SELF, switch_tml_ctrain_capacity_cab_1, param_cargo_capacity) {
+    4: return 430;
+    return (430) / 4 * param_cargo_capacity;
+}
+switch (FEAT_TRAINS, SELF, switch_tml_ctrain_capacity_cab, (position_in_consist_from_end / 3) == 1 || (position_in_consist / 3) == 1) {
+    1: switch_tml_ctrain_capacity_cab_1;
+    switch_tml_ctrain_capacity_1;
+}
+
+switch (FEAT_TRAINS, SELF, switch_tml_ctrain_capacity, position_in_consist % 3) {
+    1: switch_tml_ctrain_capacity_cab;
+    return 0;
+}
+
+switch (FEAT_TRAINS, SELF, switch_tml_ctrain_1c_capacity, position_in_consist % 3) {
+    1: return 72;
+    return 0;
+}
+//Cost
+
+
+
+switch (FEAT_TRAINS, SELF, switch_tml_ctrain_running, vehicle_is_potentially_powered) {
+    1: return 34;
+    return 12;
+}
+
+//Power
+
+
+
+
+switch (FEAT_TRAINS, SELF, switch_tml_ctrain_power_middle, ((position_in_consist_from_end / 3) + 1) % 8) {
+    5: return 0;
+    return 1079;
+}
+
+switch (FEAT_TRAINS, SELF, switch_tml_ctrain_power, ((position_in_consist_from_end / 3) == 0 ) || ((position_in_consist / 3) == 0 )) {
+    1: return 0;
+    switch_tml_ctrain_power_middle;
+}
+
+switch (FEAT_TRAINS, SELF, switch_tml_ctrain_traction, vehicle_is_potentially_powered) {
+    1: return int(0.185*255);
+    return 0;
+}
+
+// Articulate
+
+
+switch (FEAT_TRAINS, SELF, switch_tml_ctrain_articulated_part, extra_callback_info1) {
+    1..2: return tml_ctrain;
+    return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
+}
+
+
+
+
+
+item (FEAT_TRAINS, tml_ctrain) {
+    property {
+        // Menu
+        name:                           string(STR_NAME_TML_CTRAIN);
+        sprite_id:                      SPRITE_ID_NEW_TRAIN;
+        misc_flags:                     bitmask(TRAIN_FLAG_AUTOREFIT, TRAIN_FLAG_MU);
+        engine_class:                   ENGINE_CLASS_ELECTRIC;
+
+        // Availability
+        climates_available:             ALL_CLIMATES;
+        introduction_date:              date(2017,03,12);
+        model_life:                     VEHICLE_NEVER_EXPIRES;
+        vehicle_life:                   35;
+        track_type:                     SACA;
+
+        // Cargo
+        refittable_cargo_classes:       bitmask(CC_PASSENGERS);
+        non_refittable_cargo_classes:   0;
+        cargo_allow_refit:              [PASS, TOUR, YETI, YETY];
+        cargo_disallow_refit:           [];
+        refit_cost:                     0;
+        default_cargo_type:             PASS;
+        ai_special_flag:                AI_FLAG_PASSENGER;
+        cargo_capacity:                 1;
+        loading_speed:                  36 << param_loading_speed;
+        cargo_age_period:               128 << param_cargo_decay;
+
+        // Stats
+        speed:                          130 km/h;
+        power:                          760 kW;
+        weight:                         37 ton;
+        tractive_effort_coefficient:    0.185;
+        cost_factor:                    50;
+        running_cost_base:              RUNNING_COST_ELECTRIC;
+        running_cost_factor:            10;
+        reliability_decay:              10;
+        bitmask_vehicle_info:           bitmask(2);
+    }
+    graphics {
+        // Menu
+        additional_text:                string(STR_DESC_7, string(STR_ELECTRIC_25KVAC), string(STR_FULLNAME_TML_CTRAIN), string(STR_NICKNAME_TML_CTRAIN), string(STR_USEDLINE_TML), string(STR_MTR_NORMAL_CAN_ATTACH_WAGON),string(STR_RELDEC_LOW, 10), string(STR_NORMAL_HEAD_SEAT));
+        can_attach_wagon:               muhead_without_first_class;
+        start_stop:                     mu4to16car;
+
+        // Graphics
+        default:                        switch_tml_ctrain_graphics;
+        purchase:                       switch_tml_ctrain_purchase_original;
+        articulated_part:               switch_tml_ctrain_articulated_part;
+
+        // Stats
+        length:                         switch_length_2_8_2;
+        speed:                          130;
+        power:                          return 0;
+        purchase_power:                 return 1079; // HP
+        tractive_effort_coefficient:    return 0;
+        purchase_tractive_effort_coefficient: return int(0.185*255);
+        cargo_capacity:                 switch_tml_ctrain_capacity;
+        cargo_age_period:               128 << param_cargo_decay;
+        cost_factor:                    50;
+        running_cost_factor:            12  * runningcostfactor() + 20;
+        purchase_running_cost_factor:   80;
+        purchase_cargo_capacity:        430/2;
+        bitmask_vehicle_info:           bitmask(2);
+    }
+
+    // Multiple Unit Wagons
+    livery_override(normal_emucoach) {
+        default:                        switch_tml_ctrain_middle_wagon_graphics;
+        cargo_capacity:                 switch_tml_ctrain_capacity;
+        power:                          switch_tml_ctrain_power;
+        tractive_effort_coefficient:    switch_tml_ctrain_traction;
+        length:                         switch_length_2_8_2;
+        weight:                         switch_tml_ctrain_weight;
+        can_attach_wagon:               mu_of_mtr;
+        cargo_age_period:               128 << param_cargo_decay;
+        bitmask_vehicle_info:           0;
+        articulated_part:               switch_mtr_wagon_articulated_part;
+        running_cost_factor:            switch_tml_ctrain_running() * runningcostfactor() + accostfactor();
+    }
+}
+
+// End TML C-TRAIN

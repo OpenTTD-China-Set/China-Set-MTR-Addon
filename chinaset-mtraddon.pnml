@@ -17,7 +17,7 @@
 
 //MU Wagon
 #include "src/emucoach/first-emucoach.pnml"
-#include "src/emucoach/normal-emucoach.pnml" 
+#include "src/emucoach/normal-emucoach.pnml"
 
 //25kV Locoamotives
 #include "src/25kvloco/lok2000.pnml"
@@ -32,6 +32,7 @@
 #include "src/25kvmu/yellowhead-suburb.pnml"
 #include "src/25kvmu/mlr.pnml"
 #include "src/25kvmu/ikk-train.pnml"
+#include "src/25kvmu/tml-ctrain.pnml"
 #include "src/25kvmu/mtr380a.pnml"
 // Sort Vehicles
 #include "src/vehiclesort.pnml"
