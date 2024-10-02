@@ -117,7 +117,7 @@ switch (FEAT_TRAINS, SELF, switch_tml_ctrain_running, vehicle_is_potentially_pow
 
 switch (FEAT_TRAINS, SELF, switch_tml_ctrain_power_middle, ((position_in_consist_from_end / 3) + 1) % 8) {
     5: return 0;
-    return 1079;
+    return 1019;
 }
 
 switch (FEAT_TRAINS, SELF, switch_tml_ctrain_power, ((position_in_consist_from_end / 3) == 0 ) || ((position_in_consist / 3) == 0 )) {
@@ -195,7 +195,7 @@ item (FEAT_TRAINS, tml_ctrain) {
         length:                         switch_length_2_8_2;
         speed:                          130;
         power:                          return 0;
-        purchase_power:                 return 1079; // HP
+        purchase_power:                 return 1019; // HP
         tractive_effort_coefficient:    return 0;
         purchase_tractive_effort_coefficient: return int(0.185*255);
         cargo_capacity:                 switch_tml_ctrain_capacity;
