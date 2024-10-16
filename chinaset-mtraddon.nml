@@ -3,7 +3,7 @@ grf {
     name:    string(STR_GRF_NAME);
     desc:    string(STR_DESC_4, string(STR_GRF_DESC), string(STR_GRF_DESC_README),string(STR_GRF_DESC_MTR));
     url:     string(STR_GRF_URL);
-    version: 7;
+    version: 8;
     min_compatible_version: 7;
 
     param 0 {
@@ -171,11 +171,11 @@ template template_purchase (a, b) {
     []
     []
     []
-    [672,   0, 192,  80, -96, -60, "gfx/"+a+"/"+b+"_32bpp.png"]
+    [672,   0, 192,  80, -96, -62, "gfx/"+a+"/"+b+"_32bpp.png"]
     []
 }
 
-template template_standard (a, b) {
+/* template template_standard (a, b) {
     [  0,   0,  36, 160, -12, -80, "gfx/"+a+"/"+b+"_32bpp.png"]
     [ 44,   0, 120, 116, -72, -76, "gfx/"+a+"/"+b+"_32bpp.png"]
     [172,   0, 192,  80, -96, -60, "gfx/"+a+"/"+b+"_32bpp.png"]
@@ -196,41 +196,67 @@ template template_reversed (a, b) {
     [172,   0, 192,  80, -96, -60, "gfx/"+a+"/"+b+"_32bpp.png"]
     [372,   0, 120, 116, -40, -76, "gfx/"+a+"/"+b+"_32bpp.png"]
 }
+ */
+template template_standard (a, b) {
+    [  0,   0,  36, 160, -14, -80, "gfx/"+a+"/"+b+"_32bpp.png"]
+    [ 44,   0, 120, 116, -75, -72, "gfx/"+a+"/"+b+"_32bpp.png"]
+    [172,   0, 192,  80, -96, -62, "gfx/"+a+"/"+b+"_32bpp.png"]
+    [372,   0, 120, 116, -41, -72, "gfx/"+a+"/"+b+"_32bpp.png"]
+    [500,   0,  36, 160, -14, -80, "gfx/"+a+"/"+b+"_32bpp.png"]
+    [544,   0, 120, 116, -75, -72, "gfx/"+a+"/"+b+"_32bpp.png"]
+    [672,   0, 192,  80, -96, -62, "gfx/"+a+"/"+b+"_32bpp.png"]
+    [872,   0, 120, 116, -41, -72, "gfx/"+a+"/"+b+"_32bpp.png"]
+}
+
+template template_reversed (a, b) {
+    [500,   0,  36, 160, -14, -80, "gfx/"+a+"/"+b+"_32bpp.png"]
+    [544,   0, 120, 116, -75, -72, "gfx/"+a+"/"+b+"_32bpp.png"]
+    [672,   0, 192,  80, -96, -62, "gfx/"+a+"/"+b+"_32bpp.png"]
+    [872,   0, 120, 116, -41, -72, "gfx/"+a+"/"+b+"_32bpp.png"]
+    [  0,   0,  36, 160, -14, -80, "gfx/"+a+"/"+b+"_32bpp.png"]
+    [ 44,   0, 120, 116, -75, -72, "gfx/"+a+"/"+b+"_32bpp.png"]
+    [172,   0, 192,  80, -96, -62, "gfx/"+a+"/"+b+"_32bpp.png"]
+    [372,   0, 120, 116, -41, -72, "gfx/"+a+"/"+b+"_32bpp.png"]
+}
+
+template template_reversed_11 (a, b) {
+    [500,   0,  36, 160, -14, -87, "gfx/"+a+"/"+b+"_32bpp.png"]
+    [544,   0, 120, 116, -67, -76, "gfx/"+a+"/"+b+"_32bpp.png"]
+    [672,   0, 192,  80, -80, -62, "gfx/"+a+"/"+b+"_32bpp.png"]
+    [872,   0, 120, 116, -33, -68, "gfx/"+a+"/"+b+"_32bpp.png"]
+    [  0,   0,  36, 160, -14, -73, "gfx/"+a+"/"+b+"_32bpp.png"]
+    [ 44,   0, 120, 116, -83, -68, "gfx/"+a+"/"+b+"_32bpp.png"]
+    [172,   0, 192,  80, -112, -62, "gfx/"+a+"/"+b+"_32bpp.png"]
+    [372,   0, 120, 116, -49, -76, "gfx/"+a+"/"+b+"_32bpp.png"]
+}
 
 // Below shamelessly stolen from JP+ Shinkansen
-spriteset (spriteset_too_many_12) {
-    template_empty ()
+spriteset (spriteset_too_many_12, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP, "gfx/misc/less12_32bpp.png") {
+    [  0,   0,  36, 160, -14, -80]
+    [ 44,   0, 120, 116, -75, -72]
+    [172,   0, 192,  80, -96, -60]
+    [372,   0, 120, 116, -41, -72]
+    [500,   0,  36, 160, -14, -80]
+    [544,   0, 120, 116, -75, -72]
+    [672,   0, 192,  80, -96, -60]
+    [872,   0, 120, 116, -41, -72]
 }
 
-alternative_sprites (spriteset_too_many_12, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP, "gfx/less12.png") {
-    [  0,   0,  32, 144, -12, -72]
-    [ 40,   0, 120, 116, -72, -76]
-    [168,   0, 192,  80, -96, -60]
-    [368,   0, 120, 116, -40, -76]
-    [496,   0,  32, 144, -12, -72]
-    [536,   0, 120, 116, -72, -76]
-    [664,   0, 192,  80, -96, -60]
-    [864,   0, 120, 116, -40, -76]
-}
-
-spriteset (spriteset_erroremu) {
-    template_empty ()
-}
-
-alternative_sprites (spriteset_erroremu, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP, "gfx/erroremu.png") {
-    [  0,   0,  32, 144, -12, -72]
-    [ 40,   0, 120, 116, -72, -76]
-    [168,   0, 192,  80, -96, -60]
-    [368,   0, 120, 116, -40, -76]
-    [496,   0,  32, 144, -12, -72]
-    [536,   0, 120, 116, -72, -76]
-    [664,   0, 192,  80, -96, -60]
-    [864,   0, 120, 116, -40, -76]
+spriteset (spriteset_erroremu, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP, "gfx/misc/erroremu_32bpp.png") {
+    [  0,   0,  36, 160, -14, -80]
+    [ 44,   0, 120, 116, -75, -71]
+    [172,   0, 192,  80, -96, -62]
+    [372,   0, 120, 116, -41, -71]
+    [500,   0,  36, 160, -14, -80]
+    [544,   0, 120, 116, -75, -71]
+    [672,   0, 192,  80, -96, -62]
+    [872,   0, 120, 116, -41, -71]
 }
 
 spriteset (empty_sprites, "gfx/empty.png") {
   [0, 0, 2, 2, 0, 0, CROP]
 }
+
 /* 
 Using Semi-Standardised Railtype Scheme.
 The First Letter:
@@ -1558,7 +1584,7 @@ spriteset (spriteset_yellowhead_m, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP) {
     template_standard ("25kvemu/yellowhead", "3049stock-tp")
 }
 spriteset (spriteset_yellowhead_c_reversed, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP) {
-    template_standard ("25kvemu/yellowhead", "3049stock-c-r")
+    template_reversed_11 ("25kvemu/yellowhead", "3049stock-c")
 }
 spriteset (spriteset_yellowhead_1c_c, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP) {
     template_standard ("25kvemu/yellowhead", "3049stock-1c-c")
@@ -1567,7 +1593,7 @@ spriteset (spriteset_yellowhead_1c_m, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP) {
     template_standard ("25kvemu/yellowhead", "3049stock-1c-tp")
 }
 spriteset (spriteset_yellowhead_1c_c_reversed, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP) {
-    template_standard ("25kvemu/yellowhead", "3049stock-1c-c-r")
+    template_reversed_11 ("25kvemu/yellowhead", "3049stock-1c-c")
 }
 
 
@@ -2645,7 +2671,7 @@ switch (FEAT_TRAINS, SELF, switch_tml_ctrain_running, vehicle_is_potentially_pow
 
 switch (FEAT_TRAINS, SELF, switch_tml_ctrain_power_middle, ((position_in_consist_from_end / 3) + 1) % 8) {
     5: return 0;
-    return 1079;
+    return 1019;
 }
 
 switch (FEAT_TRAINS, SELF, switch_tml_ctrain_power, ((position_in_consist_from_end / 3) == 0 ) || ((position_in_consist / 3) == 0 )) {
@@ -2723,7 +2749,7 @@ item (FEAT_TRAINS, tml_ctrain) {
         length:                         switch_length_2_8_2;
         speed:                          130;
         power:                          return 0;
-        purchase_power:                 return 1079; // HP
+        purchase_power:                 return 1019; // HP
         tractive_effort_coefficient:    return 0;
         purchase_tractive_effort_coefficient: return int(0.185*255);
         cargo_capacity:                 switch_tml_ctrain_capacity;
