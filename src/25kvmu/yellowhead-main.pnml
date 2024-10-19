@@ -16,7 +16,7 @@ spriteset (spriteset_yellowhead_m, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP) {
     template_standard ("25kvemu/yellowhead", "3049stock-tp")
 }
 spriteset (spriteset_yellowhead_c_reversed, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP) {
-    template_standard ("25kvemu/yellowhead", "3049stock-c-r")
+    template_reversed_11 ("25kvemu/yellowhead", "3049stock-c")
 }
 spriteset (spriteset_yellowhead_1c_c, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP) {
     template_standard ("25kvemu/yellowhead", "3049stock-1c-c")
@@ -25,7 +25,7 @@ spriteset (spriteset_yellowhead_1c_m, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP) {
     template_standard ("25kvemu/yellowhead", "3049stock-1c-tp")
 }
 spriteset (spriteset_yellowhead_1c_c_reversed, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP) {
-    template_standard ("25kvemu/yellowhead", "3049stock-1c-c-r")
+    template_reversed_11 ("25kvemu/yellowhead", "3049stock-1c-c")
 }
 
 
