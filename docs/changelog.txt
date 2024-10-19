@@ -1,3 +1,7 @@
+24/10/02 v8 by Babel
++   Change offset of sprites template
+
+
 24/10/02 v7 by Babel
 +   Add TML C-Train
 
