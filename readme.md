@@ -1,6 +1,7 @@
 # China Set: MTR Addon
 
 ## **General Information**
+
 China Set: MTR Addon is a add-on of [China Set: Trains](https://github.com/OpenTTD-China-Set/China-Set-Trains).
 This is a add-on GRF of China Set Series. It add the vehicles of MTR uses in HongKong.
 China Set: MTR Addon is licensed under GPL v2.
@@ -9,15 +10,19 @@ Features:
 	- Yellow Head Train
 	- MLR Train
 
-Features in Future: 
-	- More EMUs in MTR (25kV AC and 1.5kV DC) 
-	- Light Rail system 
-	- KTT and other locomotives and wagons used in Kowloon-Canton Railway 
+Features in Future:
+	- More EMUs in MTR (25kV AC and 1.5kV DC)
+	- Light Rail system
+	- KTT and other locomotives and wagons used in Kowloon-Canton Railway
 
 ## **Contributors**
+
 Vox:
 	- Babel
 	- ctx
+    - Haiyan
+    - Nengyeqing
+    More information read [this](docs/voxsourse.csv)
 
 Code:
 	- Almost copy from [China Set: Trains](https://github.com/OpenTTD-China-Set/China-Set-Trains)
@@ -26,7 +31,8 @@ Code:
 
 Also thanks to everyone provide support to China Set.
 
-## **Buliding** 
+## **Buliding**
+
 Sprites in China Set: MTR Addon are render by Gorender from .vox files.
 You can use Magicavoxel to change and create voxes.
 
