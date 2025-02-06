@@ -10,28 +10,29 @@
 #include "src/cargotable.pnml"
 #include "src/vehicleid.pnml"
 #include "src/roadvehicleid.pnml"
-#include "src/vehicleid.pnml"
-
 #include "src/functions.pnml"
 #include "src/misc/mailroom.pnml"
 #include "src/function2.pnml"
 
 
-//Coeches
-#include "src/emucoach/first-emucoach_graphics.pnml"
-#include "src/emucoach/first-emucoach_item.pnml"
-#include "src/emucoach/normal-emucoach_graphics.pnml"
-#include "src/emucoach/normal-emucoach_item.pnml" 
+//MU Wagon
+#include "src/emucoach/first-emucoach.pnml"
+#include "src/emucoach/normal-emucoach.pnml"
+
+//25kV Locoamotives
+#include "src/25kvloco/lok2000.pnml"
+
+//Coaches
+#include "src/coaches/t2.pnml"
+#include "src/coaches/t1.pnml"
 
 //25kV EMUS
-#include "src/25kvmu/yellowhead_main.pnml"
-#include "src/25kvmu/yellowhead_exurb_graphics.pnml"
-#include "src/25kvmu/yellowhead_exurb_item.pnml"
-#include "src/25kvmu/yellowhead_suburb_graphics.pnml"
-#include "src/25kvmu/yellowhead_suburb_item.pnml"
-#include "src/25kvmu/mlr_gfx.pnml"
-#include "src/25kvmu/mlr_item.pnml"
-
-
+#include "src/25kvmu/yellowhead-main.pnml"
+#include "src/25kvmu/yellowhead-exurb.pnml"
+#include "src/25kvmu/yellowhead-suburb.pnml"
+#include "src/25kvmu/mlr.pnml"
+#include "src/25kvmu/ikk-train.pnml"
+#include "src/25kvmu/tml-ctrain.pnml"
+#include "src/25kvmu/mtr380a.pnml"
 // Sort Vehicles
 #include "src/vehiclesort.pnml"

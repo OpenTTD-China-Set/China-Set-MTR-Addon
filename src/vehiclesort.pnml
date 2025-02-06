@@ -1,8 +1,14 @@
 sort (FEAT_TRAINS, [
+    lok2000,
+    t2,
+    t1,
     yellowhead_exurb,
     yellowhead_suburb,
     mlr,
-    1856,
-    1857,
-    1858,
+    ikk,
+    tml_ctrain,
+    mtr380a,
+    normal_emucoach,
+    first_emucoach,
+    first_emucoach_with_mailroom,
 ]);

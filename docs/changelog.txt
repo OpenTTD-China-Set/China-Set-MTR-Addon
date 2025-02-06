@@ -1,5 +1,20 @@
-24/04/14 v2 by Babel
-+   Add MLR 
+24/10/02 v8 by Babel
++   Change offset of sprites template
+
+
+24/10/02 v7 by Babel
++   Add TML C-Train
+
+24/08/25 v5 by Babel
++   Add Ktt, MTR308A
+=   Fix can_attach with China Set:Train
+
+24/08/25 v4 by Babel
+=   GRF code optimisation
++   Add IKK Train
+
+24/04/14 v3 by Babel
++   Add MLR
 
 24/04/05 v2 by Babel
 +   Add KCR MetroCommell Train

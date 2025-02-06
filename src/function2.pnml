@@ -28,31 +28,25 @@ switch (FEAT_TRAINS, SELF, switch_crh_wagon_bitmask, vehicle_type_id) {
 
 
  // Purchase Menu off MU Cars
-spriteset (spriteset_mtruw_purchase_original) {
-    template_purchase_empty ()
+
+spriteset (spriteset_mtruw_purchase_original, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP) {
+    template_purchase ("emucoach", "sp1900-m")
 }
-alternative_sprites(spriteset_mtruw_purchase_original, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP) {
-    template_purchase ("emucoach", "3049stock-tp")
+spriteset (spriteset_mtruw_original, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP) {
+    template_standard ("emucoach", "sp1900-m")
 }
 
-spriteset (spriteset_mtruw_original) {
-    template_empty ()
+spriteset (spriteset_mtruw_1c_purchase_original, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP) {
+    template_purchase ("emucoach", "sp1900-1c-m")
 }
-alternative_sprites(spriteset_mtruw_original, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP) {
-    template_standard ("emucoach", "3049stock-tp")
+spriteset (spriteset_mtruw_1c_original, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP) {
+    template_standard ("emucoach", "sp1900-1c-m")
 }
 
-spriteset (spriteset_mtruw_1c_purchase_original) {
-    template_purchase_empty ()
-}
-alternative_sprites(spriteset_mtruw_1c_purchase_original, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP) {
+spriteset (spriteset_mtruw_1c_withmailroom_purchase_original, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP) {
     template_purchase ("emucoach", "3049stock-1c-tp")
 }
-
-spriteset (spriteset_mtruw_1c_original) {
-    template_empty ()
-}
-alternative_sprites(spriteset_mtruw_1c_original, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP) {
+spriteset (spriteset_mtruw_1c_withmailroom_original, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP) {
     template_standard ("emucoach", "3049stock-1c-tp")
 }
 
@@ -63,6 +57,16 @@ switch (FEAT_TRAINS, SELF, switch_mtruw_1c_original, position_in_consist % 3) {
 
 switch (FEAT_TRAINS, SELF, switch_mtruw_1c_purchase_original, position_in_consist % 3) {
     1: spriteset_mtruw_1c_purchase_original;
+    empty_sprites;
+} 
+
+switch (FEAT_TRAINS, SELF, switch_mtruw_1c_withmailroom_original, position_in_consist % 3) {
+    1: spriteset_mtruw_1c_withmailroom_original;
+    empty_sprites;
+} 
+
+switch (FEAT_TRAINS, SELF, switch_mtruw_1c_withmailroom_purchase_original, position_in_consist % 3) {
+    1: spriteset_mtruw_1c_withmailroom_purchase_original;
     empty_sprites;
 } 
 
@@ -77,8 +81,7 @@ switch (FEAT_TRAINS, SELF, switch_mtruw_purchase_original, position_in_consist %
 } 
 
 
-//Sprite of 1st Class car with Luggage Room
-spriteset (spriteset_mtruw_1c_purchase_original_withmail) {
+/* spriteset (spriteset_mtruw_1c_purchase_original_withmail) {
     template_purchase_empty ()
 }
 alternative_sprites(spriteset_mtruw_1c_purchase_original_withmail, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP) {
@@ -98,7 +101,7 @@ switch (FEAT_TRAINS, SELF, switch_mtruw_1c_purchase_original_withmail, position_
 switch (FEAT_TRAINS, SELF, switch_mtruw_1c_original_withmail, position_in_consist % 3) {
     1: spriteset_mtruw_1c_original_withmail;
     empty_sprites;
-} 
+}  */
 
 /* switch (FEAT_TRAINS, SELF, switch_mtrmuw_graphics, position_in_articulated_veh % 3) {
     1: spriteset_mtruw_original;
@@ -133,11 +136,16 @@ switch (FEAT_TRAINS, SELF, switch_normal_emucoach_articulated_part, extra_callba
 }
 
 switch (FEAT_TRAINS, SELF, switch_mtr_wagon_articulated_part, vehicle_type_id) {
-    1856: switch_normal_emucoach_articulated_part;
-    1857: switch_first_emucoach_articulated_part;
-    1858: switch_first_emucoach_articulated_part_with_mailroom;
+    normal_emucoach: switch_normal_emucoach_articulated_part;
+    first_emucoach: switch_first_emucoach_articulated_part;
+    first_emucoach_with_mailroom: switch_first_emucoach_articulated_part_with_mailroom;
     return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
 }
 
 
 //
+
+switch (FEAT_TRAINS, SELF, switch_emucoach_name, getbits(extra_callback_info1, 0, 8) == 0x20? getbits(extra_callback_info1, 8, 8) : 0xFFFF) {
+    0: return string(STR_SERIES_MUCOACH);
+    return CB_RESULT_NO_TEXT;
+}

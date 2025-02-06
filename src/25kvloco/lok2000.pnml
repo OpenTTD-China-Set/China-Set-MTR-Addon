@@ -1,0 +1,112 @@
+//Begin LOK2000
+/* switch (FEAT_TRAINS, SELF, switch_lok2000_name, getbits(extra_callback_info1, 0, 8) == 0x20? getbits(extra_callback_info1, 8, 8) : 0xFFFF) {
+    0: return string(STR_HXD3_SERIES);
+    return CB_RESULT_NO_TEXT;
+} */
+
+
+// Graphics
+
+// Purchase Menu
+spriteset (spriteset_lok2000_purchase_original, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP) {
+    template_purchase ("25kvloco", "lok2000-a")
+}
+
+// Vehicle
+spriteset (spriteset_lok2000_original, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP) {
+    template_standard ("25kvloco", "lok2000-a")
+}
+spriteset (spriteset_lok2000_flip, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP) {
+    template_standard ("25kvloco", "lok2000-b")
+}
+
+switch (FEAT_TRAINS, SELF, switch_lok2000_cargo_subtype, cargo_subtype) {
+    0: return string(STR_AUTOMATIC);
+    1: return string(STR_ORIGIN);
+    2: return string(STR_FLIP);
+    return CB_RESULT_NO_TEXT;
+}
+
+switch (FEAT_TRAINS, SELF, switch_lok2000_articulated_part, extra_callback_info1) {
+    1..2: return lok2000;
+    return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
+}
+
+switch (FEAT_TRAINS, SELF, switch_lok2000_graphics_subtype_auto, (position_in_consist_from_end / 3) + 1) {
+    1: spriteset_lok2000_flip;
+    spriteset_lok2000_original;
+}
+
+switch (FEAT_TRAINS, SELF, switch_lok2000_graphics_subtype, cargo_subtype) {
+    0: switch_lok2000_graphics_subtype_auto;
+    1: spriteset_lok2000_original;
+    2: spriteset_lok2000_flip;
+    empty_sprites;
+}
+
+switch (FEAT_TRAINS, SELF, switch_lok2000_graphics, position_in_articulated_veh % 3) {
+    1: switch_lok2000_graphics_subtype;
+    empty_sprites;
+}
+
+
+item (FEAT_TRAINS, lok2000) {
+    property {
+        // Menu
+        name:                           string(STR_NAME_LOK2000);
+        sprite_id:                      SPRITE_ID_NEW_TRAIN;
+        misc_flags:                     bitmask(TRAIN_FLAG_AUTOREFIT);
+        engine_class:                   ENGINE_CLASS_ELECTRIC;
+
+        // Availability
+        climates_available:             ALL_CLIMATES;
+        introduction_date:              date(1997,05,11);
+        model_life:                     VEHICLE_NEVER_EXPIRES;
+        vehicle_life:                   30;
+        track_type:                     SACA;
+
+        // Cargo
+        refittable_cargo_classes:       bitmask(CC_PASSENGERS);
+        non_refittable_cargo_classes:   0;
+        cargo_allow_refit:              [];
+        cargo_disallow_refit:           [];
+        refit_cost:                     0;
+        default_cargo_type:             PASS;
+        ai_special_flag:                AI_FLAG_PASSENGER;
+        cargo_capacity:                 1;
+        loading_speed:                  8 << param_loading_speed;
+        cargo_age_period:               185 << param_cargo_decay;
+
+        // Stats
+        speed:                          230 km/h;
+        power:                          6100 kW;
+        weight:                         84 ton;
+        tractive_effort_coefficient:    0.364;
+        cost_factor:                    127;
+        running_cost_base:              RUNNING_COST_ELECTRIC;
+        running_cost_factor:            104;
+        reliability_decay:              16;
+    }
+    graphics {
+        // Menu
+        additional_text:                string(STR_DESC_5, string(STR_USEDLINE_KTT), string(STR_ELECTRICITY_SUPPLY), string(STR_RELDEC_MEDIUM, 16));
+        cargo_subtype_text:             switch_lok2000_cargo_subtype;
+        can_attach_wagon:               locowagon;
+        // Graphics
+        default:                        switch_lok2000_graphics;
+        purchase:                       spriteset_lok2000_purchase_original;
+        articulated_part:               switch_lok2000_articulated_part;
+
+        // Stats
+        length:                         switch_length_2_5_2;
+        cargo_capacity:                 0;
+        cost_factor:                    100;
+        running_cost_factor:            96 * runningcostfactor() + 20;
+        purchase_running_cost_factor:   404;
+        purchase_cargo_capacity:        0;
+        bitmask_vehicle_info:           airconditioner;
+
+    }
+}
+
+// End LOK2000

@@ -3,4 +3,8 @@
 *.grf
 *.tar
 chinasettrains-*
-custom_tags.txt
+.gfxhash/
+gfx/**/*.png
+!gfx/*.png
+*.lng
+*.zip
