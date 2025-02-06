@@ -8,7 +8,7 @@ China Set: MTR Addon is licensed under GPL v2.
 
 Features:
  - EMUs in East Rail Line and Tuen Ma Line
- - High speed Railway
+ - High Speed Railway
  - KTT
 
 Features in Future:
@@ -40,9 +40,9 @@ You can use Magicavoxel to change and create voxes.
 The .lng files are generate by [a .csv file](./docs/str.CSV) during the complie process, so please change the csv file to change strings.
 
 If you want to compile the NewGRF, you should(for windows):
-	1.Install [nmlc](https://www.tt-wiki.net/wiki/NMLTutorial/Installation) and add it to the system path.
-	2.Install [Gorender](https://github.com/mattkimber/gorender) and add it to the system path.
-	3.Install Python 3.11+
+ - 1.Install [nmlc](https://www.tt-wiki.net/wiki/NMLTutorial/Installation) and add it to the system path.
+ - 2.Install [Gorender](https://github.com/mattkimber/gorender) and add it to the system path.
+ - 3.Install Python 3.11+
 
 Then, start mtr-make.py to compile the NewGRF.
 
