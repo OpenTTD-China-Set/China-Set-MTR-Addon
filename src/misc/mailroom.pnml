@@ -39,6 +39,7 @@ item(FEAT_TRAINS, yellowhead_mailroom) {
         bitmask_vehicle_info:           0;
  }
     graphics {
+        cargo_age_period:               200 << param_cargo_decay;
         cargo_capacity:                 24;
         purchase_cargo_capacity:        24;
         default:                        empty_sprites;

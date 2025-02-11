@@ -3,7 +3,7 @@ grf {
     name:    string(STR_GRF_NAME);
     desc:    string(STR_DESC_4, string(STR_GRF_DESC), string(STR_GRF_DESC_README),string(STR_GRF_DESC_MTR));
     url:     string(STR_GRF_URL);
-    version: 8;
+    version: 19;
     min_compatible_version: 7;
 
     param 0 {
@@ -849,6 +849,7 @@ item(FEAT_TRAINS, yellowhead_mailroom) {
         bitmask_vehicle_info:           0;
  }
     graphics {
+        cargo_age_period:               200 << param_cargo_decay;
         cargo_capacity:                 24;
         purchase_cargo_capacity:        24;
         default:                        empty_sprites;
@@ -906,86 +907,46 @@ spriteset (spriteset_mtruw_1c_withmailroom_original, ZOOM_LEVEL_IN_4X, BIT_DEPTH
     template_standard ("emucoach", "3049stock-1c-tp")
 }
 
+spriteset (spriteset_mtruw_luggage_purchase_original, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP) {
+    template_purchase ("emucoach", "caf-train-airport-lm")
+}
+spriteset (spriteset_mtruw_luggage_original, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP) {
+    template_purchase ("emucoach", "caf-train-airport-lm")
+}
+
 switch (FEAT_TRAINS, SELF, switch_mtruw_1c_original, position_in_consist % 3) {
     1: spriteset_mtruw_1c_original;
     empty_sprites;
 } 
-
-switch (FEAT_TRAINS, SELF, switch_mtruw_1c_purchase_original, position_in_consist % 3) {
-    1: spriteset_mtruw_1c_purchase_original;
-    empty_sprites;
-} 
-
 switch (FEAT_TRAINS, SELF, switch_mtruw_1c_withmailroom_original, position_in_consist % 3) {
     1: spriteset_mtruw_1c_withmailroom_original;
     empty_sprites;
 } 
-
-switch (FEAT_TRAINS, SELF, switch_mtruw_1c_withmailroom_purchase_original, position_in_consist % 3) {
-    1: spriteset_mtruw_1c_withmailroom_purchase_original;
-    empty_sprites;
-} 
-
 switch (FEAT_TRAINS, SELF, switch_mtruw_original, position_in_consist % 3) {
     1: spriteset_mtruw_original;
     empty_sprites;
 } 
-
-switch (FEAT_TRAINS, SELF, switch_mtruw_purchase_original, position_in_consist % 3) {
-    1: spriteset_mtruw_purchase_original;
+switch (FEAT_TRAINS, SELF, switch_mtruw_luggage_original, position_in_consist % 3) {
+    1: spriteset_mtruw_luggage_original;
     empty_sprites;
 } 
 
 
-/* spriteset (spriteset_mtruw_1c_purchase_original_withmail) {
-    template_purchase_empty ()
-}
-alternative_sprites(spriteset_mtruw_1c_purchase_original_withmail, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP) {
-    template_purchase ("emucoach", "3049stock-1c-tp")
-}
-spriteset (spriteset_mtruw_1c_original_withmail) {
-    template_empty ()
-}
-alternative_sprites(spriteset_mtruw_1c_original_withmail, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP) {
-    template_standard ("emucoach", "3049stock-1c-tp")
-}
 
-switch (FEAT_TRAINS, SELF, switch_mtruw_1c_purchase_original_withmail, position_in_consist % 3) {
-    1: spriteset_mtruw_1c_purchase_original_withmail;
-    empty_sprites;
-} 
-switch (FEAT_TRAINS, SELF, switch_mtruw_1c_original_withmail, position_in_consist % 3) {
-    1: spriteset_mtruw_1c_original_withmail;
-    empty_sprites;
-}  */
 
-/* switch (FEAT_TRAINS, SELF, switch_mtrmuw_graphics, position_in_articulated_veh % 3) {
-    1: spriteset_mtruw_original;
-    empty_sprites;   
-} */
-/* switch (FEAT_TRAINS, SELF, switch_first_emucoach_articulated_part_no_mailroom, extra_callback_info1) {
-    1..2: return first_emucoach;
+switch (FEAT_TRAINS, SELF, switch_luggage_emucoach_articulated_part, extra_callback_info1) {
+    1..2: return luggage_emucoach;
     return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
 }
- */
 switch (FEAT_TRAINS, SELF, switch_first_emucoach_articulated_part_with_mailroom, extra_callback_info1) {
     1: return first_emucoach_with_mailroom;
     2: return yellowhead_mailroom;
     return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
 }
-
-
  switch (FEAT_TRAINS, SELF, switch_first_emucoach_articulated_part, extra_callback_info1) {
     1..2: return first_emucoach;
     return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
 }
-
-/* switch (FEAT_TRAINS, SELF, switch_first_emucoach_articulated_part, hasbit(bitmask_consist_info, 3)) {
-    0: switch_first_emucoach_articulated_part_no_mailroom;
-    switch_first_emucoach_articulated_part_with_mailroom;
-} */
-
-
 switch (FEAT_TRAINS, SELF, switch_normal_emucoach_articulated_part, extra_callback_info1) {
     1..2: return normal_emucoach;
     return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
@@ -995,6 +956,7 @@ switch (FEAT_TRAINS, SELF, switch_mtr_wagon_articulated_part, vehicle_type_id) {
     normal_emucoach: switch_normal_emucoach_articulated_part;
     first_emucoach: switch_first_emucoach_articulated_part;
     first_emucoach_with_mailroom: switch_first_emucoach_articulated_part_with_mailroom;
+    luggage_emucoach: switch_luggage_emucoach_articulated_part;
     return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
 }
 
@@ -1063,7 +1025,7 @@ item (FEAT_TRAINS, first_emucoach) {
 
         // Graphics
         default:                        switch_mtruw_1c_original;
-        purchase:                       switch_mtruw_1c_purchase_original;
+        purchase:                       spriteset_mtruw_1c_purchase_original;
         articulated_part:               switch_first_emucoach_articulated_part;
         // Stats
         length:                         switch_length_2_8_2;
@@ -1114,12 +1076,12 @@ item (FEAT_TRAINS, first_emucoach_with_mailroom) {
     }
     graphics {
         // Menu
-        additional_text:                string(STR_DESC_2, string(STR_ATTACH_MTR_FIRST_EMU_WUTH_MAILROOM), string(STR_WITH_MAILROOM), string(STR_COMFORT_MEDIUM, 240), string(STR_FRESHNESS_MEDIUM));
+        additional_text:                string(STR_DESC_2, string(STR_ATTACH_MTR_FIRST_EMU_WITH_MAILROOM), string(STR_WITH_MAILROOM), string(STR_COMFORT_MEDIUM, 240), string(STR_FRESHNESS_MEDIUM));
         can_attach_wagon:               mu_of_mtr;
 
         // Graphics
         default:                        switch_mtruw_1c_withmailroom_original;
-        purchase:                       switch_mtruw_1c_withmailroom_purchase_original;
+        purchase:                       spriteset_mtruw_1c_withmailroom_purchase_original;
         articulated_part:               switch_first_emucoach_articulated_part_with_mailroom;
         // Stats
         length:                         switch_length_2_7_2;
@@ -1192,7 +1154,7 @@ item (FEAT_TRAINS, normal_emucoach) {
 
         // Graphics
         default:                        switch_mtruw_original;
-        purchase:                       switch_mtruw_purchase_original;
+        purchase:                       spriteset_mtruw_purchase_original;
         articulated_part:               switch_normal_emucoach_articulated_part;
         // Stats
         length:                         switch_length_2_8_2;
@@ -1209,6 +1171,68 @@ item (FEAT_TRAINS, normal_emucoach) {
 // End NORMAL_EMUCOACH
 
 
+// Begin Luggage-emucoach
+switch (FEAT_TRAINS, SELF, switch_luggage_emucoach_capacity, position_in_articulated_veh % 3) {
+    1: return 0;
+    return 0;
+}
+
+
+item (FEAT_TRAINS, luggage_emucoach) {
+    property {
+        // Menu
+        name:                           string(STR_NAME_LUGGAGE_EMUCOACH);
+        sprite_id:                      SPRITE_ID_NEW_TRAIN;
+        misc_flags:                     bitmask(TRAIN_FLAG_AUTOREFIT);
+        variant_group:                  normal_emucoach;
+
+        // Availability
+        climates_available:             ALL_CLIMATES;
+        introduction_date:              date(1980,01,01);
+        model_life:                     VEHICLE_NEVER_EXPIRES;
+        vehicle_life:                   30;
+        track_type:                     SAAN;
+
+        // Cargo
+        refittable_cargo_classes:       bitmask(CC_PASSENGERS);
+        non_refittable_cargo_classes:   0;
+        cargo_allow_refit:              [PASS, TOUR, YETI, YETY];
+        cargo_disallow_refit:           [];
+        refit_cost:                     0;
+        default_cargo_type:             PASS;
+        ai_special_flag:                AI_FLAG_PASSENGER;
+        cargo_capacity:                 72;                         //depending on the mu
+        loading_speed:                  8 << param_loading_speed;   
+        cargo_age_period:               240 << param_cargo_decay;
+
+        // Stats
+        speed:                          0 km/h;                 //depending on the mu
+        power:                          0 hp;                   //depending on the mu
+        weight:                         42 ton;                 //depending on the mu
+        cost_factor:                    24;                     
+        running_cost_base:              RUNNING_COST_ELECTRIC;  
+        running_cost_factor:            6;                      //depending on the mu
+    }
+    graphics {
+        // Menu
+        additional_text:                string(STR_DESC_3, string(STR_ATTACH_MTR_LUGGAGE_EMU), string(STR_COMFORT_MEDIUM, 200));
+        can_attach_wagon:               mu_of_mtr;
+
+        // Graphics
+        default:                        switch_mtruw_luggage_original;
+        purchase:                       spriteset_mtruw_luggage_purchase_original;
+        articulated_part:               switch_luggage_emucoach_articulated_part;
+        // Stats
+        length:                         switch_length_2_7_2;
+        cargo_capacity:                 switch_luggage_emucoach_capacity;
+        cargo_age_period:               (12 * 5 * cafedecayfactor()) << param_cargo_decay;
+        cost_factor:                    24;
+        running_cost_factor:            6 * runningcostfactor() * cafecostfactor() + accostfactor();
+        purchase_running_cost_factor:   36;
+        purchase_cargo_capacity:        90/3;
+        name:                           switch_emucoach_name;
+    }
+}
 //Begin LOK2000
 /* switch (FEAT_TRAINS, SELF, switch_lok2000_name, getbits(extra_callback_info1, 0, 8) == 0x20? getbits(extra_callback_info1, 8, 8) : 0xFFFF) {
     0: return string(STR_HXD3_SERIES);
@@ -3077,5 +3101,6 @@ sort (FEAT_TRAINS, [
     normal_emucoach,
     first_emucoach,
     first_emucoach_with_mailroom,
+    luggage_emucoach,
 ]);
 

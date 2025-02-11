@@ -18,6 +18,7 @@
 //MU Wagon
 #include "src/emucoach/first-emucoach.pnml"
 #include "src/emucoach/normal-emucoach.pnml"
+#include "src/emucoach/luggage-emucoach.pnml"
 
 //25kV Locoamotives
 #include "src/25kvloco/lok2000.pnml"

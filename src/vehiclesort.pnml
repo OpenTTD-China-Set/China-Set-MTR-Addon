@@ -11,4 +11,5 @@ sort (FEAT_TRAINS, [
     normal_emucoach,
     first_emucoach,
     first_emucoach_with_mailroom,
+    luggage_emucoach,
 ]);
