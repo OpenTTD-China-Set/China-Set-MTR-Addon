@@ -1,0 +1,206 @@
+// Begin CAF-TRAIN-TUNGCHUNG
+switch (FEAT_TRAINS, SELF, switch_caf_train_name, getbits(extra_callback_info1, 0, 8) == 0x20? getbits(extra_callback_info1, 8, 8) : 0xFFFF) {
+    0: return string(STR_SERIES_CAF_TRAIN);
+    return CB_RESULT_NO_TEXT;
+}
+
+
+// Vehicle
+
+
+spriteset (spriteset_caf_train_tungchung_c, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP) {
+    template_standard ("1500vemu/caf-train", "caf-train-tungchung-c")
+}
+spriteset (spriteset_caf_train_tungchung_c_r, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP) {
+    template_reversed_11 ("1500vemu/caf-train", "caf-train-tungchung-c")
+}
+spriteset (spriteset_caf_train_tungchung_m, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP) {
+    template_standard ("1500vemu/caf-train", "caf-train-tungchung-m")
+}
+
+// Purchase Menu
+
+spriteset (spriteset_caf_train_tungchung_purchase_original, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP) {
+    template_purchase ("1500vemu/caf-train", "caf-train-tungchung-c")
+}
+
+
+//Graphics
+
+switch (FEAT_TRAINS, SELF, switch_caf_train_tungchung_graphics_if_end, position_in_consist_from_end  == 1) {
+    1: spriteset_caf_train_tungchung_c_r;
+    spriteset_caf_train_tungchung_m;
+}
+
+switch (FEAT_TRAINS, SELF, switch_caf_train_tungchung_middle_wagon_graphics, (position_in_consist % 3) == 1) {
+    1: switch_caf_train_tungchung_graphics_if_end;
+    empty_sprites;
+}
+
+switch (FEAT_TRAINS, SELF, switch_caf_train_tungchung_graphics, position_in_consist % 3) {
+    1: spriteset_caf_train_tungchung_c;
+    empty_sprites;
+}
+
+
+//Weight
+
+switch (FEAT_TRAINS, SELF, switch_caf_train_tungchung_weight, ((position_in_consist / 3) == 2) || ((position_in_consist_from_end / 3) == 2) ) {
+    1: return 35;
+    return 37;
+}
+
+//Capacity
+
+switch (FEAT_TRAINS, SELF, switch_caf_train_tungchung_capacity_front_1, param_cargo_capacity) {
+    4: return 372;
+    return (372) / 4 * param_cargo_capacity;
+}
+switch (FEAT_TRAINS, SELF, switch_caf_train_tungchung_capacity_front, position_in_consist % 3) {
+    1: switch_caf_train_tungchung_capacity_front_1;
+    return 0;
+}
+
+switch (FEAT_TRAINS, SELF, switch_caf_train_tungchung_capacity_1, param_cargo_capacity) {
+    4: return 375;
+    return (375) / 4 * param_cargo_capacity;
+}
+switch (FEAT_TRAINS, SELF, switch_caf_train_tungchung_capacity_end, ((position_in_consist / 3) == 0) || ((position_in_consist_from_end / 3) == 0) ) {
+    1: switch_caf_train_tungchung_capacity_front_1;
+    switch_caf_train_tungchung_capacity_1;
+}
+switch (FEAT_TRAINS, SELF, switch_caf_train_tungchung_capacity, position_in_consist % 3) {
+    1: switch_caf_train_tungchung_capacity_end;
+    return 0;
+}
+
+
+
+
+//Cost
+
+
+switch (FEAT_TRAINS, SELF, switch_caf_train_tungchung_running_power, vehicle_type_id) {
+    normal_emucoach: return 40;
+    return 0;
+}
+switch (FEAT_TRAINS, SELF, switch_caf_train_tungchung_running_unpower, vehicle_type_id) {
+    normal_emucoach: return 10;
+    return 0;
+}
+
+
+switch (FEAT_TRAINS, SELF, switch_caf_train_tungchung_running, vehicle_is_potentially_powered) {
+    1: switch_caf_train_tungchung_running_power;
+    switch_caf_train_tungchung_running_unpower;
+}
+
+//Power
+
+switch (FEAT_TRAINS, SELF, switch_caf_train_tungchung_power, ((position_in_consist / 3) == 2) || ((position_in_consist_from_end / 3) == 2)) {
+    1: return 0;
+    return 1421;
+}
+switch (FEAT_TRAINS, SELF, switch_caf_train_tungchung_traction, vehicle_is_potentially_powered) {
+    1: return int(0.134*255);
+    return 0;
+}
+
+// Articulate
+
+
+switch (FEAT_TRAINS, SELF, switch_caf_train_tungchung_articulated_part, extra_callback_info1) {
+    1..2: return caf_train_tungchung;
+    return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
+}
+
+
+//Text
+
+
+
+item (FEAT_TRAINS, caf_train_tungchung) {
+    property {
+        // Menu
+        name:                           string(STR_NAME_CAF_TRAIN_TUNGCHUNG);
+        sprite_id:                      SPRITE_ID_NEW_TRAIN;
+        misc_flags:                     bitmask(TRAIN_FLAG_AUTOREFIT, TRAIN_FLAG_MU);
+        engine_class:                   ENGINE_CLASS_ELECTRIC;
+        
+
+        // Availability
+        climates_available:             ALL_CLIMATES;
+        introduction_date:              date(1997,10,16);
+        model_life:                     60;
+        retire_early:                   35;
+        vehicle_life:                   35;
+        track_type:                     SACd;
+
+        // Cargo
+        refittable_cargo_classes:       bitmask(CC_PASSENGERS);
+        non_refittable_cargo_classes:   0;
+        cargo_allow_refit:              [PASS, TOUR, YETI, YETY];
+        cargo_disallow_refit:           [];
+        refit_cost:                     0;
+        default_cargo_type:             PASS;
+        ai_special_flag:                AI_FLAG_PASSENGER;
+        cargo_capacity:                 1;
+        loading_speed:                  36 << param_loading_speed;
+        cargo_age_period:               128 << param_cargo_decay;
+
+        // Stats
+        speed:                          135 km/h;
+        power:                          1060 kW;
+        weight:                         37 ton;
+        tractive_effort_coefficient:    0.134;
+        cost_factor:                    40;
+        running_cost_base:              RUNNING_COST_ELECTRIC;
+        running_cost_factor:            10;
+        reliability_decay:              8;
+        bitmask_vehicle_info:           bitmask(2);
+    }
+    graphics {
+        // Menu
+        additional_text:                string(STR_DESC_7, string(STR_ELECTRIC_1500VDC), string(STR_FULLNAME_CAF_TRAIN), string(STR_NICKNAME_CAF_TRAIN), string(STR_USEDLINE_ERL), string(STR_MTR_FIRST_CAN_ATTACH_WAGON),string(STR_RELDEC_LOW, 8), string(STR_FIRST_HEAD_SEAT));
+        can_attach_wagon:               muhead_without_first_class;
+        start_stop:                     mu4to12car;
+
+        // Graphics
+        default:                        switch_caf_train_tungchung_graphics;
+        purchase:                       spriteset_caf_train_tungchung_purchase_original;
+        articulated_part:               switch_caf_train_tungchung_articulated_part;
+
+        // Stats
+        length:                         switch_length_2_7_2;
+/*         speed:                          135; */
+/*         power:                          return 1421; */
+/*         purchase_power:                 return 1421; */
+/*         tractive_effort_coefficient:    return int(0.134*255); */
+/*         purchase_tractive_effort_coefficient: return int(0.134*255); */
+        cargo_capacity:                 switch_caf_train_tungchung_capacity;
+        cargo_age_period:               128 << param_cargo_decay;
+        cost_factor:                    55;
+        running_cost_factor:            40  * runningcostfactor() + 20;
+        purchase_running_cost_factor:   180;
+        purchase_cargo_capacity:        372/3;
+        bitmask_vehicle_info:           bitmask(2);
+        name:                           switch_caf_train_name;
+    }
+
+    // Multiple Unit Wagons
+    livery_override(normal_emucoach) {
+        default:                        switch_caf_train_tungchung_middle_wagon_graphics;
+        cargo_capacity:                 switch_caf_train_tungchung_capacity;
+        power:                          switch_caf_train_tungchung_power;
+        tractive_effort_coefficient:    switch_caf_train_tungchung_traction;
+        length:                         switch_length_2_7_2;
+        weight:                         switch_caf_train_tungchung_weight;
+        can_attach_wagon:               mu_of_mtr;
+        cargo_age_period:               128 << param_cargo_decay;
+        bitmask_vehicle_info:           0;
+        articulated_part:               switch_mtr_wagon_articulated_part;
+        running_cost_factor:            switch_caf_train_tungchung_running() * runningcostfactor() + accostfactor();
+    }
+}
+
+// End CAF-TRAIN-TUNGCHUNG

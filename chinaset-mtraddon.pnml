@@ -18,6 +18,7 @@
 //MU Wagon
 #include "src/emucoach/first-emucoach.pnml"
 #include "src/emucoach/normal-emucoach.pnml"
+#include "src/emucoach/luggage-emucoach.pnml"
 
 //25kV Locoamotives
 #include "src/25kvloco/lok2000.pnml"
@@ -34,5 +35,11 @@
 #include "src/25kvmu/ikk-train.pnml"
 #include "src/25kvmu/tml-ctrain.pnml"
 #include "src/25kvmu/mtr380a.pnml"
+
+//1500V EMUs
+#include "src/1500vmu/caf-train-tungchung.pnml"
+#include "src/1500vmu/caf-train-airport-express.pnml"
+
+
 // Sort Vehicles
 #include "src/vehiclesort.pnml"

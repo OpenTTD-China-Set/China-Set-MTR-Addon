@@ -19,7 +19,7 @@ item(FEAT_TRAINS, yellowhead_mailroom) {
         air_drag_coefficient:           0;
 
         reliability_decay:              10;
-        refittable_cargo_classes:       bitmask(CC_MAIL, CC_EXPRESS);
+        refittable_cargo_classes:       bitmask(CC_MAIL, CC_EXPRESS, CC_ARMOURED);
         cargo_allow_refit:              [MAIL, VALU, GOLD, DIAM];
         cargo_disallow_refit:           [];
         cargo_age_period:               200;
@@ -39,6 +39,7 @@ item(FEAT_TRAINS, yellowhead_mailroom) {
         bitmask_vehicle_info:           0;
  }
     graphics {
+        cargo_age_period:               200 << param_cargo_decay;
         cargo_capacity:                 24;
         purchase_cargo_capacity:        24;
         default:                        empty_sprites;
