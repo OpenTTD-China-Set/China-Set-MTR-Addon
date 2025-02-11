@@ -56,7 +56,7 @@ item (FEAT_TRAINS, first_emucoach) {
 
         // Graphics
         default:                        switch_mtruw_1c_original;
-        purchase:                       switch_mtruw_1c_purchase_original;
+        purchase:                       spriteset_mtruw_1c_purchase_original;
         articulated_part:               switch_first_emucoach_articulated_part;
         // Stats
         length:                         switch_length_2_8_2;
@@ -107,12 +107,12 @@ item (FEAT_TRAINS, first_emucoach_with_mailroom) {
     }
     graphics {
         // Menu
-        additional_text:                string(STR_DESC_2, string(STR_ATTACH_MTR_FIRST_EMU_WUTH_MAILROOM), string(STR_WITH_MAILROOM), string(STR_COMFORT_MEDIUM, 240), string(STR_FRESHNESS_MEDIUM));
+        additional_text:                string(STR_DESC_2, string(STR_ATTACH_MTR_FIRST_EMU_WITH_MAILROOM), string(STR_WITH_MAILROOM), string(STR_COMFORT_MEDIUM, 240), string(STR_FRESHNESS_MEDIUM));
         can_attach_wagon:               mu_of_mtr;
 
         // Graphics
         default:                        switch_mtruw_1c_withmailroom_original;
-        purchase:                       switch_mtruw_1c_withmailroom_purchase_original;
+        purchase:                       spriteset_mtruw_1c_withmailroom_purchase_original;
         articulated_part:               switch_first_emucoach_articulated_part_with_mailroom;
         // Stats
         length:                         switch_length_2_7_2;

@@ -54,7 +54,7 @@ item (FEAT_TRAINS, normal_emucoach) {
 
         // Graphics
         default:                        switch_mtruw_original;
-        purchase:                       switch_mtruw_purchase_original;
+        purchase:                       spriteset_mtruw_purchase_original;
         articulated_part:               switch_normal_emucoach_articulated_part;
         // Stats
         length:                         switch_length_2_8_2;

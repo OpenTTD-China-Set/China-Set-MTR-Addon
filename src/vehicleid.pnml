@@ -45,6 +45,9 @@ item (FEAT_TRAINS, tml_ctrain, 1990) {}
 
 //1500V DC Electric Mutipile-Unit, available ID range: 2240-2751 (hex 0x08C0..0x0ABF)
 //define id_range_1500v_emu 0x08C0..0x0ABF
+item (FEAT_TRAINS, caf_train_airport_express, 2240) {}
+item (FEAT_TRAINS, caf_train_tungchung, 2751) {}
+
 
 //Misc, available ID range: 2240-2751 (hex 0x0AC0..0x0CBF)
 //define id_range_misc 0x0AC0..0x0CBF

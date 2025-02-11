@@ -8,7 +8,10 @@ sort (FEAT_TRAINS, [
     ikk,
     tml_ctrain,
     mtr380a,
+    caf_train_tungchung,
+    caf_train_airport_express,
     normal_emucoach,
     first_emucoach,
     first_emucoach_with_mailroom,
+    luggage_emucoach,
 ]);

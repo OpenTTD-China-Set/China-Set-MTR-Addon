@@ -1,0 +1,248 @@
+// Begin CAF-TRAIN-AIRPORT-EXPRESS
+
+
+
+// Vehicle
+
+
+spriteset (spriteset_caf_train_airport_express_c, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP) {
+    template_standard ("1500vemu/caf-train", "caf-train-airport-c")
+}
+spriteset (spriteset_caf_train_airport_express_c_r, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP) {
+    template_reversed_11 ("1500vemu/caf-train", "caf-train-airport-c")
+}
+spriteset (spriteset_caf_train_airport_express_lc, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP) {
+    template_standard ("1500vemu/caf-train", "caf-train-airport-lc")
+}
+spriteset (spriteset_caf_train_airport_express_lc_r, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP) {
+    template_reversed_11 ("1500vemu/caf-train", "caf-train-airport-lc")
+}
+spriteset (spriteset_caf_train_airport_express_m, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP) {
+    template_standard ("1500vemu/caf-train", "caf-train-airport-m")
+}
+spriteset (spriteset_caf_train_airport_express_lm, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP) {
+    template_standard ("1500vemu/caf-train", "caf-train-airport-lm")
+}
+
+// Purchase Menu
+
+spriteset (spriteset_caf_train_airport_express_purchase_original, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP) {
+    template_purchase ("1500vemu/caf-train", "caf-train-airport-c")
+}
+
+
+
+
+//Graphics
+switch (FEAT_TRAINS, SELF, switch_caf_train_airport_express_wagon_type, vehicle_type_id) {
+    first_emucoach: spriteset_caf_train_airport_express_m;
+    luggage_emucoach: spriteset_caf_train_airport_express_lm;
+    empty_sprites;
+}
+
+switch (FEAT_TRAINS, SELF, switch_caf_train_airport_express_wagon_type_end, vehicle_type_id) {
+    first_emucoach: spriteset_caf_train_airport_express_c_r;
+    luggage_emucoach: spriteset_caf_train_airport_express_lc_r;
+    empty_sprites;
+}
+switch (FEAT_TRAINS, SELF, switch_caf_train_airport_express_graphics_if_end, position_in_consist_from_end  == 1) {
+    1: switch_caf_train_airport_express_wagon_type_end;
+    switch_caf_train_airport_express_wagon_type;
+}
+
+switch (FEAT_TRAINS, SELF, switch_caf_train_airport_express_middle_wagon_graphics, (position_in_consist % 3) == 1) {
+    1: switch_caf_train_airport_express_graphics_if_end;
+    empty_sprites;
+}
+
+
+switch (FEAT_TRAINS, SELF, switch_caf_train_airport_express_graphics_cargo_type, cargo_classes == bitmask(CC_PASSENGERS)) {
+    1: spriteset_caf_train_airport_express_c;
+    0: spriteset_caf_train_airport_express_lc;
+    empty_sprites;
+}
+switch (FEAT_TRAINS, SELF, switch_caf_train_airport_express_graphics, position_in_consist % 3) {
+    1: switch_caf_train_airport_express_graphics_cargo_type;
+    empty_sprites;
+}
+
+
+//Weight
+
+switch (FEAT_TRAINS, SELF, switch_caf_train_airport_express_weight, ((position_in_consist / 3) == 2) || ((position_in_consist_from_end / 3) == 2) ) {
+    1: return 35;
+    return 37;
+}
+
+//Capacity
+switch (FEAT_TRAINS, SELF, switch_caf_train_airport_express_luggage_capacity, position_in_consist % 3) {
+    1: return 52;
+    return 0;
+}
+
+switch (FEAT_TRAINS, SELF, switch_caf_train_airport_express_capacity_end, ((position_in_consist / 3) == 0) || ((position_in_consist_from_end / 3) == 0) ) {
+    1: return 62;
+    return 64;
+}
+switch (FEAT_TRAINS, SELF, switch_caf_train_airport_express_capacity, position_in_consist % 3) {
+    1: switch_caf_train_airport_express_capacity_end;
+    return 0;
+}
+
+switch (FEAT_TRAINS, SELF, switch_caf_train_airport_express_capacity_front_cargo_type, cargo_classes == bitmask(CC_PASSENGERS)) {
+    1: return 62;
+    return 52;
+}
+switch (FEAT_TRAINS, SELF, switch_caf_train_airport_express_capacity_front, position_in_consist % 3) {
+    1: switch_caf_train_airport_express_capacity_front_cargo_type;
+    return 0;
+}
+//Cost
+
+
+switch (FEAT_TRAINS, SELF, switch_caf_train_airport_express_running_power, vehicle_type_id) {
+    first_emucoach: return 45;
+    luggage_emucoach: return 50;
+    return 0;
+}
+switch (FEAT_TRAINS, SELF, switch_caf_train_airport_express_running_unpower, vehicle_type_id) {
+    first_emucoach: return 12;
+    luggage_emucoach: return 15;
+    return 0;
+}
+
+
+switch (FEAT_TRAINS, SELF, switch_caf_train_airport_express_running, vehicle_is_potentially_powered) {
+    1: switch_caf_train_airport_express_running_power;
+    switch_caf_train_airport_express_running_unpower;
+}
+
+//Power
+
+switch (FEAT_TRAINS, SELF, switch_caf_train_airport_express_power, ((position_in_consist / 3) == 2) || ((position_in_consist_from_end / 3) == 2)) {
+    1: return 0;
+    return 1421;
+}
+switch (FEAT_TRAINS, SELF, switch_caf_train_airport_express_traction, vehicle_is_potentially_powered) {
+    1: return int(0.134*255);
+    return 0;
+}
+// cargo age period
+
+switch (FEAT_TRAINS, SELF, switch_caf_train_airport_express_cargo_age_period, cargo_classes == bitmask(CC_PASSENGERS)) {
+    1: return 240;
+    return 200;
+}
+
+// Articulate
+
+
+switch (FEAT_TRAINS, SELF, switch_caf_train_airport_express_articulated_part, extra_callback_info1) {
+    1..2: return caf_train_airport_express;
+    return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
+}
+
+
+
+//Text
+
+
+
+item (FEAT_TRAINS, caf_train_airport_express) {
+    property {
+        // Menu
+        name:                           string(STR_NAME_CAF_TRAIN_AIRPORT_EXPRESS);
+        sprite_id:                      SPRITE_ID_NEW_TRAIN;
+        misc_flags:                     bitmask(TRAIN_FLAG_AUTOREFIT, TRAIN_FLAG_MU);
+        engine_class:                   ENGINE_CLASS_ELECTRIC;
+        variant_group:                  caf_train_tungchung;
+
+        // Availability
+        climates_available:             ALL_CLIMATES;
+        introduction_date:              date(1997,10,16);
+        model_life:                     60;
+        retire_early:                   35;
+        vehicle_life:                   35;
+        track_type:                     SACd;
+
+        // Cargo
+        refittable_cargo_classes:       bitmask(CC_PASSENGERS, CC_MAIL, CC_EXPRESS, CC_ARMOURED);
+        non_refittable_cargo_classes:   0;
+        cargo_allow_refit:              [PASS, TOUR, YETI, YETY, MAIL, VALU, GOLD, DIAM];
+        cargo_disallow_refit:           [];
+        refit_cost:                     0;
+        default_cargo_type:             PASS;
+        ai_special_flag:                AI_FLAG_PASSENGER;
+        cargo_capacity:                 1;
+        loading_speed:                  36 << param_loading_speed;
+        cargo_age_period:               128 << param_cargo_decay;
+
+        // Stats
+        speed:                          135 km/h;
+        power:                          1060 kW;
+        weight:                         37 ton;
+        tractive_effort_coefficient:    0.134;
+        cost_factor:                    40;
+        running_cost_base:              RUNNING_COST_ELECTRIC;
+        running_cost_factor:            10;
+        reliability_decay:              8;
+        bitmask_vehicle_info:           bitmask(2);
+    }
+    graphics {
+        // Menu
+        additional_text:                string(STR_DESC_7, string(STR_ELECTRIC_1500VDC), string(STR_FULLNAME_CAF_TRAIN), string(STR_NICKNAME_CAF_TRAIN), string(STR_USEDLINE_ERL), string(STR_MTR_FIRST_CAN_ATTACH_WAGON),string(STR_RELDEC_LOW, 8), string(STR_NORMAL_HEAD_SEAT));
+        can_attach_wagon:               muhead_airport_express;
+        start_stop:                     mu4to12car;
+
+        // Graphics
+        default:                        switch_caf_train_airport_express_graphics;
+        purchase:                       spriteset_caf_train_airport_express_purchase_original;
+        articulated_part:               switch_caf_train_airport_express_articulated_part;
+
+        // Stats
+        length:                         switch_length_2_7_2;
+/*         speed:                          135; */
+/*         power:                          return 1421; */
+/*         purchase_power:                 return 1421; */
+/*         tractive_effort_coefficient:    return int(0.134*255); */
+/*         purchase_tractive_effort_coefficient: return int(0.134*255); */
+        cargo_capacity:                 switch_caf_train_airport_express_capacity_front;
+        cargo_age_period:               switch_caf_train_airport_express_cargo_age_period() << param_cargo_decay;
+        cost_factor:                    60;
+        running_cost_factor:            50  * runningcostfactor() + 20;
+        purchase_running_cost_factor:   220;
+        purchase_cargo_capacity:        62/3;
+        bitmask_vehicle_info:           bitmask(2);
+        name:                           switch_caf_train_name;
+    }
+
+    // Multiple Unit Wagons
+    livery_override(first_emucoach) {
+        default:                        switch_caf_train_airport_express_middle_wagon_graphics;
+        cargo_capacity:                 switch_caf_train_airport_express_capacity;
+        power:                          switch_caf_train_airport_express_power;
+        tractive_effort_coefficient:    switch_caf_train_airport_express_traction;
+        length:                         switch_length_2_7_2;
+        weight:                         switch_caf_train_airport_express_weight;
+        can_attach_wagon:               mu_of_mtr;
+        cargo_age_period:               240 << param_cargo_decay;
+        bitmask_vehicle_info:           0;
+        articulated_part:               switch_mtr_wagon_articulated_part;
+        running_cost_factor:            switch_caf_train_airport_express_running() * runningcostfactor() + accostfactor();
+    }
+    livery_override(luggage_emucoach) {
+        default:                        switch_caf_train_airport_express_middle_wagon_graphics;
+        cargo_capacity:                 switch_caf_train_airport_express_luggage_capacity;
+        power:                          switch_caf_train_airport_express_power;
+        tractive_effort_coefficient:    switch_caf_train_airport_express_traction;
+        length:                         switch_length_2_7_2;
+        weight:                         switch_caf_train_airport_express_weight;
+        can_attach_wagon:               mu_of_mtr;
+        cargo_age_period:               200 << param_cargo_decay;
+        bitmask_vehicle_info:           0;
+        articulated_part:               switch_mtr_wagon_articulated_part;
+        running_cost_factor:            switch_caf_train_airport_express_running() * runningcostfactor() + accostfactor();
+    }
+}
+
+// End CAF-TRAIN-AIRPORT-EXPRESS
