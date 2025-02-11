@@ -1,7 +1,11 @@
-24/10/02 v8 by Babel
+25/02/12 v0.2.2 by Babel
+---------
+Fix #3: param_cargo_decay can't effect on luggageroom of Yellowhead
+Add: CAF Train(Airport Express and Tung Chung Line), MTR Luggage MU Wagon
+
+24/10/02 v0.1.8 by Babel
 ---------
 Fix #2: Change offset of sprites template
-
 
 24/10/02 v0.1.7 by Babel
 ---------

@@ -21,16 +21,16 @@ item (FEAT_TRAINS, luggage_emucoach) {
         track_type:                     SAAN;
 
         // Cargo
-        refittable_cargo_classes:       bitmask(CC_PASSENGERS);
+        refittable_cargo_classes:       bitmask(CC_MAIL, CC_EXPRESS, CC_ARMOURED);
         non_refittable_cargo_classes:   0;
-        cargo_allow_refit:              [PASS, TOUR, YETI, YETY];
+        cargo_allow_refit:              [MAIL, VALU, GOLD, DIAM];
         cargo_disallow_refit:           [];
         refit_cost:                     0;
-        default_cargo_type:             PASS;
+        default_cargo_type:             MAIL;
         ai_special_flag:                AI_FLAG_PASSENGER;
         cargo_capacity:                 72;                         //depending on the mu
         loading_speed:                  8 << param_loading_speed;   
-        cargo_age_period:               240 << param_cargo_decay;
+        cargo_age_period:               200 << param_cargo_decay;
 
         // Stats
         speed:                          0 km/h;                 //depending on the mu
@@ -52,11 +52,11 @@ item (FEAT_TRAINS, luggage_emucoach) {
         // Stats
         length:                         switch_length_2_7_2;
         cargo_capacity:                 switch_luggage_emucoach_capacity;
-        cargo_age_period:               (12 * 5 * cafedecayfactor()) << param_cargo_decay;
-        cost_factor:                    24;
-        running_cost_factor:            6 * runningcostfactor() * cafecostfactor() + accostfactor();
-        purchase_running_cost_factor:   36;
-        purchase_cargo_capacity:        90/3;
+        cargo_age_period:               (200) << param_cargo_decay;
+        cost_factor:                    32;
+        running_cost_factor:            10 * runningcostfactor() * cafecostfactor() + accostfactor();
+        purchase_running_cost_factor:   40;
+        purchase_cargo_capacity:        52/3;
         name:                           switch_emucoach_name;
     }
 }
