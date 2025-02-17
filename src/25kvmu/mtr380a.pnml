@@ -237,7 +237,7 @@ item (FEAT_TRAINS, mtr380a) {
     }
     graphics {
         // Menu
-        additional_text:                string(STR_DESC_8, string(STR_FULLNAME_MTR380A), string(STR_NICKNAME_MTR380A), string(STR_USEDLINE_XRL), string(STR_MTR_FIRST_CAN_ATTACH_WAGON), string(STR_MTR380A_CONSIST), string(STR_RELDEC_LOW, 12), string(STR_FIRST_HEAD_SEAT), string(STR_350_AVAILABLE));
+        additional_text:                string(STR_DESC_8, string(STR_ELECTRIC_25KVAC),  string(STR_FULLNAME_MTR380A), string(STR_NICKNAME_MTR380A), string(STR_USEDLINE_XRL), string(STR_MTR_FIRST_CAN_ATTACH_WAGON), string(STR_MTR380A_CONSIST), string(STR_RELDEC_LOW, 12), string(STR_FIRST_HEAD_SEAT), string(STR_350_AVAILABLE));
         can_attach_wagon:               muhead_with_first_class;
         start_stop:                     mu4to24car;
         cargo_subtype_text:             switch_crh380_cargo_subtype;

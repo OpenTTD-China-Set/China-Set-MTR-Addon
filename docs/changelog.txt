@@ -1,6 +1,7 @@
 25/02/17 v0.2.1 by Babel
 ---------
 Fix #4: Mail capacity of Yellowhead train (Exurban ) is 0
+Fix #5: lok2000 and MTR380A don't show electric supply mode on purchase mune
 
 25/02/12 v0.2.0 by Babel
 ---------
