@@ -3,8 +3,8 @@ grf {
     name:    string(STR_GRF_NAME);
     desc:    string(STR_DESC_4, string(STR_GRF_DESC), string(STR_GRF_DESC_README),string(STR_GRF_DESC_MTR));
     url:     string(STR_GRF_URL);
-    version: 20;
-    min_compatible_version: 7;
+    version: 21;
+    min_compatible_version: 20;
 
     param 0 {
         param_loading_speed {
@@ -454,9 +454,9 @@ item (FEAT_TRAINS, caf_train_airport_express, 2240) {}
 item (FEAT_TRAINS, caf_train_tungchung, 2751) {}
 
 
-//Misc, available ID range: 2240-2751 (hex 0x0AC0..0x0CBF)
+//Misc, available ID range: 2752-3263 (hex 0x0AC0..0x0CBF)
 //define id_range_misc 0x0AC0..0x0CBF
-item (FEAT_TRAINS, yellowhead_mailroom, 2240) {}
+item (FEAT_TRAINS, yellowhead_mailroom, 2752) {}
 
 
 /* Begin Functions */
@@ -1334,7 +1334,7 @@ item (FEAT_TRAINS, lok2000) {
     }
     graphics {
         // Menu
-        additional_text:                string(STR_DESC_5, string(STR_USEDLINE_KTT), string(STR_ELECTRICITY_SUPPLY), string(STR_RELDEC_MEDIUM, 16));
+        additional_text:                string(STR_DESC_5, string(STR_ELECTRIC_25KVAC),  string(STR_USEDLINE_KTT), string(STR_ELECTRICITY_SUPPLY), string(STR_RELDEC_MEDIUM, 16));
         cargo_subtype_text:             switch_lok2000_cargo_subtype;
         can_attach_wagon:               locowagon;
         // Graphics
@@ -3042,7 +3042,7 @@ item (FEAT_TRAINS, mtr380a) {
     }
     graphics {
         // Menu
-        additional_text:                string(STR_DESC_8, string(STR_FULLNAME_MTR380A), string(STR_NICKNAME_MTR380A), string(STR_USEDLINE_XRL), string(STR_MTR_FIRST_CAN_ATTACH_WAGON), string(STR_MTR380A_CONSIST), string(STR_RELDEC_LOW, 12), string(STR_FIRST_HEAD_SEAT), string(STR_350_AVAILABLE));
+        additional_text:                string(STR_DESC_8, string(STR_ELECTRIC_25KVAC),  string(STR_FULLNAME_MTR380A), string(STR_NICKNAME_MTR380A), string(STR_USEDLINE_XRL), string(STR_MTR_FIRST_CAN_ATTACH_WAGON), string(STR_MTR380A_CONSIST), string(STR_RELDEC_LOW, 12), string(STR_FIRST_HEAD_SEAT), string(STR_350_AVAILABLE));
         can_attach_wagon:               muhead_with_first_class;
         start_stop:                     mu4to24car;
         cargo_subtype_text:             switch_crh380_cargo_subtype;

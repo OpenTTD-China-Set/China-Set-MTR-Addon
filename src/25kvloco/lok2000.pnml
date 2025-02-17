@@ -89,7 +89,7 @@ item (FEAT_TRAINS, lok2000) {
     }
     graphics {
         // Menu
-        additional_text:                string(STR_DESC_5, string(STR_USEDLINE_KTT), string(STR_ELECTRICITY_SUPPLY), string(STR_RELDEC_MEDIUM, 16));
+        additional_text:                string(STR_DESC_5, string(STR_ELECTRIC_25KVAC),  string(STR_USEDLINE_KTT), string(STR_ELECTRICITY_SUPPLY), string(STR_RELDEC_MEDIUM, 16));
         cargo_subtype_text:             switch_lok2000_cargo_subtype;
         can_attach_wagon:               locowagon;
         // Graphics
