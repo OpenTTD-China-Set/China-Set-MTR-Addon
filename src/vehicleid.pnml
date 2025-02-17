@@ -49,6 +49,6 @@ item (FEAT_TRAINS, caf_train_airport_express, 2240) {}
 item (FEAT_TRAINS, caf_train_tungchung, 2751) {}
 
 
-//Misc, available ID range: 2240-2751 (hex 0x0AC0..0x0CBF)
+//Misc, available ID range: 2752-3263 (hex 0x0AC0..0x0CBF)
 //define id_range_misc 0x0AC0..0x0CBF
-item (FEAT_TRAINS, yellowhead_mailroom, 2240) {}
+item (FEAT_TRAINS, yellowhead_mailroom, 2752) {}
