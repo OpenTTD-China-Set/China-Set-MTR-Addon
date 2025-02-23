@@ -1,6 +1,0 @@
-VERSION        :0.2.1
-VERSION_STRING :0.2.1
-TITLE          :China Set: MTR Addon 0.2.1
-FILENAME       :chinaset-mtraddon.grf
-REPO_HASH      :
-NEWGRF_VERSION :21
