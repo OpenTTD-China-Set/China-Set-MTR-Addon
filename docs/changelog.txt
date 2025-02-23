@@ -1,3 +1,7 @@
+25/02/23 v0.3.0 by Babel
+---------
+Change to use Makefile to building
+
 25/02/17 v0.2.1 by Babel
 ---------
 Fix #4: Mail capacity of Yellowhead train (Exurban ) is 0
