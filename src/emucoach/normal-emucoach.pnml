@@ -36,7 +36,7 @@ item (FEAT_TRAINS, normal_emucoach) {
         default_cargo_type:             PASS;
         ai_special_flag:                AI_FLAG_PASSENGER;
         cargo_capacity:                 218;                         //depending on the mu
-        loading_speed:                  8 << param_loading_speed;
+        loading_speed:                  36 << param_loading_speed;
         cargo_age_period:               128 << param_cargo_decay;
 
         // Stats

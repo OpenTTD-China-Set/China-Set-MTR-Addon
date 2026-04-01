@@ -1,0 +1,206 @@
+// Begin WHITEHEAD TRAIN
+switch (FEAT_TRAINS, SELF, switch_whitehead_name, getbits(extra_callback_info1, 0, 8) == 0x20? getbits(extra_callback_info1, 8, 8) : 0xFFFF) {
+    0: return string(STR_SERIES_WHITEHEAD);
+    return CB_RESULT_NO_TEXT;
+}
+// Vehicle
+
+spriteset (spriteset_whitehead_c, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP) {
+    template_standard ("1500vemu/whitehead", "whitehead-mc")
+}
+spriteset (spriteset_whitehead_cr, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP) {
+    template_reversed_10 ("1500vemu/whitehead", "whitehead-mc")
+}
+spriteset (spriteset_whitehead_t, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP) {
+    template_standard ("1500vemu/whitehead", "whitehead-t")
+}
+spriteset (spriteset_whitehead_mp_1, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP) {
+    template_reversed_10 ("1500vemu/whitehead", "whitehead-mp-2")
+}
+spriteset (spriteset_whitehead_mp_2, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP) {
+    template_standard ("1500vemu/whitehead", "whitehead-mp-1")
+}
+
+// Purchase Menu
+spriteset (spriteset_whitehead_purchase_original, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP) {
+    template_purchase ("1500vemu/whitehead", "whitehead-mc")
+}
+
+
+switch (FEAT_TRAINS, SELF, switch_whitehead_purchase_original, position_in_consist % 3) {
+    1: spriteset_whitehead_purchase_original;
+    empty_sprites;
+}
+
+
+switch (FEAT_TRAINS, SELF, switch_whitehead_wagon_unit, (position_in_consist / 3) + 1) {
+    2: spriteset_whitehead_mp_1;
+    5: spriteset_whitehead_mp_1;
+    spriteset_whitehead_t;
+}
+
+switch (FEAT_TRAINS, SELF, switch_whitehead_graphics_if_end, (position_in_consist_from_end / 3) + 1) {
+    1: spriteset_whitehead_cr;
+    2: spriteset_whitehead_mp_2;
+    switch_whitehead_wagon_unit;
+}
+
+switch (FEAT_TRAINS, SELF, switch_whitehead_middle_wagon_graphics, position_in_consist % 3) {
+    1: switch_whitehead_graphics_if_end;
+    empty_sprites;
+}
+
+switch (FEAT_TRAINS, SELF, switch_whitehead_graphics, position_in_consist % 3) {
+    1: spriteset_whitehead_c;
+    empty_sprites;
+}
+
+
+//Weight
+switch (FEAT_TRAINS, SELF, switch_whitehead_weight_front, (position_in_consist / 3) + 1) {
+    2: return 41;
+    4..5: return 41;
+    return 28;
+}
+
+switch (FEAT_TRAINS, SELF, switch_whitehead_weight, (position_in_consist_from_end / 3) + 1) {
+    1..2: return 41;
+    switch_whitehead_weight_front;
+}
+//Capacity
+
+
+
+switch (FEAT_TRAINS, SELF, switch_whitehead_capacity_1, param_cargo_capacity) {
+    4: return 375;
+    return (375) / 4 * param_cargo_capacity;
+}
+switch (FEAT_TRAINS, SELF, switch_whitehead_capacity, position_in_consist % 3) {
+    1: switch_whitehead_capacity_1;
+    return 0;
+}
+
+//Cost
+
+
+
+switch (FEAT_TRAINS, SELF, switch_whitehead_running, vehicle_is_potentially_powered) {
+    1: return 40;
+    return 8;
+}
+
+//Power
+
+
+switch (FEAT_TRAINS, SELF, switch_whitehead_power_front, (position_in_consist / 3) + 1) {
+    2: return 354;
+    4..5: return 345;
+    return 0;
+}
+
+switch (FEAT_TRAINS, SELF, switch_whitehead_power, (position_in_consist_from_end / 3) + 1) {
+    1..2: return 345;
+    switch_whitehead_power_front;
+}
+
+
+switch (FEAT_TRAINS, SELF, switch_whitehead_traction, vehicle_is_potentially_powered) {
+    1: return int(0.126*255);
+    return 0;
+}
+
+// Articulate
+
+
+switch (FEAT_TRAINS, SELF, switch_whitehead_articulated_part, extra_callback_info1) {
+    1..2: return whitehead;
+    return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
+}
+
+
+
+
+item (FEAT_TRAINS, whitehead) {
+    property {
+        // Menu
+        name:                           string(STR_NAME_WHITEHEAD);
+        sprite_id:                      SPRITE_ID_NEW_TRAIN;
+        misc_flags:                     bitmask(TRAIN_FLAG_AUTOREFIT, TRAIN_FLAG_MU);
+        engine_class:                   ENGINE_CLASS_ELECTRIC;
+
+        // Availability
+        climates_available:             ALL_CLIMATES;
+        introduction_date:              date(1979,10,01);
+        model_life:                     60;
+        retire_early:                   40;
+        vehicle_life:                   45;
+        track_type:                     SACd;
+
+        // Cargo
+        refittable_cargo_classes:       bitmask(CC_PASSENGERS);
+        non_refittable_cargo_classes:   0;
+        cargo_allow_refit:              [PASS, TOUR, YETI, YETY];
+        cargo_disallow_refit:           [];
+        refit_cost:                     0;
+        default_cargo_type:             PASS;
+        ai_special_flag:                AI_FLAG_PASSENGER;
+        cargo_capacity:                 1;
+        loading_speed:                  36 << param_loading_speed;
+        cargo_age_period:               128 << param_cargo_decay;
+
+        // Stats
+        speed:                          80 km/h;
+        power:                          264 kW;
+        weight:                         40.5 ton;
+        tractive_effort_coefficient:    0.126;
+        cost_factor:                    40;
+        running_cost_base:              RUNNING_COST_ELECTRIC;
+        running_cost_factor:            8;
+        reliability_decay:              8;
+        bitmask_vehicle_info:           bitmask(2);
+    }
+    graphics {
+        // Menu
+        additional_text:                string(STR_DESC_7, string(STR_ELECTRIC_1500VDC), string(STR_NICKNAME_WHITEHEAD), string(STR_USEDLINE_URL), string(STR_MTR_NORMAL_CAN_ATTACH_WAGON),string(STR_RELDEC_LOW, 8), string(STR_NORMAL_HEAD_SEAT));
+        can_attach_wagon:               muhead_without_first_class;
+        start_stop:                     mu4to12car;
+
+        // Graphics
+        default:                        switch_whitehead_graphics;
+        purchase:                       switch_whitehead_purchase_original;
+        articulated_part:               switch_whitehead_articulated_part;
+
+        // Stats
+        length:                         switch_length_2_6_2;
+/*         speed:                          130; */
+/*         power:                          return 0; */
+/*         purchase_power:                 return 1218; // HP */
+/*         tractive_effort_coefficient:    return 0; */
+/*         purchase_tractive_effort_coefficient: return int(0.171*255); */
+        cargo_capacity:                 switch_whitehead_capacity;
+        cargo_age_period:               128 << param_cargo_decay;
+        cost_factor:                    40;
+        running_cost_factor:            8  * runningcostfactor() + 20;
+        purchase_running_cost_factor:   60;
+        purchase_cargo_capacity:        125/3;
+        bitmask_vehicle_info:           bitmask(2);
+        name:                           switch_whitehead_name;
+    }
+
+    // Multiple Unit Wagons
+    livery_override(normal_emucoach) {
+        default:                        switch_whitehead_middle_wagon_graphics;
+        cargo_capacity:                 switch_whitehead_capacity;
+        power:                          switch_whitehead_power;
+        tractive_effort_coefficient:    switch_whitehead_traction;
+        length:                         switch_length_2_6_2;
+        weight:                         switch_whitehead_weight;
+        can_attach_wagon:               mu_of_mtr;
+        cargo_age_period:               128 << param_cargo_decay;
+        bitmask_vehicle_info:           0;
+        articulated_part:               switch_mtr_wagon_articulated_part;
+        running_cost_factor:            switch_whitehead_running() * runningcostfactor() + accostfactor();
+    }
+}
+
+// End WHITEHEAD TRAIN

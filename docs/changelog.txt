@@ -1,20 +1,33 @@
+26/04/01 v0.3.3 by Babel
+---------
+Add: M-Train
+
+26/03/23 v0.3.2 by Babel
+---------
+Add: MTR MetroCommell EMU DC
+Fix: Text bugs
+
+25/07/22 v0.3.1 by Babel
+---------
+Fix: Wagons of EMUs now have correct loading speed
+
 25/02/23 v0.3.0 by Babel
 ---------
 Change to use Makefile to building
 
 25/02/17 v0.2.1 by Babel
 ---------
-Fix #4: Mail capacity of Yellowhead train (Exurban ) is 0
-Fix #5: lok2000 and MTR380A don't show electric supply mode on purchase mune
+Fix: Mail capacity of Yellowhead train (Exurban ) is 0
+Fix: lok2000 and MTR380A don't show electric supply mode on purchase mune
 
 25/02/12 v0.2.0 by Babel
 ---------
-Fix #3: param_cargo_decay can't effect on luggageroom of Yellowhead
+Fix: param_cargo_decay can't effect on luggageroom of Yellowhead
 Add: CAF Train(Airport Express and Tung Chung Line), MTR Luggage MU Wagon
 
 24/10/02 v0.1.8 by Babel
 ---------
-Fix #2: Change offset of sprites template
+Fix: Change offset of sprites template
 
 24/10/02 v0.1.7 by Babel
 ---------
@@ -23,7 +36,7 @@ Add: TML C-Train
 24/08/25 v0.1.5 by Babel
 ---------
 Add: Ktt, MTR308A
-Fix #1: can_attach with China Set:Train
+Fix: can_attach with China Set:Train
 
 24/08/25 v0.1.4 by Babel
 ---------
@@ -36,4 +49,4 @@ Add: MLR
 
 24/04/05 v0.1.2 by Babel
 ---------
-Add: KCR MetroCommell Train
+Add: KCR MetroCommell EMU AC

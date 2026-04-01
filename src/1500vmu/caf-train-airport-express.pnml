@@ -174,7 +174,7 @@ item (FEAT_TRAINS, caf_train_airport_express) {
         default_cargo_type:             PASS;
         ai_special_flag:                AI_FLAG_PASSENGER;
         cargo_capacity:                 1;
-        loading_speed:                  36 << param_loading_speed;
+        loading_speed:                  8 << param_loading_speed;
         cargo_age_period:               128 << param_cargo_decay;
 
         // Stats
@@ -190,7 +190,7 @@ item (FEAT_TRAINS, caf_train_airport_express) {
     }
     graphics {
         // Menu
-        additional_text:                string(STR_DESC_7, string(STR_ELECTRIC_1500VDC), string(STR_FULLNAME_CAF_TRAIN), string(STR_NICKNAME_CAF_TRAIN), string(STR_USEDLINE_ERL), string(STR_MTR_FIRST_CAN_ATTACH_WAGON),string(STR_RELDEC_LOW, 8), string(STR_NORMAL_HEAD_SEAT));
+        additional_text:                string(STR_DESC_7, string(STR_ELECTRIC_1500VDC), string(STR_FULLNAME_CAF_TRAIN), string(STR_NICKNAME_CAF_TRAIN), string(STR_USEDLINE_AIRPORT_EXPRESS), string(STR_MTR_FIRST_CAN_ATTACH_WAGON),string(STR_RELDEC_LOW, 8), string(STR_NORMAL_HEAD_SEAT));
         can_attach_wagon:               muhead_airport_express;
         start_stop:                     mu4to12car;
 

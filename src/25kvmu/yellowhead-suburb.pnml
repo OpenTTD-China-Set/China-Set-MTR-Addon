@@ -99,6 +99,7 @@ item (FEAT_TRAINS, yellowhead_suburb) {
         weight:                         switch_yellowhead_weight;
         can_attach_wagon:               mu_of_mtr;
         cargo_age_period:               160 << param_cargo_decay;
+        loading_speed:                  18 << param_loading_speed;
         bitmask_vehicle_info:           0;
         articulated_part:               switch_mtr_wagon_articulated_part;
         running_cost_factor:            switch_yellowhead_running() * runningcostfactor() + accostfactor();

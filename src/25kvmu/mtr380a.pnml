@@ -274,6 +274,7 @@ item (FEAT_TRAINS, mtr380a) {
         can_attach_wagon:               mu_of_mtr;
         cargo_age_period:               (60 * 4) << param_cargo_decay;
         bitmask_vehicle_info:           return 0;
+        loading_speed:                  8 << param_loading_speed;
         articulated_part:               switch_mtr_wagon_articulated_part;
         running_cost_factor:            (switch_mtr380a_wagon_running() + crhspeedcost()) * runningcostfactor() * cafecostfactor() + accostfactor();
     }

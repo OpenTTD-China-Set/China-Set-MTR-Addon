@@ -161,7 +161,7 @@ item (FEAT_TRAINS, caf_train_tungchung) {
     }
     graphics {
         // Menu
-        additional_text:                string(STR_DESC_7, string(STR_ELECTRIC_1500VDC), string(STR_FULLNAME_CAF_TRAIN), string(STR_NICKNAME_CAF_TRAIN), string(STR_USEDLINE_ERL), string(STR_MTR_FIRST_CAN_ATTACH_WAGON),string(STR_RELDEC_LOW, 8), string(STR_FIRST_HEAD_SEAT));
+        additional_text:                string(STR_DESC_7, string(STR_ELECTRIC_1500VDC), string(STR_FULLNAME_CAF_TRAIN), string(STR_NICKNAME_CAF_TRAIN), string(STR_USEDLINE_TCL), string(STR_MTR_FIRST_CAN_ATTACH_WAGON),string(STR_RELDEC_LOW, 8), string(STR_FIRST_HEAD_SEAT));
         can_attach_wagon:               muhead_without_first_class;
         start_stop:                     mu4to12car;
 

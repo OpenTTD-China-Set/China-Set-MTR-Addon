@@ -8,6 +8,8 @@ sort (FEAT_TRAINS, [
     ikk,
     tml_ctrain,
     mtr380a,
+    whitehead,
+    mtrain,
     caf_train_tungchung,
     caf_train_airport_express,
     normal_emucoach,
