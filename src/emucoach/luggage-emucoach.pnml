@@ -11,6 +11,7 @@ item (FEAT_TRAINS, luggage_emucoach) {
         name:                           string(STR_NAME_LUGGAGE_EMUCOACH);
         sprite_id:                      SPRITE_ID_NEW_TRAIN;
         misc_flags:                     bitmask(TRAIN_FLAG_AUTOREFIT);
+        extra_flags:                    bitmask(VEHICLE_FLAG_TRAIN_HAS_CAB);
         variant_group:                  normal_emucoach;
 
         // Availability

@@ -9,6 +9,7 @@ item(FEAT_TRAINS, yellowhead_mailroom) {
         vehicle_life:                   255;
         loading_speed:                  24 << param_loading_speed;
         misc_flags:                     bitmask(TRAIN_FLAG_AUTOREFIT);
+        extra_flags:                    bitmask(VEHICLE_FLAG_TRAIN_HAS_CAB);
         cost_factor:                    0;
         running_cost_factor:            0;
         speed:                          0 km/h;

@@ -9,7 +9,7 @@ grf {
     name: string(STR_GRF_NAME);
     desc: string(STR_DESC_4, string(STR_GRF_DESC), string(STR_GRF_DESC_README),string(STR_GRF_DESC_MTR));
     url: string(STR_GRF_URL);
-    version: 32;
+    version: 34;
     min_compatible_version: 20;
 
     param 0 {
@@ -833,6 +833,7 @@ item (FEAT_TRAINS, first_emucoach) {
         name: string(STR_NAME_FIRST_EMUCOACH);
         sprite_id: SPRITE_ID_NEW_TRAIN;
         misc_flags: bitmask(TRAIN_FLAG_AUTOREFIT);
+        extra_flags: bitmask(VEHICLE_FLAG_TRAIN_HAS_CAB);
         variant_group: normal_emucoach;
 
 
@@ -889,6 +890,7 @@ item (FEAT_TRAINS, first_emucoach_with_mailroom) {
         name: string(STR_NAME_FIRST_EMUCOACH_WITH_MAILROOM);
         sprite_id: SPRITE_ID_NEW_TRAIN;
         misc_flags: bitmask(TRAIN_FLAG_AUTOREFIT);
+        extra_flags: bitmask(VEHICLE_FLAG_TRAIN_HAS_CAB);
         variant_group: normal_emucoach;
 
 
@@ -953,6 +955,7 @@ item (FEAT_TRAINS, normal_emucoach) {
         name: string(STR_NAME_NORMAL_EMUCOACH);
         sprite_id: SPRITE_ID_NEW_TRAIN;
         misc_flags: bitmask(TRAIN_FLAG_AUTOREFIT);
+        extra_flags: bitmask(VEHICLE_FLAG_TRAIN_HAS_CAB);
 
 
         climates_available: ALL_CLIMATES;
@@ -1016,6 +1019,7 @@ item (FEAT_TRAINS, luggage_emucoach) {
         name: string(STR_NAME_LUGGAGE_EMUCOACH);
         sprite_id: SPRITE_ID_NEW_TRAIN;
         misc_flags: bitmask(TRAIN_FLAG_AUTOREFIT);
+        extra_flags: bitmask(VEHICLE_FLAG_TRAIN_HAS_CAB);
         variant_group: normal_emucoach;
 
 

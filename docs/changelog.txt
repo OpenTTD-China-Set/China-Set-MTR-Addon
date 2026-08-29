@@ -1,3 +1,7 @@
+26/04/01 v0.3.4 by Babel
+---------
+Add CAB flags for MU coaches
+
 26/04/01 v0.3.3 by Babel
 ---------
 Add: M-Train
