@@ -8,6 +8,7 @@
 
 //Diesel Locomotive, available ID range: 896-959 (hex 0x0380..0x03BF)
 //define id_range_diese_locomotive 0x0380..0x03BF
+item (FEAT_TRAINS, taipo_belle, 896) {}
 
 //Electric Locomotive, available ID range: 960-1023 (hex 0x03C0..0x03FF)
 //define id_range_electric_locomotive 0x03C0..0x03FF

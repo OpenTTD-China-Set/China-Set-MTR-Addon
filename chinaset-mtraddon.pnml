@@ -20,6 +20,9 @@
 #include "src/emucoach/normal-emucoach.pnml"
 #include "src/emucoach/luggage-emucoach.pnml"
 
+//Diesel
+#include "src/diesel/taipo-belle.pnml"
+
 //25kV Locoamotives
 #include "src/25kvloco/lok2000.pnml"
 

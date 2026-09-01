@@ -9,7 +9,7 @@ grf {
     name: string(STR_GRF_NAME);
     desc: string(STR_DESC_4, string(STR_GRF_DESC), string(STR_GRF_DESC_README),string(STR_GRF_DESC_MTR));
     url: string(STR_GRF_URL);
-    version: 34;
+    version: 35;
     min_compatible_version: 20;
 
     param 0 {
@@ -347,14 +347,18 @@ cargotable {
 }
 # 11 "chinaset-mtraddon.pnml" 2
 # 1 "src/vehicleid.pnml" 1
-# 14 "src/vehicleid.pnml"
+# 11 "src/vehicleid.pnml"
+item (FEAT_TRAINS, taipo_belle, 896) {}
+
+
+
 item (FEAT_TRAINS, lok2000, 960) {}
 
 
 
 item (FEAT_TRAINS, t2, 1024) {}
 item (FEAT_TRAINS, t1, 1025) {}
-# 32 "src/vehicleid.pnml"
+# 33 "src/vehicleid.pnml"
 item (FEAT_TRAINS, normal_emucoach, 1856) {}
 item (FEAT_TRAINS, first_emucoach, 1857) {}
 item (FEAT_TRAINS, first_emucoach_with_mailroom, 1858) {}
@@ -695,6 +699,7 @@ item(FEAT_TRAINS, yellowhead_mailroom) {
         vehicle_life: 255;
         loading_speed: 24 << param_loading_speed;
         misc_flags: bitmask(TRAIN_FLAG_AUTOREFIT);
+        extra_flags: bitmask(VEHICLE_FLAG_TRAIN_HAS_CAB);
         cost_factor: 0;
         running_cost_factor: 0;
         speed: 0 km/h;
@@ -1072,6 +1077,101 @@ item (FEAT_TRAINS, luggage_emucoach) {
 # 22 "chinaset-mtraddon.pnml" 2
 
 
+# 1 "src/diesel/taipo-belle.pnml" 1
+
+
+
+
+
+
+
+spriteset (spriteset_taipo_belle_purchase_original, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP) {
+    template_purchase ("dieselloco", "taipo-belle")
+}
+
+
+spriteset (spriteset_taipo_belle, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP) {
+    template_reversed ("dieselloco", "taipo-belle")
+}
+
+switch (FEAT_TRAINS, SELF, switch_taipo_belle_capacity, position_in_articulated_veh % 3) {
+    1: return 80;
+    return 0;
+}
+
+switch (FEAT_TRAINS, SELF, switch_taipo_belle_articulated_part, extra_callback_info1) {
+    1..2: return taipo_belle;
+    return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
+}
+
+
+switch (FEAT_TRAINS, SELF, switch_taipo_belle_graphics, position_in_articulated_veh % 3) {
+    1: spriteset_taipo_belle;
+    empty_sprites;
+}
+
+
+item (FEAT_TRAINS, taipo_belle) {
+    property {
+
+        name: string(STR_NAME_TAIPO_BELLE);
+        sprite_id: SPRITE_ID_NEW_TRAIN;
+        misc_flags: bitmask(TRAIN_FLAG_AUTOREFIT);
+        engine_class: ENGINE_CLASS_ELECTRIC;
+
+
+        climates_available: ALL_CLIMATES;
+        introduction_date: date(1936,01,01);
+        model_life: 30;
+        retire_early: 15;
+        vehicle_life: 15;
+        track_type: SACN;
+
+
+        refittable_cargo_classes: bitmask(CC_PASSENGERS);
+        non_refittable_cargo_classes: 0;
+        cargo_allow_refit: [];
+        cargo_disallow_refit: [];
+        refit_cost: 0;
+        default_cargo_type: PASS;
+        ai_special_flag: AI_FLAG_PASSENGER;
+        cargo_capacity: 1;
+        loading_speed: 8 << param_loading_speed;
+        cargo_age_period: 192 << param_cargo_decay;
+
+
+        speed: 90 km/h;
+        power: 112 kW;
+        weight: 46 ton;
+        tractive_effort_coefficient: 0.08;
+        cost_factor: 45;
+        running_cost_base: RUNNING_COST_ELECTRIC;
+        running_cost_factor: 104;
+        reliability_decay: 20;
+    }
+    graphics {
+
+        additional_text: string(STR_DESC_5, string(STR_DIESEL), string(STR_USEDLINE_KTT), string(STR_RELDEC_HIGH, 20));
+        can_attach_wagon: locowagon;
+
+        default: switch_taipo_belle_graphics;
+        purchase: spriteset_taipo_belle_purchase_original;
+        articulated_part: switch_taipo_belle_articulated_part;
+
+
+        length: switch_length_2_4_2;
+        cargo_capacity: 0;
+        cost_factor: 45;
+        running_cost_factor: 25 * runningcostfactor();
+        purchase_running_cost_factor: 100;
+        purchase_cargo_capacity: 0;
+        bitmask_vehicle_info: 0;
+
+    }
+}
+# 25 "chinaset-mtraddon.pnml" 2
+
+
 # 1 "src/25kvloco/lok2000.pnml" 1
 # 11 "src/25kvloco/lok2000.pnml"
 spriteset (spriteset_lok2000_purchase_original, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP) {
@@ -1174,7 +1274,7 @@ item (FEAT_TRAINS, lok2000) {
 
     }
 }
-# 25 "chinaset-mtraddon.pnml" 2
+# 28 "chinaset-mtraddon.pnml" 2
 
 
 # 1 "src/coaches/t2.pnml" 1
@@ -1293,7 +1393,7 @@ item (FEAT_TRAINS, t2) {
         name: switch_t2_name;
     }
 }
-# 28 "chinaset-mtraddon.pnml" 2
+# 31 "chinaset-mtraddon.pnml" 2
 # 1 "src/coaches/t1.pnml" 1
 
 switch (FEAT_TRAINS, SELF, switch_t1_name, getbits(extra_callback_info1, 0, 8) == 0x20? getbits(extra_callback_info1, 8, 8) : 0xFFFF) {
@@ -1411,7 +1511,7 @@ item (FEAT_TRAINS, t1) {
         name: switch_t1_name;
     }
 }
-# 29 "chinaset-mtraddon.pnml" 2
+# 32 "chinaset-mtraddon.pnml" 2
 
 
 # 1 "src/25kvmu/yellowhead-main.pnml" 1
@@ -1532,7 +1632,7 @@ switch (FEAT_TRAINS, SELF, switch_yellowhead_traction, vehicle_is_potentially_po
     1: return int(0.171*255);
     return 0;
 }
-# 32 "chinaset-mtraddon.pnml" 2
+# 35 "chinaset-mtraddon.pnml" 2
 # 1 "src/25kvmu/yellowhead-exurb.pnml" 1
 
 
@@ -1684,7 +1784,7 @@ item (FEAT_TRAINS, yellowhead_exurb) {
         running_cost_factor: switch_yellowhead_running() * runningcostfactor() + accostfactor();
     }
 }
-# 33 "chinaset-mtraddon.pnml" 2
+# 36 "chinaset-mtraddon.pnml" 2
 # 1 "src/25kvmu/yellowhead-suburb.pnml" 1
 
 
@@ -1793,7 +1893,7 @@ item (FEAT_TRAINS, yellowhead_suburb) {
         running_cost_factor: switch_yellowhead_running() * runningcostfactor() + accostfactor();
     }
 }
-# 34 "chinaset-mtraddon.pnml" 2
+# 37 "chinaset-mtraddon.pnml" 2
 # 1 "src/25kvmu/mlr.pnml" 1
 
 
@@ -2001,7 +2101,7 @@ item (FEAT_TRAINS, mlr) {
         running_cost_factor: switch_yellowhead_running() * runningcostfactor() + accostfactor();
     }
 }
-# 35 "chinaset-mtraddon.pnml" 2
+# 38 "chinaset-mtraddon.pnml" 2
 # 1 "src/25kvmu/ikk-train.pnml" 1
 
 
@@ -2332,7 +2432,7 @@ item (FEAT_TRAINS, ikk) {
         running_cost_factor: switch_ikk_running() * runningcostfactor() + accostfactor();
     }
 }
-# 36 "chinaset-mtraddon.pnml" 2
+# 39 "chinaset-mtraddon.pnml" 2
 # 1 "src/25kvmu/tml-ctrain.pnml" 1
 
 
@@ -2558,7 +2658,7 @@ item (FEAT_TRAINS, tml_ctrain) {
         running_cost_factor: switch_tml_ctrain_running() * runningcostfactor() + accostfactor();
     }
 }
-# 37 "chinaset-mtraddon.pnml" 2
+# 40 "chinaset-mtraddon.pnml" 2
 # 1 "src/25kvmu/mtr380a.pnml" 1
 # 9 "src/25kvmu/mtr380a.pnml"
 spriteset (spriteset_mtr380a_purchase_original, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP) {
@@ -2847,7 +2947,7 @@ item (FEAT_TRAINS, mtr380a) {
         running_cost_factor: (switch_mtr380a_wagon_running() + crhspeedcost()) * runningcostfactor() * cafecostfactor() + accostfactor();
     }
 }
-# 38 "chinaset-mtraddon.pnml" 2
+# 41 "chinaset-mtraddon.pnml" 2
 
 
 # 1 "src/1500vmu/whitehead.pnml" 1
@@ -3055,7 +3155,7 @@ item (FEAT_TRAINS, whitehead) {
         running_cost_factor: switch_whitehead_running() * runningcostfactor() + accostfactor();
     }
 }
-# 41 "chinaset-mtraddon.pnml" 2
+# 44 "chinaset-mtraddon.pnml" 2
 # 1 "src/1500vmu/mtrain.pnml" 1
 
 
@@ -3260,7 +3360,7 @@ item (FEAT_TRAINS, mtrain) {
         running_cost_factor: switch_mtrain_running() * runningcostfactor() + accostfactor();
     }
 }
-# 42 "chinaset-mtraddon.pnml" 2
+# 45 "chinaset-mtraddon.pnml" 2
 # 1 "src/1500vmu/caf-train-tungchung.pnml" 1
 
 switch (FEAT_TRAINS, SELF, switch_caf_train_name, getbits(extra_callback_info1, 0, 8) == 0x20? getbits(extra_callback_info1, 8, 8) : 0xFFFF) {
@@ -3466,7 +3566,7 @@ item (FEAT_TRAINS, caf_train_tungchung) {
         running_cost_factor: switch_caf_train_tungchung_running() * runningcostfactor() + accostfactor();
     }
 }
-# 43 "chinaset-mtraddon.pnml" 2
+# 46 "chinaset-mtraddon.pnml" 2
 # 1 "src/1500vmu/caf-train-airport-express.pnml" 1
 
 
@@ -3714,12 +3814,13 @@ item (FEAT_TRAINS, caf_train_airport_express) {
         running_cost_factor: switch_caf_train_airport_express_running() * runningcostfactor() + accostfactor();
     }
 }
-# 44 "chinaset-mtraddon.pnml" 2
+# 47 "chinaset-mtraddon.pnml" 2
 
 
 
 # 1 "src/vehiclesort.pnml" 1
 sort (FEAT_TRAINS, [
+    taipo_belle,
     lok2000,
     t2,
     t1,
@@ -3738,4 +3839,4 @@ sort (FEAT_TRAINS, [
     first_emucoach_with_mailroom,
     luggage_emucoach,
 ]);
-# 48 "chinaset-mtraddon.pnml" 2
+# 51 "chinaset-mtraddon.pnml" 2
